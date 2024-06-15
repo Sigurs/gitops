@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: infra-cloudflared
-  namespace: infra-cloudflared
+  namespace: infra-argocd
 spec:
   project: default
   source:
@@ -11,6 +11,7 @@ spec:
     path: hcloud-cluster01/infra-cloudflared
   destination:
     server: https://kubernetes.default.svc
+    namespace: infra-cloudflared
   syncPolicy:
     automated:
       selfHeal: true
