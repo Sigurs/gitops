@@ -9,3 +9,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: hcloud-cloud-controller-manager
+    namespace: infra-hcloud-ccm
