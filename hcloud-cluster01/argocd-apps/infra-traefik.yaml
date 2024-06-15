@@ -2,15 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: infra-traefik
-  namespace: infra-traefik
 spec:
   project: default
   source:
     chart: traefik
-    repoURL: https://traefik.github.io/charts
+    repoURL: traefik.github.io/charts
     targetRevision: latest
   destination:
-    server: https://kubernetes.default.svc
+    name: in-cluster
     namespace: infra-traefik
   syncPolicy:
     automated:
