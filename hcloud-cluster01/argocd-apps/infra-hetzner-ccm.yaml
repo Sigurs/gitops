@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    chart: hccm
+    chart: hcloud-cloud-controller-manager
     repoURL: https://charts.hetzner.cloud
     targetRevision: 1.19.0
   destination:
