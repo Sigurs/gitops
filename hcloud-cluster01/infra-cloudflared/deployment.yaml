@@ -12,6 +12,12 @@ spec:
       labels:
         app: cloudflared
     spec:
+      securityContext:
+        runAsGroup: 65532
+        runAsNonRoot: true
+        runAsUser: 65532
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
@@ -42,6 +48,11 @@ spec:
         - name: creds
           mountPath: /etc/cloudflared/creds
           readOnly: true
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
       volumes:
       - name: creds
         secret:
