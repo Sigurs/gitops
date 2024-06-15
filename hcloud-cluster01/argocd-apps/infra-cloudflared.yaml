@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-cloudflared
+  namespace: infra-cloudflared
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Sigurs/gitops.git
+    targetRevision: HEAD
+    path: hcloud-cluster01/infra-cloudflared
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
