@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: namespaces
+  name: infra-traefik
   namespace: infra-traefik
 spec:
   project: default
