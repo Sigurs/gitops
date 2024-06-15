@@ -22,6 +22,8 @@ spec:
             nodePort: 30080
           websecure:
             nodePort: 30443
+        service:
+          type: NodePort
   destination:
     server: https://kubernetes.default.svc
     namespace: infra-traefik
