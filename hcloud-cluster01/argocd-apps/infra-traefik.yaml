@@ -9,6 +9,11 @@ spec:
     chart: traefik
     repoURL: https://traefik.github.io/charts
     targetRevision: 28.3.0
+    helm:
+      valuesObject:
+        securityContext:
+          seccompProfile:
+            type: RuntimeDefault
   destination:
     server: https://kubernetes.default.svc
     namespace: infra-traefik
