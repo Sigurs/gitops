@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: infra-traefik
-  namespace: infra-traefik
 spec:
   project: default
   source:
@@ -11,6 +10,7 @@ spec:
     targetRevision: latest
   destination:
     server: https://kubernetes.default.svc
+    namespace: infra-traefik
   syncPolicy:
     automated:
       selfHeal: true
