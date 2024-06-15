@@ -17,11 +17,11 @@ spec:
         podSecurityContext:
           seccompProfile:
             type: RuntimeDefault
-        ports:
-          web:
-            nodePort: 30080
-          websecure:
-            nodePort: 30443
+#        ports:
+#          web:
+#            nodePort: 30080
+#          websecure:
+#            nodePort: 30443
         service:
           type: ClusterIP
   destination:
