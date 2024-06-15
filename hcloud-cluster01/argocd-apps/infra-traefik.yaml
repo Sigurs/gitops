@@ -14,6 +14,9 @@ spec:
         securityContext:
           seccompProfile:
             type: RuntimeDefault
+        podSecurityContext:
+          seccompProfile:
+            type: RuntimeDefault
   destination:
     server: https://kubernetes.default.svc
     namespace: infra-traefik
