@@ -17,6 +17,12 @@ spec:
         podSecurityContext:
           seccompProfile:
             type: RuntimeDefault
+      traefik:
+        ports:
+          web:
+            nodePort: 80
+          websecure:
+            nodePort: 443
   destination:
     server: https://kubernetes.default.svc
     namespace: infra-traefik
