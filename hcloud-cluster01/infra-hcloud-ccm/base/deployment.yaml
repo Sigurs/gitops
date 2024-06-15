@@ -74,4 +74,11 @@ spec:
             requests:
               cpu: 100m
               memory: 50Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
       priorityClassName: system-cluster-critical
