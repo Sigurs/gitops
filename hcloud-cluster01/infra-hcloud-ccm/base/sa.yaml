@@ -1,0 +1,5 @@
+# Source: hcloud-cloud-controller-manager/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hcloud-cloud-controller-manager

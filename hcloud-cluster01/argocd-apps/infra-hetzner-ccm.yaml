@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    chart: hcloud-cloud-controller-manager
-    repoURL: https://charts.hetzner.cloud
-    targetRevision: 1.19.0
+    repoURL: https://github.com/Sigurs/gitops.git
+    targetRevision: HEAD
+    path: hcloud-cluster01/infra-hcloud-ccm
   destination:
     server: https://kubernetes.default.svc
     namespace: infra-hcloud-ccm
