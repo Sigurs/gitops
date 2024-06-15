@@ -17,7 +17,6 @@ spec:
         podSecurityContext:
           seccompProfile:
             type: RuntimeDefault
-      traefik:
         ports:
           web:
             nodePort: 80
