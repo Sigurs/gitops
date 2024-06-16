@@ -20,7 +20,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: 5etools
-        image: containous/whoami:latest
+        image: traefik/whoami:latest
         ports:
           - containerPort: 80
             name: http
