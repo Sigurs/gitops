@@ -6,7 +6,7 @@ spec:
   selector:
     app.kubernetes.io/name: 5etools
   ports:
-  - name: 5etools
+  - name: http
     protocol: TCP
     port: 80
     targetPort: http
