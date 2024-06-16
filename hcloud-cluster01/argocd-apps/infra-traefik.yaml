@@ -10,6 +10,7 @@ spec:
     repoURL: https://traefik.github.io/charts
     targetRevision: 28.3.0
     helm:
+      releaseName: traefik
       valuesObject:
         securityContext:
           seccompProfile:
