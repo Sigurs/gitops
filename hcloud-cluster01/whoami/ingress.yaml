@@ -4,7 +4,8 @@ metadata:
   name: whoami
 spec:
   rules:
-  - http:
+  - host: whoami.sigurs.io
+    http:
       paths:
       - path: /
         pathType: Prefix
@@ -12,4 +13,4 @@ spec:
           service:
             name: whoami
             port:
-              number: 80
+              name: http
