@@ -4,7 +4,8 @@ metadata:
   name: 5etools
 spec:
   rules:
-  - http:
+  - host: 5etools.sigurs.io
+    http:
       paths:
       - path: /
         pathType: Prefix
@@ -12,4 +13,4 @@ spec:
           service:
             name: etools
             port:
-              number: 80
+              name: etools
