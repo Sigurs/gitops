@@ -14,4 +14,4 @@ spec:
           service:
             name: etools
             port:
-              name: etools
+              name: http
