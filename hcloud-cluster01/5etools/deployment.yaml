@@ -20,7 +20,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: 5etools
-        image: ghcr.io/5etools-mirror-2/5etools:latest
+        image: ghcr.io/5etools-mirror-3/5etools:1.210.4
         ports:
           - containerPort: 80
             name: http
