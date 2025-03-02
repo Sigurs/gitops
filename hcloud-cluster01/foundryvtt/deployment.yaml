@@ -27,6 +27,8 @@ spec:
       containers:
       - name: foundryvtt
         image: registry.sigurs.io/sigurs/foundryvtt:12.331
+	securityContext:
+          allowPrivilegeEscalation: false
         ports:
           - containerPort: 30000
             name: http
