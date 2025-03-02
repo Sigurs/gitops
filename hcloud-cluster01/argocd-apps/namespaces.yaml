@@ -11,7 +11,7 @@ spec:
     path: hcloud-cluster01/namespaces
   destination:
     server: https://kubernetes.default.svc
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
+#  syncPolicy:
+#    automated:
+#      selfHeal: true
+#      prune: true
