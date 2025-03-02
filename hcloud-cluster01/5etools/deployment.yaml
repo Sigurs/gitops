@@ -12,6 +12,7 @@ spec:
       labels:
         app.kubernetes.io/name: 5etools
     spec:
+      automountServiceAccountToken: false
       securityContext:
         runAsGroup: 65532
         runAsNonRoot: true
