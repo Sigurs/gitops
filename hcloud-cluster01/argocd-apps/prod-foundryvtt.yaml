@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prod-foundryvtt
+  namespace: infra-argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Sigurs/gitops.git
+    targetRevision: HEAD
+    path: hcloud-cluster01/foundryvtt
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod-foundryvtt
+#  syncPolicy:
+#    automated:
+#      selfHeal: true
+#      prune: true
