@@ -20,8 +20,7 @@ spec:
         runAsUser: 65532
         fsGroup: 65532
         fsGroupChangePolicy: Always
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: false
+        readOnlyRootFilesystem: true
         seccompProfile:
           type: RuntimeDefault
       containers:
