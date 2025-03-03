@@ -20,13 +20,13 @@ spec:
         runAsUser: 65532
         fsGroup: 65532
         fsGroupChangePolicy: Always
-        readOnlyRootFilesystem: true
         seccompProfile:
           type: RuntimeDefault
       containers:
       - name: foundryvtt
         image: registry.sigurs.io/sigurs/foundryvtt:12.331
         securityContext:
+          readOnlyRootFilesystem: true
           allowPrivilegeEscalation: false
           capabilities:
             drop:
