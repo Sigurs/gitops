@@ -12,6 +12,7 @@ spec:
       labels:
         app.kubernetes.io/name: foundryvtt
     spec:
+      hostname: foundryvtt
       automountServiceAccountToken: false
       securityContext:
         runAsGroup: 65532
