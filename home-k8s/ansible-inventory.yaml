@@ -1,0 +1,12 @@
+all:
+  vars:
+    all_k3s:
+      cluster_domain: home-k8s.sigurs.io
+
+
+k3s_servers:
+  hosts:
+    home-k8s01.sigurs.io:
+      k3s:
+        node_labels:
+          - "sigurs.io/node-type=rpi5"

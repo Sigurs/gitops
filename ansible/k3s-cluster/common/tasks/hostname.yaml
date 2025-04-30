@@ -1,0 +1,7 @@
+- name: set hostname
+  hostname:
+   name: '{{ inventory_hostname }}'
+  notify: reboot
+
+- name: flush handlers
+  ansible.builtin.meta: flush_handlers

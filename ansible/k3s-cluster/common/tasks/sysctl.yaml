@@ -1,0 +1,23 @@
+- name: sysctl / vm.panic_on_oom
+  ansible.posix.sysctl:
+    name: vm.panic_on_oom
+    value: '0'
+    sysctl_file: /etc/sysctl.d/90-kubelet.conf
+
+- name: sysctl / vm.overcommit_memory
+  ansible.posix.sysctl:
+    name: vm.overcommit_memory
+    value: '1'
+    sysctl_file: /etc/sysctl.d/90-kubelet.conf
+
+- name: sysctl / kernel.panic
+  ansible.posix.sysctl:
+    name: kernel.panic
+    value: '10'
+    sysctl_file: /etc/sysctl.d/90-kubelet.conf
+
+- name: sysctl / kernel.panic_on_oops
+  ansible.posix.sysctl:
+    name: kernel.panic_on_oops
+    value: '1'
+    sysctl_file: /etc/sysctl.d/90-kubelet.conf

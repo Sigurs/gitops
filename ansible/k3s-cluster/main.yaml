@@ -1,0 +1,13 @@
+- name: apply common
+  become: yes
+  hosts: 
+    - all
+  roles:
+    - common
+
+- name: apply k3s-bootstrap
+  become: yes
+  hosts:
+    - k3s_servers[0]
+  roles:
+    - k3s-bootstrap

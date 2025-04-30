@@ -1,0 +1,21 @@
+write-kubeconfig-mode: "0644"
+cluster-domain: {{all_k3s.cluster_domain}}
+
+{% if k3s.node_labels is defined -%}
+node-label:
+{% for label in k3s.node_labels %}
+  - {{label}}
+{% endfor %}
+{% endif %}
+
+# Harden the cluster
+protect-kernel-defaults: true
+secrets-encryption: true
+kube-apiserver-arg:
+  - "enable-admission-plugins=NodeRestriction"
+  - 'admission-control-config-file=/var/lib/rancher/k3s/server/psa.yaml'
+kube-controller-manager-arg:
+  - 'terminated-pod-gc-threshold=10'
+kubelet-arg:
+  - 'streaming-connection-idle-timeout=5m'
+  - "tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"

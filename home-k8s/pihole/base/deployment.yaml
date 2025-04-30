@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pihole
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: pihole
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: pihole
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsGroup: 65532
+        runAsNonRoot: true
+        runAsUser: 65532
+        fsGroup: 65532
+        fsGroupChangePolicy: Always
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: pihole
+        image: jacklul/pihole:latest
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+        ports:
+          - containerPort: 53
+            name: dns
+          - containerPort: 80
+            name: http
+        volumeMounts:
+          - name: pihole
+            mountPath: /etc/pihole
+            subPath: /etc/pihole
+          - name: pihole
+            mountPath: /etc/dnsmasq.d
+            subPath: /etc/dnsmasq.d
+          - name: pihole
+            mountPath: /etc/pihole-updatelists
+            subPath: /etc/pihole-updatelists
+      volumes:
+        - name: pihole
+          persistentVolumeClaim:
+            claimName: pihole

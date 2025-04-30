@@ -1,0 +1,48 @@
+- name: firewall / remove ufw
+  ansible.builtin.package:
+    name:
+      - ufw
+    state: absent
+
+- name: firewall / install firewalld
+  ansible.builtin.package:
+    name:
+      - firewalld
+    state: latest
+  notify: enable and restart firewalld
+
+- name: firewall / allow k8s/pods
+  ansible.posix.firewalld:
+    zone: trusted
+    source: 10.42.0.0/16 
+    state: enabled
+    permanent: true
+    immediate: true
+  notify: enable and restart firewalld
+
+- name: firewall / allow k8s/services
+  ansible.posix.firewalld:
+    zone: trusted
+    source: 10.43.0.0/16 
+    state: enabled
+    permanent: true
+    immediate: true
+  notify: enable and restart firewalld
+
+- name: firewall / allow public/http
+  ansible.posix.firewalld:
+    zone: public
+    service: http
+    state: enabled
+    permanent: true
+    immediate: true
+  notify: enable and restart firewalld
+
+- name: firewall / allow public/https
+  ansible.posix.firewalld:
+    zone: public
+    service: https
+    state: enabled
+    permanent: true
+    immediate: true
+  notify: enable and restart firewalld
