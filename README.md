@@ -27,5 +27,6 @@ python -m pip install ansible
 
 ```bash
 source .venv/bin/activate
+ansible-playbook ansible/k3s-cluster/main.yaml -i home-k8s/ansible-inventory.yaml
 
 ```
