@@ -13,23 +13,9 @@ spec:
         app.kubernetes.io/name: pihole
     spec:
       automountServiceAccountToken: false
-      securityContext:
-        runAsGroup: 65532
-        runAsNonRoot: true
-        runAsUser: 65532
-        fsGroup: 65532
-        fsGroupChangePolicy: Always
-        seccompProfile:
-          type: RuntimeDefault
       containers:
       - name: pihole
         image: jacklul/pihole:latest
-        securityContext:
-          readOnlyRootFilesystem: true
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-              - ALL
         ports:
           - containerPort: 53
             name: dns
