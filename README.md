@@ -13,7 +13,10 @@ Cluster located at home. No public access.
 Highlights:
 - [UserNamespacesSupport](https://kubernetes.io/docs/tasks/configure-pod-container/user-namespaces/) is used for security due to some containers requiring root.
 
-
+#### AdGuard
+Please not that AdGuard needs to be deployed with --server side flag.
+This is due to kubectl not being able to handle multiple protocols on the same port.
+Example: `kubectl apply --server-side --force-conflicts -n prod-adguard -k .`
 
 ## How to use
 ### Ansible

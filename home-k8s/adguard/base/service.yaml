@@ -18,15 +18,15 @@ metadata:
 spec:
   selector:
     app.kubernetes.io/name: adguard
-  type: NodePort
+  type: LoadBalancer
   ports:
   - name: dns-tcp
     protocol: TCP
-    port: 8053
+    port: 53
     nodePort: 30053
     targetPort: dns-tcp
   - name: dns-udp
     protocol: UDP
-    port: 8053
+    port: 53
     nodePort: 30053
     targetPort: dns-udp

@@ -4,7 +4,7 @@ metadata:
   name: adguard
 spec:
   rules:
-  - host: pihole.sigurs.io
+  - host: adguard.sigurs.io
     http:
       paths:
       - path: /

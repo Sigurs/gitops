@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: prod-pihole
-  labels:
-    # pihole requires more access
-    pod-security.kubernetes.io/enforce: baseline
