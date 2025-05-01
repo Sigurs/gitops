@@ -1,3 +1,10 @@
+- name: apt install uidmap
+  ansible.builtin.package:
+    name:
+      - uidmap
+    state: latest
+  notify: enable and restart firewalld
+
 - name: check for installation
   stat:
     path: /usr/local/bin/k3s

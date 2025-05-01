@@ -12,10 +12,17 @@ node-label:
 protect-kernel-defaults: true
 secrets-encryption: true
 kube-apiserver-arg:
+  - "feature-gates=UserNamespacesSupport=true,UserNamespacesPodSecurityStandards=true"
   - "enable-admission-plugins=NodeRestriction"
   - 'admission-control-config-file=/var/lib/rancher/k3s/server/psa.yaml'
+kube-scheduler-arg:
+  - "feature-gates=UserNamespacesSupport=true,UserNamespacesPodSecurityStandards=true"
 kube-controller-manager-arg:
+  - "feature-gates=UserNamespacesSupport=true,UserNamespacesPodSecurityStandards=true"
   - 'terminated-pod-gc-threshold=10'
 kubelet-arg:
+  - "feature-gates=UserNamespacesSupport=true,UserNamespacesPodSecurityStandards=true"
   - 'streaming-connection-idle-timeout=5m'
   - "tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"
+kube-proxy-arg:
+  - "feature-gates=UserNamespacesSupport=true,UserNamespacesPodSecurityStandards=true"

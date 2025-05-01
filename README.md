@@ -10,6 +10,10 @@ Cluster in Hetzner cloud. Publically accessible.
 ### home-k8s
 Cluster located at home. No public access.
 
+Highlights:
+- [UserNamespacesSupport](https://kubernetes.io/docs/tasks/configure-pod-container/user-namespaces/) is used for security due to some containers requiring root.
+
+
 
 ## How to use
 ### Ansible

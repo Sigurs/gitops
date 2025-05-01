@@ -1,0 +1,18 @@
+- name: add kubelet user
+  ansible.builtin.user:
+    name: kubelet
+
+# For isolation, we need kubelet to have subuid and subgid entries.
+# Would be nice if ansible supported this, but they have intentionally not to support this according to PRs and issues.
+# This logic makes assumptions regarding ranges, which are not nessecarily correct in all environments.
+- name: /etc/subuid
+  ansible.builtin.lineinfile:
+    path: /etc/subuid
+    regexp: '^kubelet:'
+    line: kubelet:655360:72089600
+
+- name: /etc/subgid
+  ansible.builtin.lineinfile:
+    path: /etc/subgid
+    regexp: '^kubelet:'
+    line: kubelet:655360:72089600

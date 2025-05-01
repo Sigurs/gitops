@@ -1,3 +1,4 @@
 - include_tasks: sysctl.yaml
 - include_tasks: hostname.yaml
 - include_tasks: firewall.yaml
+- include_tasks: user.yaml
