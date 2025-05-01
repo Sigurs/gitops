@@ -46,3 +46,12 @@
     permanent: true
     immediate: true
   notify: enable and restart firewalld
+
+- name: firewall / allow public/dns
+  ansible.posix.firewalld:
+    zone: public
+    service: dns
+    state: enabled
+    permanent: true
+    immediate: true
+  notify: enable and restart firewalld
