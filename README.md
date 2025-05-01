@@ -5,17 +5,26 @@ Combined for ease of use.
 The long-term goal is to combine numerous independent docker-compose and kubernetes setups into 2-3 clusters for ease of management.
 
 
-## Clusters
+# Clusters
 
-### hcloud-cluster01
+## Cluster: hcloud-cluster01
 Cluster in Hetzner cloud. Publically accessible.
 
-### home-k8s
+## Cluster: home-k8s
 Cluster located at home. No public access.
 
 Highlights:
 - [UserNamespacesSupport](https://kubernetes.io/docs/tasks/configure-pod-container/user-namespaces/) is used for security due to some containers requiring root.
 
+### Nodes
+- home-k8s01
+    - RaspberryPi 5 8GB
+- home-k8s02 (upcoming)
+    - VM running inside Proxmox
+- xxx (upcoming)
+    - Desktop with GPU resources.
+
+### Services
 #### Service:  AdGuard Home
 Please not that AdGuard needs to be deployed with --server side flag.<br>
 This is due to kubectl not being able to handle multiple protocols on the same port.<br>
@@ -29,10 +38,11 @@ Configuration Migrated from a previous setup.<br>
 Utilizes UserNamespaces to mitigate security concerns related to needing to be started as root.<br>
 TODO: Bluetooth & other devices
 
-## How to use
-### Ansible
 
-#### Setup ansible
+# Usage
+## Ansible
+
+### Setup ansible
 ```bash
 # Create virtual environment
 python3 -m venv .venv
@@ -42,7 +52,7 @@ source .venv/bin/activate
 python -m pip install ansible
 ```
 
-#### Use
+### Run
 
 ```bash
 # Activate virtual environment
