@@ -15,4 +15,4 @@ plugins:
     exemptions:
       usernames: []
       runtimeClasses: []
-      namespaces: [kube-system, cis-operator-system, prod-pihole]
+      namespaces: [kube-system, cis-operator-system]
