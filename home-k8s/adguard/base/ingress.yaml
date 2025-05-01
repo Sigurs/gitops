@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: pihole
+  name: adguard
 spec:
   rules:
   - host: pihole.sigurs.io
@@ -11,6 +11,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: pihole-http
+            name: adguard-webui
             port:
-              name: http
+              name: http-webui
