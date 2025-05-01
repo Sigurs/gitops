@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
   - netpol.yaml
   - pvc.yaml
-#  - deployment.yaml
+  - deployment.yaml
 #  - service.yaml
 #  - ingress.yaml
