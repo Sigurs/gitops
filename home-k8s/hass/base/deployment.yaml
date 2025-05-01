@@ -18,6 +18,8 @@ spec:
       - name: hass
         image: ghcr.io/home-assistant/home-assistant:stable
         securityContext:
+          # Requires root inside the container to run.
+          # We are using UserNamespaces to mitigate security issues. 
           allowPrivilegeEscalation: false
           seccompProfile:
             type: RuntimeDefault
@@ -40,15 +42,3 @@ spec:
         - name: hass
           persistentVolumeClaim:
             claimName: hass
-
-
-#caroot@home-k8s01:/home/sigurs# kubectl logs -n prod-hass hass-7bb6d6df4-46v2n 
-#s6-rc: info: service s6rc-oneshot-runner: starting
-#s6-rc: info: service s6rc-oneshot-runner successfully started
-#s6-rc: info: service fix-attrs: starting
-#s6-rc: info: service fix-attrs successfully started
-#s6-rc: info: service legacy-cont-init: starting
-#s6-rc: info: service legacy-cont-init successfully started
-#s6-rc: info: service legacy-services: starting
-#services-up: info: copying legacy longrun home-assistant (no readiness notification)
-#s6-rc: info: service legacy-services successfully started
