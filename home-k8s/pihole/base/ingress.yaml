@@ -11,6 +11,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: pihole
+            name: pihole-http
             port:
               name: http
