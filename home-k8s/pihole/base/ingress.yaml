@@ -1,17 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: 5etools
+  name: pihole
 spec:
-  ingressClassName: traefik
   rules:
-  - host: 5etools.sigurs.io
+  - host: pihole.sigurs.io
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: etools
+            name: pihole
             port:
               name: http

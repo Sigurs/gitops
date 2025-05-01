@@ -13,9 +13,17 @@ spec:
         app.kubernetes.io/name: pihole
     spec:
       automountServiceAccountToken: false
+      hostUsers: false
       containers:
       - name: pihole
         image: jacklul/pihole:latest
+        securityContext:
+          allowPrivilegeEscalation: false
+          seccompProfile:
+            type: RuntimeDefault
+          capabilities:
+            drop:
+              - ALL
         ports:
           - containerPort: 53
             name: dns
@@ -24,13 +32,13 @@ spec:
         volumeMounts:
           - name: pihole
             mountPath: /etc/pihole
-            subPath: /etc/pihole
+            subPath: etc/pihole
           - name: pihole
             mountPath: /etc/dnsmasq.d
-            subPath: /etc/dnsmasq.d
+            subPath: etc/dnsmasq.d
           - name: pihole
             mountPath: /etc/pihole-updatelists
-            subPath: /etc/pihole-updatelists
+            subPath: etc/pihole-updatelists
       volumes:
         - name: pihole
           persistentVolumeClaim:

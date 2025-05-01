@@ -5,5 +5,5 @@ resources:
   - netpol.yaml
   - pvc.yaml
   - deployment.yaml
-#  - service.yaml
-#  - ingress.yaml
+  - service.yaml
+  - ingress.yaml
