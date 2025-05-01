@@ -50,7 +50,16 @@
 - name: firewall / allow public/dns
   ansible.posix.firewalld:
     zone: public
-    service: dns
+    port: 53/tcp
+    state: enabled
+    permanent: true
+    immediate: true
+  notify: enable and restart firewalld
+
+- name: firewall / allow public/dns
+  ansible.posix.firewalld:
+    zone: public
+    port: 53/udp
     state: enabled
     permanent: true
     immediate: true
