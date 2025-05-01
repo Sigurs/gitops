@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 5etools
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: 5etools.sigurs.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: etools
+            port:
+              name: http
