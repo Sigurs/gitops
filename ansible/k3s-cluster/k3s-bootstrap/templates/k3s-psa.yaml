@@ -7,11 +7,14 @@ plugins:
     kind: PodSecurityConfiguration
     defaults:
       enforce: "restricted"
-      enforce-version: "latest"
+      # Latest points to v1.26, which does not work with UserNamespaces.
+      enforce-version: "v1.32"
       audit: "restricted"
-      audit-version: "latest"
+      # Latest points to v1.26, which does not work with UserNamespaces.
+      audit-version: "v1.32"
       warn: "restricted"
-      warn-version: "latest"
+      # Latest points to v1.26, which does not work with UserNamespaces.
+      warn-version: "v1.32"
     exemptions:
       usernames: []
       runtimeClasses: []
