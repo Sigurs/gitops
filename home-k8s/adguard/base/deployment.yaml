@@ -14,30 +14,29 @@ spec:
     spec:
       automountServiceAccountToken: false
       hostUsers: false
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: Always
+        runAsNonRoot: true
       containers:
       - name: adguard
         image: adguard/adguardhome:latest
         securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
           allowPrivilegeEscalation: false
           seccompProfile:
             type: RuntimeDefault
           capabilities:
             drop:
               - ALL
+            add:
+              - NET_BIND_SERVICE
         ports:
-          - containerPort: 53
+          - containerPort: 8053
             name: dns
-          - containerPort: 80
-            name: http
-          - containerPort: 443
-            name: dns-over-https
           - containerPort: 3000
             name: http-webui
-          - containerPort: 853
-            name: dns-over-tls
-          - containerPort: 5443
-            name: dnscrypt
-
         volumeMounts:
           - name: adguard
             mountPath: /opt/adguardhome/work

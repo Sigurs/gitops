@@ -33,7 +33,7 @@ spec:
           matchLabels:
             app.kubernetes.io/name: traefik
       ports:
-        - port: 80
+        - port: 3000
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -48,7 +48,10 @@ spec:
         - ipBlock:
             cidr: 0.0.0.0/0
       ports:
-        - port: 53
+        - port: 8053
+          protocol: TCP
+        - port: 8053
+          protocol: UDP
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy

@@ -6,10 +6,10 @@ spec:
   selector:
     app.kubernetes.io/name: adguard
   ports:
-  - name: http
+  - name: http-webui
     protocol: TCP
     port: 3000
-    targetPort: http
+    targetPort: http-webui
 ---
 apiVersion: v1
 kind: Service
