@@ -19,6 +19,8 @@ spec:
   selector:
     app.kubernetes.io/name: adguard
   type: LoadBalancer
+  # Keep originating IP
+  externalTrafficPolicy: Local
   ports:
   - name: dns-tcp
     protocol: TCP
