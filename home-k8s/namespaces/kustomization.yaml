@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
   - argocd.yaml
-  - borgmatic.yaml
   - cert-manager.yaml
   - prod-adguard.yaml
   - prod-hass.yaml
