@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: hass
 spec:
-  tls:
-    - hosts:
-        - KUSTOMIZE_PATCH
-      secretName: hass-tls
+  tls: []
+  rules: []
+

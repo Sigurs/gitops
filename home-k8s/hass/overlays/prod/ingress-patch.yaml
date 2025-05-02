@@ -6,6 +6,7 @@ spec:
   tls:
     - hosts:
         - hass.sigurs.io
+      secretName: hass-tls
   rules:
     - host: hass.sigurs.io
       http:
