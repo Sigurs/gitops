@@ -28,3 +28,24 @@ spec:
             apiTokenSecretRef:
               name: cloudflare-api-token-secret
               key: api-token
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+  namespace: cert-manager
+spec:
+  acme:
+    email: <LE EMAIL>
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      # If this does not exist, cert-manager will automatically create it.
+      # No need to manually create it.
+      name: letsencrypt-issuer-account-key
+    solvers:
+      - dns01:
+          cloudflare:
+            email: <CF ACCOUNT EMAIL>
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: api-token

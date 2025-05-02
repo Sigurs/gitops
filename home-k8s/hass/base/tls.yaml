@@ -9,4 +9,3 @@ spec:
     - KUSTOMIZE_PATCH
   issuerRef:
     kind: ClusterIssuer
-    name: letsencrypt-staging
