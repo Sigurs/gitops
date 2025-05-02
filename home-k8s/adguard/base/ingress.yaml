@@ -3,8 +3,12 @@ kind: Ingress
 metadata:
   name: adguard
 spec:
+  tls:
+  - hosts:
+      - KUSTOMIZE_PATCH
+    secretName: adguard-tls
   rules:
-  - host: adguard.sigurs.io
+  - host: KUSTOMIZE_PATCH
     http:
       paths:
       - path: /
