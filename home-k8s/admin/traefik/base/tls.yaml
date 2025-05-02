@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: traefik-tls
+spec:
+  commonName: KUSTOMIZE_PATCH
+  secretName: adguard-tls
+  dnsNames: 
+    - KUSTOMIZE_PATCH
+  issuerRef:
+    kind: ClusterIssuer
+    name: KUSTOMIZE_PATCH

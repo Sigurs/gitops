@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: traefik-tls
+spec:
+  commonName: home-k8s.sigurs.io
+  dnsNames:
+    - home-k8s.sigurs.io
+    - '*.home-k8s.sigurs.io'
+  issuerRef:
+    name: letsencrypt
