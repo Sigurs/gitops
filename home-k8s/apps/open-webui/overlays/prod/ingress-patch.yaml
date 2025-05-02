@@ -3,6 +3,9 @@ kind: Ingress
 metadata:
   name: open-webui
 spec:
+  tls:
+    - hosts:
+        - hass.sigurs.io
   rules:
     - host: chat.home-k8s01.sigurs.io
       http:
