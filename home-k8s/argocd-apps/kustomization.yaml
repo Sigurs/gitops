@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - namespaces.yaml
   - prod-adguard.yaml
+  - prod-hass.yaml
