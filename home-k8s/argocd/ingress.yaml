@@ -6,7 +6,7 @@ spec:
   tls:
   - hosts:
       - argocd.home-k8s.sigurs.io
-    secretName: adguard-tls
+    secretName: argocd-tls
   rules:
   - host: argocd.home-k8s.sigurs.io
     http: 
