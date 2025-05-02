@@ -5,4 +5,4 @@ resources:
   - ../../base
 
 patches:
-  - path: tls-patch.yaml
+  - path: wildcard-tls-patch.yaml
