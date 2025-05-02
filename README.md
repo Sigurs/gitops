@@ -45,6 +45,9 @@ TODO: Bluetooth & other devices
 Used as a Certificate Authority for applications and for requesting Let's Encrypt certificates. <br>
 Let's Encrypt ClusterIssuer yamls need to be manually filed and ran.
 
+#### Service: system-upgrade
+Utilize k3s' system-upgrade-controller to keep nodes up to date.
+
 #### Service: Borgmatic
 Used for backups.<br>
 Normally I would consider using tools such as Velero to push backups to a s3 bucket, but this is more economical for me. <br>
