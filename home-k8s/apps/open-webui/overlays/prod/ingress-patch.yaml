@@ -4,7 +4,7 @@ metadata:
   name: open-webui
 spec:
   rules:
-    - host: chat.home-k8s01.sigurs.io
+    - host: chat.home-k8s.sigurs.io
       http:
         paths:
         - path: /
