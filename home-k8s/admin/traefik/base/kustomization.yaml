@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - wildcard-tls.yaml
+  - default-tls.yaml
