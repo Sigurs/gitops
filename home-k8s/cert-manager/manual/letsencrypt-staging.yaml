@@ -11,7 +11,7 @@ stringData:
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt
+  name: letsencrypt-staging
   namespace: cert-manager
 spec:
   acme:
@@ -25,6 +25,6 @@ spec:
       - dns01:
           cloudflare:
             email: <CF ACCOUNT EMAIL>
-            apiKeySecretRef:
-              name: cloudflare-api-key-secret
-              key: api-key
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: api-token

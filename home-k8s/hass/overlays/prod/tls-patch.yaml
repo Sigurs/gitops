@@ -1,0 +1,8 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: hass-tls
+spec:
+  commonName: hass.sigurs.io
+  dnsNames:
+    - hass.sigurs.io

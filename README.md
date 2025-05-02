@@ -40,7 +40,8 @@ Utilizes UserNamespaces to mitigate security concerns related to needing to be s
 TODO: Bluetooth & other devices
 
 #### Service: cert-manager
-Used as a Certificate Authority for applications and for requesting Let's Encrypt certificates.
+Used as a Certificate Authority for applications and for requesting Let's Encrypt certificates. <br>
+Let's Encrypt ClusterIssuer yamls need to be manually filed and ran.
 
 #### Service: Borgmatic
 Used for backups.<br>
