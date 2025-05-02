@@ -1,0 +1,11 @@
+- name: add argo repository
+  kubernetes.core.helm_repository:
+    name: argo
+    repo_url: https://argoproj.github.io/argo-helm
+    binary_path: /snap/bin/helm
+
+- name: add vmware-tanzu repository
+  kubernetes.core.helm_repository:
+    name: vmware-tanzu
+    repo_url: https://vmware-tanzu.github.io/helm-charts
+    binary_path: /snap/bin/helm

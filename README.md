@@ -39,6 +39,13 @@ Configuration Migrated from a previous setup.<br>
 Utilizes UserNamespaces to mitigate security concerns related to needing to be started as root.<br>
 TODO: Bluetooth & other devices
 
+#### Service: Borgmatic
+Used for backups.<br>
+Normally I would consider using tools such as Velero to push backups to a s3 bucket, but this is more economical for me. <br>
+Works great with k3s local-path provisioner.
+
+
+
 
 # Usage
 ## Ansible

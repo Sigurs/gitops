@@ -1,2 +1,2 @@
 - include_tasks: k3s.yaml
-- include_tasks: argocd.yaml
+- include_tasks: helm.yaml
