@@ -58,7 +58,7 @@
   get_url:
     url: https://get.k3s.io
     dest: '/tmp/k3s-installer.sh'
-    mode: 0770
+    mode: '0770'
 
 - name: install k3s
   when: not k3s_installed.stat.exists
