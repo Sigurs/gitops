@@ -20,7 +20,7 @@ spec:
     privateKeySecretRef:
       # If this does not exist, cert-manager will automatically create it.
       # No need to manually create it.
-      name: letsencrypt-issuer-account-key
+      name: letsencrypt-staging-issuer-account-key
     solvers:
       - dns01:
           cloudflare:
