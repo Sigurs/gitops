@@ -11,8 +11,6 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: hass
-    securityContext:
-      usePodUserNamespace: true
     spec:
       automountServiceAccountToken: false
       hostUsers: false
