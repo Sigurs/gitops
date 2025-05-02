@@ -5,11 +5,9 @@ metadata:
 spec:
   project: home-k8s
   source:
-    chart: traefik
+    chart: cert-manager
     repoURL: https://charts.jetstack.io
     targetRevision: 1.17.2
-    helm:
-      releaseName: cert-manager
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager
