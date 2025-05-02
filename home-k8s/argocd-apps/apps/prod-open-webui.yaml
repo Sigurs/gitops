@@ -10,7 +10,7 @@ spec:
     path: home-k8s/apps/open-webui/overlays/prod
   destination:
     server: https://kubernetes.default.svc
-    namespace: open-webui
+    namespace: prod-open-webui
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
