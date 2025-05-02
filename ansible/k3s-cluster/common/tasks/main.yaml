@@ -1,4 +1,6 @@
+- include_tasks: ansible.yaml
 - include_tasks: sysctl.yaml
 - include_tasks: hostname.yaml
 - include_tasks: firewall.yaml
 - include_tasks: user.yaml
+- include_tasks: helm.yaml

@@ -5,5 +5,12 @@
     enabled: yes
     daemon_reload: yes
 
+- name: enable and restart snapd
+  ansible.builtin.systemd:
+    name: snapd
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+
 - name: reboot
   ansible.builtin.reboot:

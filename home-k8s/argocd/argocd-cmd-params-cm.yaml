@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+data:
+  # ArgoCD wants to handle TLS itself, but we want traefik to do that.
+  # See: https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#disable-internal-tls
+  server.insecure: "true"

@@ -8,10 +8,11 @@ The long-term goal is to combine numerous independent docker-compose and kuberne
 # Clusters
 
 ## Cluster: hcloud-cluster01
-Cluster in Hetzner cloud. Publically accessible.
+Cluster in Hetzner cloud. Publically accessible.<br>
 
 ## Cluster: home-k8s
-Cluster located at home. No public access.
+Cluster located at home. No public access.<br>
+HA is not the goal here due to different hardware.
 
 Highlights:
 - [UserNamespacesSupport](https://kubernetes.io/docs/tasks/configure-pod-container/user-namespaces/) is used for security due to some containers requiring root.
@@ -50,6 +51,7 @@ source .venv/bin/activate
 
 # Install ansible
 python -m pip install ansible
+ansible-galaxy collection install community.general kubernetes.core
 ```
 
 ### Run
