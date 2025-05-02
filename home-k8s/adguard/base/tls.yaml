@@ -9,4 +9,4 @@ spec:
     - KUSTOMIZE_PATCH
   issuerRef:
     kind: ClusterIssuer
-    name: letsencrypt
+    name: KUSTOMIZE_PATCH

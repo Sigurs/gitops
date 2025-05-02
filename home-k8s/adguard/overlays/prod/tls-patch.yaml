@@ -6,3 +6,5 @@ spec:
   commonName: adguard.sigurs.io
   dnsNames:
     - adguard.sigurs.io
+  issuerRef:
+    name: letsencrypt

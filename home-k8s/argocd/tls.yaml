@@ -9,4 +9,4 @@ spec:
     - argocd.home-k8s.sigurs.io
   issuerRef:
     kind: ClusterIssuer
-    name: letsencrypt-staging
+    name: letsencrypt

@@ -9,3 +9,4 @@ spec:
     - KUSTOMIZE_PATCH
   issuerRef:
     kind: ClusterIssuer
+    name: KUSTOMIZE_PATCH
