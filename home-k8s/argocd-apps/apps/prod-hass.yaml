@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: https://github.com/Sigurs/gitops.git
     targetRevision: HEAD
-    path: home-k8s/hass/overlays/prod
+    path: home-k8s/apps/hass/overlays/prod
   destination:
     server: https://kubernetes.default.svc
     namespace: prod-hass
