@@ -26,7 +26,6 @@ spec:
           capabilities:
             drop:
               - ALL
-          runAsNonRoot: true
         env:
           - name: TZ
             value: Europe/Helsinki
