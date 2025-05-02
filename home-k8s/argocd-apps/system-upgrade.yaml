@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: system-upgrade-controller
+  name: system-upgrade
 spec:
   project: home-k8s.admin
   source:
     repoURL: https://github.com/Sigurs/gitops.git
     targetRevision: HEAD
-    path: home-k8s/system-upgrade-controller/overlays/prod
+    path: home-k8s/system-upgrade/overlays/prod
   destination:
     server: https://kubernetes.default.svc
-    namespace: system-upgrade-controller
+    namespace: system-upgrade
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
