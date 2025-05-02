@@ -8,6 +8,9 @@ node-label:
 {% endfor %}
 {% endif %}
 
+disable:
+  - traefik
+  
 # Harden the cluster
 protect-kernel-defaults: true
 secrets-encryption: true

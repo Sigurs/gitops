@@ -5,5 +5,7 @@ resources:
   - admin/argocd.yaml
   - admin/cert-manager.yaml
   - admin/system-upgrade-controller.yaml
+  - admin/traefik.yaml
+  
   - apps/prod-adguard.yaml
   - apps/prod-hass.yaml

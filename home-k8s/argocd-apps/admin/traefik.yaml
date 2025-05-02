@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+spec:
+  project: home-k8s.admin
+  source:
+    chart: treafik
+    repoURL: https://traefik.github.io/charts
+    helm:
+      valuesObject:
+        securityContext:
+          seccompProfile:
+            type: RuntimeDefault
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: traefik
