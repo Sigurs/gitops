@@ -7,6 +7,6 @@ spec:
   source:
     repoURL: https://github.com/Sigurs/gitops.git
     targetRevision: HEAD
-    path: home-k8s/admin/namespaces
+    path: home-k8s/namespaces
   destination:
     server: https://kubernetes.default.svc
