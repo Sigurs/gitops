@@ -3,10 +3,10 @@ kind: Ingress
 metadata:
   name: argocd
 spec:
-  tls:
-  - hosts:
-      - argocd.home-k8s.sigurs.io
-    secretName: argocd-tls
+#  tls:
+#  - hosts:
+#      - argocd.home-k8s.sigurs.io
+#    secretName: argocd-tls
   rules:
     - host: argocd.home-k8s.sigurs.io
       http: 
