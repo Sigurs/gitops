@@ -33,4 +33,4 @@ spec:
           matchLabels:
             app.kubernetes.io/name: traefik
       ports:
-        - port: 8123
+        - port: 8080
