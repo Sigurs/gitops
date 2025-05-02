@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguard
+spec:
+  template:
+    spec:
+      # We want this deployment on a specific node
+      nodeSelector:
+        kubernetes.io/hostname: home-k8s01.sigurs.io
