@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: cert-manager
 spec:
-  project: home-k8s
+  project: home-k8s.admin
   source:
     chart: cert-manager
     repoURL: https://charts.jetstack.io
