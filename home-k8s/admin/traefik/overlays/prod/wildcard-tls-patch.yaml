@@ -5,7 +5,6 @@ metadata:
 spec:
   commonName: '*.home-k8s.sigurs.io'
   dnsNames:
-    - home-k8s.sigurs.io
     - '*.home-k8s.sigurs.io'
   issuerRef:
     name: letsencrypt
