@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - netpol.yaml
 
 patches:
   - path: tls-patch.yaml
