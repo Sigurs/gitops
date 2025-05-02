@@ -1,0 +1,30 @@
+# These need to be ran manually.
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudflare-api-token-secret
+  namespace: cert-manager
+type: Opaque
+stringData:
+  api-token: <CF API Token>
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+  namespace: cert-manager
+spec:
+  acme:
+    email: <LE EMAIL>
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      # If this does not exist, cert-manager will automatically create it.
+      # No need to manually create it.
+      name: letsencrypt-issuer-account-key
+    solvers:
+      - dns01:
+          cloudflare:
+            email: <CF ACCOUNT EMAIL>
+            apiKeySecretRef:
+              name: cloudflare-api-key-secret
+              key: api-key
