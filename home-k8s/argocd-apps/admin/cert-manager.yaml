@@ -12,6 +12,11 @@ spec:
       valuesObject:
         crds:
           enabled: true
+        extraArgs:
+          # Needed for bug: https://github.com/cert-manager/cert-manager/issues/5515#issuecomment-1479054700
+          - --enable-certificate-owner-ref=true
+          - --dns01-recursive-nameservers-only
+          - --dns01-recursive-nameservers=8.8.8.8:53,1.1.1.1:53
   destination:
     server: https://kubernetes.default.svc
     namespace: cert-manager
