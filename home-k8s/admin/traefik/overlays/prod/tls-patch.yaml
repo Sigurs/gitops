@@ -3,7 +3,7 @@ kind: Certificate
 metadata:
   name: traefik-tls
 spec:
-  commonName: home-k8s.sigurs.io
+  commonName: '*.home-k8s.sigurs.io'
   dnsNames:
     - home-k8s.sigurs.io
     - '*.home-k8s.sigurs.io'
