@@ -4,7 +4,6 @@ metadata:
   name: adguard
 spec:
   tls:
-    - hosts:
-        - KUSTOMIZE_PATCH
-      secretName: adguard-tls
+    - KUSTOMIZE_PATCH
   rules:
+    - KUSTOMIZE_PATCH

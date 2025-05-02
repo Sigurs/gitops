@@ -6,6 +6,7 @@ spec:
   tls:
     - hosts:
         - adguard.sigurs.io
+      secretName: adguard-tls
   rules:
     - host: adguard.sigurs.io
       http:
