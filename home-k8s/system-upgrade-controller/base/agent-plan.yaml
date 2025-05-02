@@ -1,0 +1,25 @@
+apiVersion: upgrade.cattle.io/v1
+kind: Plan
+metadata:
+  name: agent-plan
+  annotations:
+    # Make sure controller is deployed before plans
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  concurrency: 1
+  cordon: true
+  nodeSelector:
+    matchExpressions:
+    - key: node-role.kubernetes.io/control-plane
+      operator: DoesNotExist
+  prepare:
+    args:
+    - prepare
+    - server-plan
+    image: rancher/k3s-upgrade
+  serviceAccountName: system-upgrade
+  upgrade:
+    image: rancher/k3s-upgrade
+#  version: v1.24.6+k3s1
+  # Enable automatic upgrades
+  channel: https://update.k3s.io/v1-release/channels/stable

@@ -7,3 +7,4 @@ resources:
   - namespaces.yaml
   - prod-adguard.yaml
   - prod-hass.yaml
+  - system-upgrade-controller.yaml
