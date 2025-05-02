@@ -9,10 +9,12 @@ The long-term goal is to combine numerous independent docker-compose and kuberne
 
 ## Cluster: hcloud-cluster01
 Cluster in Hetzner cloud. Publically accessible.<br>
+Bit of a fast setup and not idea.
 
 ## Cluster: home-k8s
 Cluster located at home. No public access.<br>
-HA is not the goal here due to different hardware.
+HA is not the goal here due to different hardware.<br>
+Utilizes Ansible.
 
 Highlights:
 - [UserNamespacesSupport](https://kubernetes.io/docs/tasks/configure-pod-container/user-namespaces/) is used for security due to some containers requiring root.
