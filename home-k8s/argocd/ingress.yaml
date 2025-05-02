@@ -8,13 +8,13 @@ spec:
       - argocd.home-k8s.sigurs.io
     secretName: argocd-tls
   rules:
-  - host: argocd.home-k8s.sigurs.io
-    http: 
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: argocd-server
-            port:
-              name: http
+    - host: argocd.home-k8s.sigurs.io
+      http: 
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: argocd-server
+              port:
+                name: http

@@ -4,17 +4,6 @@ metadata:
   name: hass
 spec:
   tls:
-  - hosts:
-      - KUSTOMIZE_PATCH
-    secretName: hass-tls
-  rules:
-  - host: KUSTOMIZE_PATCH
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: hass
-            port:
-              name: http
+    - hosts:
+        - KUSTOMIZE_PATCH
+      secretName: hass-tls

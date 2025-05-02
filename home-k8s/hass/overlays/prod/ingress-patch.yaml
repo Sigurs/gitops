@@ -4,7 +4,16 @@ metadata:
   name: hass
 spec:
   tls:
-  - hosts:
-      - hass.sigurs.io
+    - hosts:
+        - hass.sigurs.io
   rules:
-  - host: hass.sigurs.io
+    - host: hass.sigurs.io
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: hass
+              port:
+                name: http

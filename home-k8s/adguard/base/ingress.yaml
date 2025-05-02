@@ -4,17 +4,7 @@ metadata:
   name: adguard
 spec:
   tls:
-  - hosts:
-      - KUSTOMIZE_PATCH
-    secretName: adguard-tls
+    - hosts:
+        - KUSTOMIZE_PATCH
+      secretName: adguard-tls
   rules:
-  - host: KUSTOMIZE_PATCH
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: adguard-http
-            port:
-              name: http-webui

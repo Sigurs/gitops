@@ -4,7 +4,16 @@ metadata:
   name: adguard
 spec:
   tls:
-  - hosts:
-      - adguard.sigurs.io
+    - hosts:
+        - adguard.sigurs.io
   rules:
-  - host: adguard.sigurs.io
+    - host: adguard.sigurs.io
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: adguard-http
+              port:
+                name: http-webui
