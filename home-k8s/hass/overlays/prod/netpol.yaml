@@ -8,18 +8,18 @@ spec:
     - Egress
   egress:
     - to:
+        # network: home-iot
+        - ipBlock:
+            cidr: 172.20.3.0/24
+        # host: router
+        - ipBlock:
+            cidr: 172.20.4.1/32
         # host: zibgee gateway
         - ipBlock:
             cidr: 172.20.4.19/32
         # host: home-k8s01
         - ipBlock:
-            cidr: 172.20.3.20/32
+            cidr: 172.20.4.20/32
         # host: home-srv02
         - ipBlock:
             cidr: 172.20.4.116/32
-        # host: router
-        - ipBlock:
-            cidr: 172.20.4.1/32
-        # network: home-iot
-        - ipBlock:
-            cidr: 172.20.3.0/24
