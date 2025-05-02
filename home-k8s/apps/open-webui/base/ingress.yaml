@@ -3,6 +3,5 @@ kind: Ingress
 metadata:
   name: open-webui
 spec:
-  tls: []
   rules: []
 
