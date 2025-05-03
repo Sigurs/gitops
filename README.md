@@ -4,6 +4,8 @@ Combined for ease of use.
 
 The long-term goal is to combine numerous independent docker-compose and kubernetes setups into 2-3 clusters for ease of management.
 
+# Drawing (work in progress)
+![](drawing.png)
 
 # Clusters
 
