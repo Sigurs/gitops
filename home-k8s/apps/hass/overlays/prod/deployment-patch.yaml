@@ -8,15 +8,3 @@ spec:
       # We want this deployment on a specific node
       nodeSelector:
         kubernetes.io/hostname: home-k8s01.sigurs.io
-      containers:
-      - name: hass
-        volumeMounts:
-          - name: hass
-            mountPath: /config
-            subPath: config
-          - name: nfs-models
-            mountPath: /nfs
-      volumes:
-        - name: nfs-models
-          persistentVolumeClaim:
-            claimName: hass-unraid-models
