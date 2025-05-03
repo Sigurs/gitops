@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../../base
   - netpol.yaml
+  - nfs-test.yaml
 
 patches:
   - path: deployment-patch.yaml
