@@ -18,4 +18,4 @@ plugins:
     exemptions:
       usernames: []
       runtimeClasses: []
-      namespaces: [kube-system, cis-operator-system, system-upgrade-controller]
+      namespaces: [kube-system, cis-operator-system, system-upgrade-controller, csi-driver-nfs]
