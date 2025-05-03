@@ -29,7 +29,7 @@ spec:
     - nfsvers=4.1
   csi:
     driver: nfs.csi.k8s.io
-    volumeHandle: unraid.sigurs.io/share##
+    volumeHandle: hass-models
     volumeAttributes:
-      server: unraid.sigurs.io/
-      share: mnt/user/models
+      server: 172.20.4.10
+      share: /mnt/user/models
