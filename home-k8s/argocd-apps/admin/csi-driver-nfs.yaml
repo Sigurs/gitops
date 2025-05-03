@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: csi-driver-nfs
+spec:
+  project: home-k8s.admin
+  source:
+    chart: csi-driver-nfs
+    repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+    targetRevision: 4.11.0
+    helm:
+      valuesObject:
+        controller:
+          defaultOnDeletePolicy: retain
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: csi-driver-nfs
