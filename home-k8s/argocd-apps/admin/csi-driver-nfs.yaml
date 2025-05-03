@@ -4,14 +4,17 @@ metadata:
   name: csi-driver-nfs
 spec:
   project: home-k8s.admin
-  source:
-    chart: csi-driver-nfs
-    repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
-    targetRevision: 4.11.0
-    helm:
-      valuesObject:
-        controller:
-          defaultOnDeletePolicy: retain
+  sources:
+    - chart: csi-driver-nfs
+      repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+      targetRevision: 4.11.0
+      helm:
+        valuesObject:
+          controller:
+            defaultOnDeletePolicy: retain
+    - repoURL: https://github.com/Sigurs/gitops.git
+      targetRevision: HEAD
+      path: home-k8s/admin/csi-driver-nfs/overlays/home-k8s
   destination:
     server: https://kubernetes.default.svc
     namespace: csi-driver-nfs
