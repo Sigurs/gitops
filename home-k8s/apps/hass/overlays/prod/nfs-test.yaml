@@ -26,7 +26,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs-unraid
   mountOptions:
-    - nfsvers=4.2,idmap=on
+    - nfsvers=4.2
   csi:
     driver: nfs.csi.k8s.io
     volumeHandle: hass-models
