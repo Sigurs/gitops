@@ -9,4 +9,4 @@ resources:
   
   - apps/prod-adguard.yaml
   - apps/prod-hass.yaml
-  - apps/prod-open-webui.yaml
+#  - apps/prod-open-webui.yaml
