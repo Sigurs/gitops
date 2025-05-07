@@ -1,3 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: external-jellyfin-tls
+spec:
+  commonName: jellyfin.sigurs.io
+  secretName: external-jellyfin-tls
+  dnsNames: 
+    - jellyfin.sigurs.io
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt
+---
 apiVersion: v1
 kind: Endpoints
 metadata:
@@ -23,6 +36,10 @@ kind: Ingress
 metadata:
   name: external-jellyfin
 spec:
+  tls:
+    - hosts:
+        - jellyfin.sigurs.io
+      secretName: external-jellyfin-tls
   rules:
     - host: jellyfin.sigurs.io
       http:
