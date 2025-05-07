@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
-
+  - external-jellyfin.yaml
+  
 patches:
   - path: wildcard-tls-patch.yaml
