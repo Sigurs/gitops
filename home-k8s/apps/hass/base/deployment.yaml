@@ -16,7 +16,7 @@ spec:
       hostUsers: false
       containers:
       - name: hass
-        image: ghcr.io/home-assistant/home-assistant:2025.5.0
+        image: ghcr.io/home-assistant/home-assistant:2025.5.1
         securityContext:
           # Requires root inside the container to run.
           # We are using UserNamespaces to mitigate security issues. 
