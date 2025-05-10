@@ -50,18 +50,10 @@ Let's Encrypt ClusterIssuer yamls need to be manually filed and ran.
 #### Service: system-upgrade
 Utilize k3s' system-upgrade-controller to keep nodes up to date.
 
-#### Service: Borgmatic
-Used for backups.<br>
-Normally I would consider using tools such as Velero to push backups to a s3 bucket, but this is more economical for me. <br>
-Works great with k3s local-path provisioner.
+## Usage
+### Ansible
 
-
-
-
-# Usage
-## Ansible
-
-### Setup ansible
+#### Setup ansible
 ```bash
 # Create virtual environment
 python3 -m venv .venv
@@ -72,7 +64,7 @@ python -m pip install ansible
 ansible-galaxy collection install community.general kubernetes.core
 ```
 
-### Run
+#### Run
 
 ```bash
 # Activate virtual environment
@@ -81,3 +73,19 @@ source .venv/bin/activate
 # Run ansible
 ansible-playbook ansible/k3s-cluster/main.yaml -i home-k8s/ansible-inventory.yaml
 ```
+
+# Unraid
+At home the main storage solution is based on Unraid. <br>
+As the kubernetes nfs CSI is yet to support user namespaces, I need to run certain software via Unraid's docker capabilities. <br>
+All of these are ran with `--security-opt=no-new-privileges --cap-drop=all --user xxx:xxx` to prevent privilege escalation issues - we are running public containers here so you can never be too careful :) <br>
+
+Running some of these directly on the storage also improves performance.<br>
+
+## Unraid: PostgreSQL 17
+Postgres is a database I host on unraid for performance reasons - it's nvme backed.
+
+## Unraid: valkey (redis fork)
+Certain software requires a k/v store. 
+
+## Unraid: borgmatic
+Backup solution that takes all the files, database dumps, etc. and backs them up offsite.
