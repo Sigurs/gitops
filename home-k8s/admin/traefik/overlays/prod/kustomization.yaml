@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../../base
   - external-jellyfin.yaml
+  - external-paperless.yaml
   
 patches:
   - path: wildcard-tls-patch.yaml
