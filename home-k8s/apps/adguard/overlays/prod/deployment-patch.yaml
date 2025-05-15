@@ -5,6 +5,9 @@ metadata:
 spec:
   template:
     spec:
+      containers:
+        - name: adguard
+          image: harbor.sigurs.io/docker.io/adguard/adguardhome:latest
       # We want this deployment on a specific node
       nodeSelector:
         kubernetes.io/hostname: home-k8s01.sigurs.io

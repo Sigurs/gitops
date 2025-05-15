@@ -19,38 +19,38 @@ spec:
         fsGroupChangePolicy: Always
         runAsNonRoot: true
       containers:
-      - name: adguard
-        image: adguard/adguardhome:latest
-        securityContext:
-          # We are using UserNamespaces to mitigate security issues.
-          runAsUser: 1000
-          runAsGroup: 1000
-          allowPrivilegeEscalation: false
-          seccompProfile:
-            type: RuntimeDefault
-          capabilities:
-            drop:
-              - ALL
-            add:
-              # The main executable has this set.
-              # We could roll our own image, but that's too much work.
-              - NET_BIND_SERVICE
-        ports:
-          - containerPort: 8053
-            name: dns-udp
-            protocol: UDP
-          - containerPort: 8053
-            name: dns-tcp
-            protocol: TCP
-          - containerPort: 3000
-            name: http-webui
-        volumeMounts:
-          - name: adguard
-            mountPath: /opt/adguardhome/work
-            subPath: opt/adguardhome/work
-          - name: adguard
-            mountPath: /opt/adguardhome/conf
-            subPath: opt/adguardhome/conf
+        - name: adguard
+          image: KUSTOMIZE_PATCH
+          securityContext:
+            # We are using UserNamespaces to mitigate security issues.
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+              add:
+                # The main executable has this set.
+                # We could roll our own image, but that's too much work.
+                - NET_BIND_SERVICE
+          ports:
+            - containerPort: 8053
+              name: dns-udp
+              protocol: UDP
+            - containerPort: 8053
+              name: dns-tcp
+              protocol: TCP
+            - containerPort: 3000
+              name: http-webui
+          volumeMounts:
+            - name: adguard
+              mountPath: /opt/adguardhome/work
+              subPath: opt/adguardhome/work
+            - name: adguard
+              mountPath: /opt/adguardhome/conf
+              subPath: opt/adguardhome/conf
       volumes:
         - name: adguard
           persistentVolumeClaim:
