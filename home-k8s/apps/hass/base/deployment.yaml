@@ -15,29 +15,29 @@ spec:
       automountServiceAccountToken: false
       hostUsers: false
       containers:
-      - name: hass
-        image: ghcr.io/home-assistant/home-assistant:2025.5.1
-        securityContext:
-          # Requires root inside the container to run.
-          # We are using UserNamespaces to mitigate security issues. 
-          allowPrivilegeEscalation: false
-          seccompProfile:
-            type: RuntimeDefault
-          capabilities:
-            drop:
-              - ALL
-        env:
-          - name: TZ
-            value: Europe/Helsinki
-          - name: DISABLE_JEMALLOC
-            value: "true"
-        ports:
-          - containerPort: 8123
-            name: http
-        volumeMounts:
-          - name: hass
-            mountPath: /config
-            subPath: config
+        - name: hass
+          image: KUSTOMIZE_PATCH
+          securityContext:
+            # Requires root inside the container to run.
+            # We are using UserNamespaces to mitigate security issues. 
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+          env:
+            - name: TZ
+              value: Europe/Helsinki
+            - name: DISABLE_JEMALLOC
+              value: "true"
+          ports:
+            - containerPort: 8123
+              name: http
+          volumeMounts:
+            - name: hass
+              mountPath: /config
+              subPath: config
       volumes:
         - name: hass
           persistentVolumeClaim:
