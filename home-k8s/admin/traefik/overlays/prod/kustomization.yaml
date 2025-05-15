@@ -5,6 +5,7 @@ resources:
   - ../../base
   - external-jellyfin.yaml
   - external-paperless.yaml
+  - external-artifacts.yaml
   
 patches:
   - path: wildcard-tls-patch.yaml

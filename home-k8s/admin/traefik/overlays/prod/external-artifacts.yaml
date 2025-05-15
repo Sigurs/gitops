@@ -1,0 +1,53 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: external-artifacts-tls
+spec:
+  commonName: artifacts.sigurs.io
+  secretName: external-artifacts-tls
+  dnsNames: 
+    - artifacts.sigurs.io
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: external-artifacts
+subsets:
+  - addresses:
+      - ip: 172.20.4.10
+    ports:
+      - port: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-artifacts
+spec:
+  clusterIP: None
+  ports:
+    - port: 8081
+      targetPort: 8081
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: external-artifacts
+spec:
+  tls:
+    - hosts:
+        - artifacts.sigurs.io
+      secretName: external-artifacts-tls
+  rules:
+    - host: artifacts.sigurs.io
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: external-artifacts
+              port:
+                number: 8081
