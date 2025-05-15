@@ -15,3 +15,4 @@ patches:
     target:
       kind: ClusterRoleBinding
   - path: argocd-cmd-params-cm.yaml
+  - path: argocd-cm-patch.yaml
