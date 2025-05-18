@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - admin-argocd.yaml
+  - admin-cert-manager.yaml
+  - admin-csi-driver-nfs.yaml
+  - admin-csi-driver-smb.yaml
+  - admin-namespaces.yaml
+  - admin-system-upgrade.yaml
+  - admin-traefik.yaml
+
+  - app-prod-adguard.yaml
+  - app-prod-hass.yaml
+#  - apps/prod-open-webui.yaml

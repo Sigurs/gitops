@@ -7,7 +7,7 @@ spec:
   source:
     repoURL: https://github.com/Sigurs/gitops.git
     targetRevision: HEAD
-    path: home-k8s/admin/system-upgrade/overlays/prod
+    path: home-k8s/admin-system-upgrade/overlays/prod
   destination:
     server: https://kubernetes.default.svc
     namespace: system-upgrade

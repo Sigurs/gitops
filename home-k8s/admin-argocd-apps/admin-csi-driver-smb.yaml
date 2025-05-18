@@ -10,7 +10,7 @@ spec:
       targetRevision: 1.18.0
     - repoURL: https://github.com/Sigurs/gitops.git
       targetRevision: HEAD
-      path: home-k8s/admin/csi-driver-smb/overlays/home-k8s
+      path: home-k8s/admin-csi-driver-smb/overlays/home-k8s
   destination:
     server: https://kubernetes.default.svc
     namespace: csi-driver-smb

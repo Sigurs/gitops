@@ -14,7 +14,7 @@ spec:
             defaultOnDeletePolicy: retain
     - repoURL: https://github.com/Sigurs/gitops.git
       targetRevision: HEAD
-      path: home-k8s/admin/csi-driver-nfs/overlays/home-k8s
+      path: home-k8s/admin-csi-driver-nfs/overlays/home-k8s
   destination:
     server: https://kubernetes.default.svc
     namespace: csi-driver-nfs
