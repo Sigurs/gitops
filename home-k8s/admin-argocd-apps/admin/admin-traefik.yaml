@@ -15,7 +15,7 @@ spec:
               type: RuntimeDefault
     - repoURL: https://github.com/Sigurs/gitops.git
       targetRevision: HEAD
-      path: home-k8s/admin-traefik/overlays/prod
+      path: home-k8s/admin/traefik/overlays/prod
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik

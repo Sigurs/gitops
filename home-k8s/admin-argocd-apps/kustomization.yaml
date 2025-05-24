@@ -3,12 +3,12 @@ kind: Kustomization
 
 resources:
   - admin-argocd.yaml
-  - admin-cert-manager.yaml
-  - admin-csi-driver-nfs.yaml
-  - admin-csi-driver-smb.yaml
   - admin-namespaces.yaml
-  - admin-system-upgrade.yaml
-  - admin-traefik.yaml
+  - admin/cert-manager.yaml
+  - admin/csi-driver-nfs.yaml
+  - admin/csi-driver-smb.yaml
+  - admin/system-upgrade.yaml
+  - admin/traefik.yaml
 
   - apps/cyberchef.yaml
   - apps/prod-adguard.yaml
