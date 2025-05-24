@@ -32,5 +32,3 @@ spec:
         podSelector:
           matchLabels:
             app.kubernetes.io/name: traefik
-      ports:
-        - port: 3000
