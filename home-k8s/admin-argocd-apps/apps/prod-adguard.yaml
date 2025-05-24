@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cyberchef
+  name: prod-adguard
 spec:
   project: home-k8s
   source:
     repoURL: https://github.com/Sigurs/gitops.git
     targetRevision: HEAD
-    path: home-k8s/app-cyberchef
+    path: home-k8s/apps/adguard/overlays/prod
   destination:
     server: https://kubernetes.default.svc
-    namespace: cyberchef
+    namespace: prod-adguard
   syncPolicy:
     syncOptions:
       - ServerSideApply=true # Service with same port sharing UDP and TCP requires server-side 

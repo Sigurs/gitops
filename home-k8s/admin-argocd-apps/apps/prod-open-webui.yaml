@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prod-adguard
+  name: prod-open-webui
 spec:
   project: home-k8s
   source:
     repoURL: https://github.com/Sigurs/gitops.git
     targetRevision: HEAD
-    path: home-k8s/app-adguard/overlays/prod
+    path: home-k8s/apps/open-webui/overlays/prod
   destination:
     server: https://kubernetes.default.svc
-    namespace: prod-adguard
+    namespace: prod-open-webui
   syncPolicy:
     syncOptions:
-      - ServerSideApply=true # Service with same port sharing UDP and TCP requires server-side 
+      - ServerSideApply=true
