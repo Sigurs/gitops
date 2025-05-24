@@ -9,6 +9,7 @@ resources:
   - admin/system-upgrade-controller.yaml
   - admin/traefik.yaml
   
+  - apps/cyberchef.yaml
   - apps/prod-adguard.yaml
   - apps/prod-hass.yaml
 #  - apps/prod-open-webui.yaml

@@ -10,6 +10,7 @@ resources:
   - admin-system-upgrade.yaml
   - admin-traefik.yaml
 
+  - app-cyberchef.yaml
   - app-prod-adguard.yaml
   - app-prod-hass.yaml
 #  - apps/prod-open-webui.yaml

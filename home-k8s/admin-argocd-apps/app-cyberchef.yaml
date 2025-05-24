@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cyberchef
+spec:
+  project: home-k8s
+  source:
+    repoURL: https://github.com/Sigurs/gitops.git
+    targetRevision: HEAD
+    path: home-k8s/cyberchef
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cyberchef
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true # Service with same port sharing UDP and TCP requires server-side 

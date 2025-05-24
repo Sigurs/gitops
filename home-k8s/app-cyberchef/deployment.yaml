@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cyberchef
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cyberchef
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: cyberchef
+    spec:
+      automountServiceAccountToken: false
+      hostUsers: false
+      securityContext:
+        runAsNonRoot: true
+      containers:
+        - name: cyberchef
+          image: registry.sigurs.io/ghcr.io/sigurs/container-rebuilds/cyberchef:v10.19.4
+          securityContext:
+            runAsUser: 101
+            runAsGroup: 101
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+      # We want this deployment on a specific node
+      nodeSelector:
+        kubernetes.io/hostname: home-k8s01.sigurs.io
