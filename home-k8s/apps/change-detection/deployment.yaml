@@ -16,7 +16,9 @@ spec:
       hostUsers: false
       containers:
         - name: chromium
-          image: registry.sigurs.io/ghcr.io/browserless/chromium:v2.30.1
+          # Use v1 until v2 ARM64 appears.
+#          image: registry.sigurs.io/ghcr.io/browserless/chromium:v2.30.1
+          image: registry.sigurs.io/docker.io/browserless/chrome:latest
           securityContext:
             allowPrivilegeEscalation: false
             seccompProfile:
@@ -51,7 +53,9 @@ spec:
             - name: TZ
               value: Europe/Helsinki
             - name: PLAYWRIGHT_DRIVER_URL
-              value: ws://localhost:3000/chromium?launch={"defaultViewport":{"height":720,"width":1280},"headless":false,"stealth":true}&blockAds=true
+              # v1 url
+              value: ws://localhost:3000/?stealth=1&--disable-web-security=true&--no-sandbox=true&--headless=true&--window-size%3D1920%2C1080
+#              value: ws://localhost:3000/chromium?launch={"defaultViewport":{"height":720,"width":1280},"headless":false,"stealth":true}&blockAds=true
           volumeMounts:
             - name: change-detection
               mountPath: /datastore
