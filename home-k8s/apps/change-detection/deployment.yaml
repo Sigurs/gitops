@@ -28,7 +28,10 @@ spec:
             - containerPort: 3000
               name: chromium-api
               protocol: TCP
-        - name: changedetection
+          env:
+            - name: WEBDRIVER_URL
+              value: http://localhost:3000/wd/hub
+        - name: change-detection
           image: registry.sigurs.io/docker.io/dgtlmoon/changedetection.io:0.49.18
           securityContext:
             runAsNonRoot: true
