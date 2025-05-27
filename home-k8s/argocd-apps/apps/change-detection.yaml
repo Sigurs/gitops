@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cyberchef
+  name: change-detection
 spec:
   project: home-k8s
   source:
     repoURL: https://github.com/Sigurs/gitops.git
     targetRevision: HEAD
-    path: home-k8s/apps/cyberchef
+    path: home-k8s/apps/change-detection
   destination:
     server: https://kubernetes.default.svc
-    namespace: cyberchef
+    namespace: change-detection
   syncPolicy:
     syncOptions:
       - ServerSideApply=true

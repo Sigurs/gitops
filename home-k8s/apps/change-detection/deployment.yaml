@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: change-detection
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: change-detection
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: change-detection
+    spec:
+      automountServiceAccountToken: false
+      hostUsers: false
+      securityContext:
+        runAsNonRoot: true
+      containers:
+        - name: chromium
+          image: registry.sigurs.io/ghcr.io/browserless/chromium:v2.30.1
+          securityContext:
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - containerPort: 3000
+              name: chromium-api
+              protocol: TCP
+        - name: changedetection
+          image: registry.sigurs.io/docker.io/dgtlmoon/changedetection.io:0.49.18
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - containerPort: 5000
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: change-detection
+              mountPath: /datastore
+              subPath: datastore
+      volumes:
+        - name: change-detection
+          persistentVolumeClaim:
+            claimName: change-detection
+      # We want this deployment on a specific node
+      nodeSelector:
+        kubernetes.io/hostname: home-k8s01.sigurs.io

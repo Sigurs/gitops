@@ -10,6 +10,7 @@ resources:
   - admin/system-upgrade.yaml
   - admin/traefik.yaml
 
+  - apps/change-detection.yaml
   - apps/cyberchef.yaml
   - apps/prod-adguard.yaml
   - apps/prod-hass.yaml
