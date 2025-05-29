@@ -12,5 +12,12 @@
     enabled: yes
     daemon_reload: yes
 
+- name: enable and restart unattended-upgrades
+  ansible.builtin.systemd:
+    name: unattended-upgrades
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+
 - name: reboot
   ansible.builtin.reboot:
