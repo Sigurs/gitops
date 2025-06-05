@@ -6,6 +6,8 @@ resources:
   - admin/cert-manager.yaml
   - admin/csi-driver-nfs.yaml
   - admin/csi-driver-smb.yaml
+  - admin/istio-ingress.yaml
+  - admin/istio-system.yaml
   - admin/system-upgrade-controller.yaml
   - admin/traefik.yaml
   
