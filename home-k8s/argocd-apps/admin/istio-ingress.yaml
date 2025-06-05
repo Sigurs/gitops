@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: istio-ingress
   annotations:
-    argocd.argoproj.io/sync-wave: "-7"
+    argocd.argoproj.io/sync-wave: "-6"
 spec:
   project: home-k8s.admin
   source:
