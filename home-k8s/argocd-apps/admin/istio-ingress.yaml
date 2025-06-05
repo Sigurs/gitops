@@ -12,6 +12,10 @@ spec:
     targetRevision: 1.26.1
     helm:
       valuesObject:
+        # Disable istio-ingress service 
+        service:
+          type: None
+
         defaultRevision: default
         securityContext:
           seccompProfile:
