@@ -12,6 +12,7 @@ spec:
     targetRevision: 1.26.1
     helm:
       valuesObject:
+        defaultRevision: default
         securityContext:
           seccompProfile:
             type: RuntimeDefault
