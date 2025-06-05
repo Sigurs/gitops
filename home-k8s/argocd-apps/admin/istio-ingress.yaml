@@ -10,6 +10,14 @@ spec:
     chart: gateway
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.26.1
+    helm:
+      valuesObject:
+        securityContext:
+          seccompProfile:
+            type: RuntimeDefault
+        containerSecurityContext:
+          seccompProfile:
+            type: RuntimeDefault
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-ingress
