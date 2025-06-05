@@ -16,6 +16,20 @@ spec:
     - chart: istiod
       repoURL: https://istio-release.storage.googleapis.com/charts
       targetRevision: 1.26.1
+      helm:
+        valuesObject:
+          defaultRevision: default
+          securityContext:
+            seccompProfile:
+              type: RuntimeDefault
+          containerSecurityContext:
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            capabilities:
+              drop: 
+                - ALL
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system
