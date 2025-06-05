@@ -18,6 +18,12 @@ spec:
         containerSecurityContext:
           seccompProfile:
             type: RuntimeDefault
+          allowPrivilegeEscalation: false
+          runAsNonroot: true
+          capabilities:
+            drop: 
+              - ALL
+          
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-ingress
