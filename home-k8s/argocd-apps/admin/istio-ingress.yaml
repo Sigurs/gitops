@@ -12,10 +12,9 @@ spec:
     targetRevision: 1.26.1
     helm:
       valuesObject:
-        # Disable istio-ingress service 
+        # Change istio-ingress to ClusterIP
         service:
-          type: None
-
+          type: ClusterIP
         defaultRevision: default
         securityContext:
           seccompProfile:
@@ -28,7 +27,6 @@ spec:
           capabilities:
             drop: 
               - ALL
-          
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-ingress

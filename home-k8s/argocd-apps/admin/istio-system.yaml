@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "-8"
+spec:
+  project: home-k8s.admin
+  sources:
+    - chart: base
+      repoURL: https://istio-release.storage.googleapis.com/charts
+      targetRevision: 1.26.1
+      helm:
+        valuesObject:
+          defaultRevision: default
+          base:
+            # ArgoCD will be stuck in OutOfSync without this.
+            validationCABundle: false
+    - chart: istiod
+      repoURL: https://istio-release.storage.googleapis.com/charts
+      targetRevision: 1.26.1
+      helm:
+        valuesObject:
+          base:
+            # ArgoCD will be stuck in OutOfSync without this.
+            validationCABundle: false
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
