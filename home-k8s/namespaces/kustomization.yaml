@@ -8,6 +8,7 @@ resources:
   - admin/csi-driver-smb.yaml
   - admin/istio-ingress.yaml
   - admin/istio-system.yaml
+  - admin/knative-serving.yaml
   - admin/system-upgrade-controller.yaml
   - admin/traefik.yaml
   
@@ -15,4 +16,3 @@ resources:
   - apps/cyberchef.yaml
   - apps/prod-adguard.yaml
   - apps/prod-hass.yaml
-#  - apps/prod-open-webui.yaml

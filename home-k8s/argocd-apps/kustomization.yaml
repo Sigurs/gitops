@@ -7,10 +7,9 @@ resources:
   - admin/cert-manager.yaml
   - admin/csi-driver-nfs.yaml
   - admin/csi-driver-smb.yaml
-#  - admin/istio-base.yaml
   - admin/istio-ingress.yaml
   - admin/istio-system.yaml
-#  - admin/istio-istiod.yaml
+  - admin/knative.yaml
   - admin/system-upgrade.yaml
   - admin/traefik.yaml
 
@@ -18,4 +17,3 @@ resources:
   - apps/cyberchef.yaml
   - apps/prod-adguard.yaml
   - apps/prod-hass.yaml
-#  - apps/prod-open-webui.yaml
