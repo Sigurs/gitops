@@ -23,7 +23,7 @@ spec:
         valuesObject:
           base:
             # ArgoCD will be stuck in OutOfSync without this.
-            validationCABundle: false
+            configValidation: false
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system
