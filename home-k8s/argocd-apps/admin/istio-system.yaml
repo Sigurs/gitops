@@ -13,17 +13,22 @@ spec:
       helm:
         valuesObject:
           defaultRevision: default
-#          base:
-#            # ArgoCD will be stuck in OutOfSync without this.
-#            validationCABundle: false
     - chart: istiod
       repoURL: https://istio-release.storage.googleapis.com/charts
       targetRevision: 1.26.1
-#      helm:
-#        valuesObject:
-#          base:
-#            # ArgoCD will be stuck in OutOfSync without this.
-#            configValidation: false
+
+  # Due to ValidationWebhooks istio would show as Out Of Sync in ArgoCD, so we need to ignore few fields.
+  ignoreDifferences:
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      name: istio-validator-istio-system
+      jsonPointers:
+        - /webhooks/0/failurePolicy
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      name: istiod-default-validator
+      jsonPointers:
+        - /webhooks/0/failurePolicy
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system
