@@ -2,8 +2,20 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-# serving-crds actually not needed as they are merged into serving-core
+# serving-crds actually not needed as they are merged into serving-core.
 # docs still say to install it, but due to us installing both with a single kubectl apply, we need to disable it due to duplicate CRDs.
 # more info: https://github.com/knative/serving/issues/12032
 #  - https://github.com/knative/serving/releases/download/knative-v1.18.0/serving-crds.yaml
   - https://github.com/knative/serving/releases/download/knative-v1.18.0/serving-core.yaml
+
+#knative includes it's own namespace, which we want to remove.
+patches:
+  - target:
+      kind: Namespace
+      name: knative-serving
+    patch: |
+      $patch: delete
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: deleted
