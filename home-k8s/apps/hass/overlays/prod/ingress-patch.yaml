@@ -18,13 +18,3 @@ spec:
               name: hass
               port:
                 name: http
-    - host: meshtastic.sigurs.io
-      http:
-        paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: meshtastic
-              port:
-                name: meshtastic

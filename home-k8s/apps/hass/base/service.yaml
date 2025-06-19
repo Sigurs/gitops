@@ -10,7 +10,15 @@ spec:
     protocol: TCP
     port: 8123
     targetPort: http
-  - name: meshtastic
-    protocol: TCP
-    port: 4403
-    targetPort: meshtastic
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hass-meshtastic
+spec:
+  selector:
+    app.kubernetes.io/name: hass
+  ports:
+    - port: 4403
+      targetPort: 4403
+  type: LoadBalancer
