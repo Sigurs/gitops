@@ -25,6 +25,6 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: meshtastic-proxy
+              name: meshtastic
               port:
-                name: meshtastic-proxy
+                name: meshtastic
