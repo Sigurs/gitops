@@ -6,5 +6,6 @@ spec:
   commonName: hass.sigurs.io
   dnsNames:
     - hass.sigurs.io
+    - meshtastic.sigurs.io
   issuerRef:
     name: letsencrypt

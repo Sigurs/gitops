@@ -10,3 +10,7 @@ spec:
     protocol: TCP
     port: 8123
     targetPort: http
+  - name: meshtastic-proxy
+    protocol: TCP
+    port: 4403
+    targetPort: meshtastic-proxy

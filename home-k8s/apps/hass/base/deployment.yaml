@@ -34,6 +34,8 @@ spec:
           ports:
             - containerPort: 8123
               name: http
+            - containerPort: 4403
+              name: meshtastic-proxy
           volumeMounts:
             - name: hass
               mountPath: /config
