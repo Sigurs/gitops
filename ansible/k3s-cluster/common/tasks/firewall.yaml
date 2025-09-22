@@ -9,12 +9,13 @@
     name:
       - firewalld
     state: latest
+    update_cache: yes
   notify: enable and restart firewalld
 
 - name: firewall / allow k8s/pods
   ansible.posix.firewalld:
     zone: trusted
-    source: 10.42.0.0/16 
+    source: "{{ all_k3s.cluster_cidr }}"
     state: enabled
     permanent: true
     immediate: true
@@ -23,44 +24,44 @@
 - name: firewall / allow k8s/services
   ansible.posix.firewalld:
     zone: trusted
-    source: 10.43.0.0/16 
+    source: "{{ all_k3s.service_cidr }}"
     state: enabled
     permanent: true
     immediate: true
   notify: enable and restart firewalld
 
-- name: firewall / allow public/http
-  ansible.posix.firewalld:
-    zone: public
-    service: http
-    state: enabled
-    permanent: true
-    immediate: true
-  notify: enable and restart firewalld
+# - name: firewall / allow public/http
+#   ansible.posix.firewalld:
+#     zone: public
+#     service: http
+#     state: enabled
+#     permanent: true
+#     immediate: true
+#   notify: enable and restart firewalld
 
-- name: firewall / allow public/https
-  ansible.posix.firewalld:
-    zone: public
-    service: https
-    state: enabled
-    permanent: true
-    immediate: true
-  notify: enable and restart firewalld
+# - name: firewall / allow public/https
+#   ansible.posix.firewalld:
+#     zone: public
+#     service: https
+#     state: enabled
+#     permanent: true
+#     immediate: true
+#   notify: enable and restart firewalld
 
-- name: firewall / allow public/dns
-  ansible.posix.firewalld:
-    zone: public
-    port: 53/tcp
-    state: enabled
-    permanent: true
-    immediate: true
-  notify: enable and restart firewalld
+# - name: firewall / allow public/dns
+#   ansible.posix.firewalld:
+#     zone: public
+#     port: 53/tcp
+#     state: enabled
+#     permanent: true
+#     immediate: true
+#   notify: enable and restart firewalld
 
-- name: firewall / allow public/dns
-  ansible.posix.firewalld:
-    zone: public
-    port: 53/udp
-    state: enabled
-    permanent: true
-    immediate: true
-  notify: enable and restart firewalld
+# - name: firewall / allow public/dns
+#   ansible.posix.firewalld:
+#     zone: public
+#     port: 53/udp
+#     state: enabled
+#     permanent: true
+#     immediate: true
+#   notify: enable and restart firewalld

@@ -1,5 +1,9 @@
 write-kubeconfig-mode: "0644"
-cluster-domain: {{all_k3s.cluster_domain}}
+cluster-init: true
+
+cluster-domain: {{ all_k3s.cluster_domain }}
+cluster-cidr: {{ all_k3s.cluster_cidr }}
+service-cidr: {{ all_k3s.service_cidr }}
 
 {% if k3s.node_labels is defined -%}
 node-label:
@@ -8,8 +12,8 @@ node-label:
 {% endfor %}
 {% endif %}
 
-disable:
-  - traefik
+#disable:
+#  - traefik
   
 # Harden the cluster
 protect-kernel-defaults: true

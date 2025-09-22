@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: whoami
+  namespace: whoami
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Sigurs/argocd-example.git
+    targetRevision: HEAD
+    path: proxima/whoami
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: whoami
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

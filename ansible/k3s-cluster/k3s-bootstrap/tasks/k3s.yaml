@@ -3,7 +3,6 @@
     name:
       - uidmap
     state: latest
-  notify: enable and restart firewalld
 
 - name: check for installation
   stat:
@@ -46,12 +45,12 @@
     mode: '0644'
   notify: enable and restart k3s
 
-- name: /var/lib/rancher/k3s/server/manifests/storageclass-local-path-retain.yaml
-  ansible.builtin.template:
-    src: k3s-local-path-retain.yaml
-    dest: /var/lib/rancher/k3s/server/manifests/storageclass-local-path-retain.yaml
-    mode: '0644'
-  notify: enable and restart k3s
+# - name: /var/lib/rancher/k3s/server/manifests/storageclass-local-path-retain.yaml
+#   ansible.builtin.template:
+#     src: k3s-local-path-retain.yaml
+#     dest: /var/lib/rancher/k3s/server/manifests/storageclass-local-path-retain.yaml
+#     mode: '0644'
+#   notify: enable and restart k3s
 
 - name: download installer
   when: not k3s_installed.stat.exists
