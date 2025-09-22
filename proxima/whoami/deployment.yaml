@@ -13,6 +13,14 @@ spec:
         app.kubernetes.io/name: whoami
     spec:
       automountServiceAccountToken: false
+      securityContext:
+        runAsGroup: 65532
+        runAsNonRoot: true
+        runAsUser: 65532
+        fsGroup: 65532
+        allowPrivilegeEscalation: false
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: whoami
         image: traefik/whoami:latest
@@ -21,7 +29,6 @@ spec:
             name: http
         securityContext:
           readOnlyRootFilesystem: false
-          allowPrivilegeEscalation: false
           capabilities:
             drop:
               - ALL
