@@ -22,7 +22,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: whoami
-        image: traefik/whoami:latest
+        image: traefikasdfsadfasfasdfrsdsd/whoami:latest
         ports:
           - containerPort: 80
             name: http
