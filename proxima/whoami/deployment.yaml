@@ -20,8 +20,8 @@ spec:
         fsGroup: 65532
         seccompProfile:
           type: RuntimeDefault
-      containers:
-      - name: whoami
+      containeffffrs:
+      - name: whoamiff
         image: traefikasdfsadfasfasdfrsdsd/whoami:latest
         ports:
           - containerPort: 80
