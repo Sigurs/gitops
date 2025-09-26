@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-argocd-apps
+  name: argocd-apps-public
   namespace: infra-argocd
 spec:
   project: proxima-infra
@@ -11,7 +11,7 @@ spec:
     path: proxima/argocd-apps
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: infra-argocd
   syncPolicy:
     automated:
       selfHeal: true

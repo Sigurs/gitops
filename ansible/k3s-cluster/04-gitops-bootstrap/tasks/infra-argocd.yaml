@@ -24,3 +24,12 @@
     kustomize_dir: "/tmp/gitops-public/{{ all_k3s.cluster_name_short }}/infra/argocd"
   environment:
     KUBECONFIG: /etc/rancher/k3s/k3s.yaml
+
+- name: Apply argocd-apps-public manifest
+  shell: kubectl apply {{ manifest }}
+  register: kubectl_output
+  changed_when: "'configured' in kubectl_output.stdout or 'created' in kubectl_output.stdout"
+  vars:
+    manifest: "/tmp/gitops-public/{{ all_k3s.cluster_name_short }}/argocd-apps/argocd-apps-public.yaml"
+  environment:
+    KUBECONFIG: /etc/rancher/k3s/k3s.yaml
