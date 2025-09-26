@@ -1,4 +1,5 @@
 node-ip: {{ private_ip }}
+node-external-ip: {{ ansible_host }}
 
 {% if k3s.node_labels is defined -%}
 node-label:

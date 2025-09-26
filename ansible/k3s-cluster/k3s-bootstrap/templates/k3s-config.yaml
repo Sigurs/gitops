@@ -2,6 +2,8 @@
 cluster-init: true
 
 node-ip: {{ private_ip }}
+advertise-address: {{ private_ip }}
+node-external-ip: {{ ansible_host }}
 cluster-domain: {{ all_k3s.cluster_domain }}
 cluster-cidr: {{ all_k3s.cluster_cidr }}
 service-cidr: {{ all_k3s.service_cidr }}
@@ -13,8 +15,9 @@ node-label:
 {% endfor %}
 {% endif %}
 
-#disable:
-#  - traefik
+disable:
+  - traefik
+  - local-storage
 
 # Taint control plane
 node-taint:

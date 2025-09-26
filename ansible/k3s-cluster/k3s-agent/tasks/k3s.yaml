@@ -45,5 +45,7 @@
   ansible.builtin.command: /tmp/k3s-installer.sh
   environment:
     K3S_TOKEN: "{{ node_token.content | b64decode | trim }}"
+    # Using cluster domain only works if DNS is set up, not with /etc/hosts for some reason as it resolves to public.
     K3S_URL: "https://{{ all_k3s.cluster_domain }}:6443"
+#    K3S_URL: "https://{{ hostvars[groups['k3s_servers'][0]]['private_ip'] }}:6443"
   notify: enable and restart k3s-agent
