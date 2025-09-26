@@ -7,8 +7,11 @@
 - name: deploy argocd
   kubernetes.core.helm:
     name: argocd
-    chart_ref: argo/argocd
+    chart_ref: argo/argo-cd
     release_namespace: argocd
     create_namespace: true
     values_files:
-      - "/tmp/gitops-public/{{ argocd_values_yaml }}"
+      - "/tmp/gitops-public/{{ gitops.argocd_values }}"
+    update_repo_cache: true
+  environment:
+    KUBECONFIG: /etc/rancher/k3s/k3s.yaml
