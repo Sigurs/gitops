@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-namespaces
+  name: infra-argocd-apps
   namespace: infra-argocd
 spec:
   project: proxima-infra
   source:
     repoURL: https://github.com/Sigurs/gitops.git
     targetRevision: HEAD
-    path: proxima/namespaces
+    path: proxima/argocd-apps
   destination:
     server: https://kubernetes.default.svc
     namespace: default

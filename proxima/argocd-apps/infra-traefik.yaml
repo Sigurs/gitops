@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: infra-traefik
+  namespace: infra-argocd
 spec:
   project: proxima-infra
   sources:
@@ -15,7 +16,7 @@ spec:
               type: RuntimeDefault
   destination:
     server: https://kubernetes.default.svc
-    namespace: traefik
+    namespace: infra-traefik
   syncPolicy:
     automated:
       selfHeal: true
