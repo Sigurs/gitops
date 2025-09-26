@@ -3,18 +3,25 @@
   hosts: 
     - all
   roles:
-    - common
+    - 00-common
 
 - name: apply k3s-bootstrap
   become: yes
   hosts:
     - k3s_servers[0]
   roles:
-    - k3s-bootstrap
+    - 01-k3s-bootstrap
 
 - name: apply k3s-agent
   become: yes
   hosts:
-    - k3s_agents[0]
+    - k3s_agents
   roles:
-    - k3s-agent
+    - 03-k3s-agent
+
+- name: apply gitops-bootstrap
+  become: yes
+  hosts:
+    - k3s_servers[0]
+  roles:
+    - 04-gitops-bootstrap

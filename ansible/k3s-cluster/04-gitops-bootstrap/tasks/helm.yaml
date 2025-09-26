@@ -1,0 +1,17 @@
+- name: install snapd
+  ansible.builtin.package:
+    name:
+      - snapd
+    state: latest
+  notify: enable and restart snapd
+
+- name: helm
+  community.general.snap:
+    name: helm
+    classic: true
+
+- name: add argo repository
+  kubernetes.core.helm_repository:
+    name: argo
+    repo_url: https://argoproj.github.io/argo-helm
+    binary_path: /snap/bin/helm

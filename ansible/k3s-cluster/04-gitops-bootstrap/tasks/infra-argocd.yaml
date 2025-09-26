@@ -8,10 +8,19 @@
   kubernetes.core.helm:
     name: argocd
     chart_ref: argo/argo-cd
-    release_namespace: argocd
+    release_namespace: infra-argocd
     create_namespace: true
     values_files:
       - "/tmp/gitops-public/{{ gitops.argocd_values }}"
     update_repo_cache: true
+  environment:
+    KUBECONFIG: /etc/rancher/k3s/k3s.yaml
+
+- name: Apply kustomize manifests from server
+  shell: kubectl apply -k {{ kustomize_dir }}
+  register: kubectl_output
+  changed_when: "'configured' in kubectl_output.stdout or 'created' in kubectl_output.stdout"
+  vars:
+    kustomize_dir: "/tmp/gitops-public/{{ all_k3s.cluster_name_short }}/infra/argocd"
   environment:
     KUBECONFIG: /etc/rancher/k3s/k3s.yaml
