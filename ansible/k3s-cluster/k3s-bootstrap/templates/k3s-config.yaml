@@ -1,6 +1,7 @@
-write-kubeconfig-mode: "0644"
+#write-kubeconfig-mode: "0644"
 cluster-init: true
 
+node-ip: {{ private_ip }}
 cluster-domain: {{ all_k3s.cluster_domain }}
 cluster-cidr: {{ all_k3s.cluster_cidr }}
 service-cidr: {{ all_k3s.service_cidr }}
@@ -14,7 +15,11 @@ node-label:
 
 #disable:
 #  - traefik
-  
+
+# Taint control plane
+node-taint:
+  - "node-role.kubernetes.io/control-plane:NoSchedule"
+
 # Harden the cluster
 protect-kernel-defaults: true
 secrets-encryption: true

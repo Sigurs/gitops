@@ -1,0 +1,9 @@
+- name: firewall / private / allow common
+  ansible.posix.firewalld:
+    zone: private
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+  loop:
+    - "6443/tcp"        # API server
+  notify: enable and restart firewalld

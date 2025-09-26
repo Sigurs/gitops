@@ -15,13 +15,13 @@
     path: /etc/rancher/k3s
     recurse: true
     state: directory
-    mode: '0644'
+    mode: '0600'
 
 - name: /etc/rancher/k3s/config.yaml
   ansible.builtin.template:
     src: k3s-config.yaml
     dest: /etc/rancher/k3s/config.yaml
-    mode: '0644'
+    mode: '0600'
   notify: enable and restart k3s
 
 - name: create /var/lib/rancher/k3s/server/manifests
@@ -29,27 +29,27 @@
     path: /var/lib/rancher/k3s/server/manifests
     recurse: true
     state: directory
-    mode: '0644'
+    mode: '0600'
 
 - name: /var/lib/rancher/k3s/server/psa.yaml
   ansible.builtin.template:
     src: k3s-psa.yaml
     dest: /var/lib/rancher/k3s/server/psa.yaml
-    mode: '0644'
+    mode: '0600'
   notify: enable and restart k3s
 
 - name: /var/lib/rancher/k3s/server/manifests/netpol-kube-system.yaml
   ansible.builtin.template:
     src: k3s-netpol-kube-system.yaml
     dest: /var/lib/rancher/k3s/server/manifests/netpol-kube-system.yaml
-    mode: '0644'
+    mode: '0600'
   notify: enable and restart k3s
 
 # - name: /var/lib/rancher/k3s/server/manifests/storageclass-local-path-retain.yaml
 #   ansible.builtin.template:
 #     src: k3s-local-path-retain.yaml
 #     dest: /var/lib/rancher/k3s/server/manifests/storageclass-local-path-retain.yaml
-#     mode: '0644'
+#     mode: '0600'
 #   notify: enable and restart k3s
 
 - name: download installer

@@ -1,2 +1,3 @@
+- include_tasks: firewall.yaml
 - include_tasks: k3s.yaml
 - include_tasks: helm.yaml

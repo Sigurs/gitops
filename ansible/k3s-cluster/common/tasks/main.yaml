@@ -1,7 +1,7 @@
 - include_tasks: ansible.yaml
 - include_tasks: sysctl.yaml
-- include_tasks: hostname.yaml
+- include_tasks: host.yaml
 - include_tasks: firewall.yaml
 - include_tasks: unattended-upgrades.yaml
 - include_tasks: user.yaml
-- include_tasks: helm.yaml
+- include_tasks: bash.yaml

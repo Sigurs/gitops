@@ -1,0 +1,34 @@
+- name: add cluster_domain /etc/hosts
+  ansible.builtin.blockinfile:
+    path: /etc/hosts
+    block: |
+      {{ hostvars[item]['private_ip'] }} {{ all_k3s.cluster_domain }}
+    marker: "# {mark} ANSIBLE MANAGED BLOCK cluster_domain"
+    prepend_newline: true
+  loop: "{{ groups['k3s_servers'] }}"
+
+- name: add k3s_servers /etc/hosts
+  ansible.builtin.blockinfile:
+    path: /etc/hosts
+    block: |
+      {{ hostvars[item]['private_ip'] }} {{ item }}
+    marker: "# {mark} ANSIBLE MANAGED BLOCK k3s_servers"
+    prepend_newline: true
+  loop: "{{ groups['k3s_servers'] }}"
+
+- name: add k3s_agents /etc/hosts
+  ansible.builtin.blockinfile:
+    path: /etc/hosts
+    block: |
+      {{ hostvars[item]['private_ip'] }} {{ item }}
+    marker: "# {mark} ANSIBLE MANAGED BLOCK k3s_agents"
+    prepend_newline: true
+  loop: "{{ groups['k3s_agents'] }}"
+
+- name: set hostname
+  hostname:
+   name: '{{ inventory_hostname }}'
+  notify: reboot
+
+- name: flush handlers
+  ansible.builtin.meta: flush_handlers

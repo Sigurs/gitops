@@ -5,13 +5,6 @@
     enabled: yes
     daemon_reload: yes
 
-- name: enable and restart snapd
-  ansible.builtin.systemd:
-    name: snapd
-    state: restarted
-    enabled: yes
-    daemon_reload: yes
-
 - name: enable and restart unattended-upgrades
   ansible.builtin.systemd:
     name: unattended-upgrades
