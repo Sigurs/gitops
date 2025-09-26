@@ -1,0 +1,14 @@
+- name: checkout gitops-public repo
+  ansible.builtin.git:
+    repo: '{{ gitops.public_repo }}'
+    dest: /tmp/gitops-public
+    update: yes
+
+- name: deploy argocd
+  kubernetes.core.helm:
+    name: argocd
+    chart_ref: argo/argocd
+    release_namespace: argocd
+    create_namespace: true
+    values_files:
+      - "/tmp/gitops-public/{{ argocd_values_yaml }}"
