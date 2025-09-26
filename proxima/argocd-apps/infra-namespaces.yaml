@@ -4,7 +4,7 @@ metadata:
   name: namespaces
   namespace: argocd
 spec:
-  project: default
+  project: proxima-infra
   source:
     repoURL: https://github.com/Sigurs/gitops.git
     targetRevision: HEAD

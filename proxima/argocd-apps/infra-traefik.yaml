@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-traefik
+spec:
+  project: proxima-infra
+  sources:
+    - chart: traefik
+      repoURL: https://traefik.github.io/charts
+      targetRevision: v37.1.1
+      helm:
+        valuesObject:
+          securityContext:
+            seccompProfile:
+              type: RuntimeDefault
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: traefik
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

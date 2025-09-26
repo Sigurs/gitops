@@ -4,9 +4,9 @@ configs:
     server.insecure: true
 
 # Enable creation of ingress resource
-server:
-  ingress:
-    enabled: true
+#server:
+#  ingress:
+#    enabled: true
 
 # For demo, delete CRDs if uninstalled.
 crds:

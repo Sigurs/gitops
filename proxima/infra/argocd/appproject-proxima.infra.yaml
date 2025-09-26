@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: proxima-infra
+  namespace: infra-argocd
+spec:
+  clusterResourceWhitelist:
+  - '*'
+  destinations:
+  - namespace: '*'
+    server: 'https://kubernetes.default.svc'
+  sourceRepos:
+  - https://github.com/Sigurs/gitops.git
+  - https://traefik.github.io/charts
+  
