@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: infra-traefik
+  name: infra-argocd
   labels:
     app.kubernetes.io/component: infrastructure
     app.kubernetes.io/part-of: platform
