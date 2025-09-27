@@ -1,0 +1,13 @@
+# Don't terminate TLS at ArgoCD
+#configs:
+#  params:
+#    server.insecure: true
+
+# Enable creation of ingress resource
+#server:
+#  ingress:
+#    enabled: true
+
+# For demo, delete CRDs if uninstalled.
+crds:
+  keep: false
