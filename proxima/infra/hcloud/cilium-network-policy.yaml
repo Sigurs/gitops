@@ -7,7 +7,7 @@ spec:
   ingress:
     - {}
   egress:
-    # DNS access
+    # DNS access, restrict queries.
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system
@@ -18,7 +18,7 @@ spec:
               protocol: UDP
           rules:
             dns:
-              - matchPattern: "*"
+              - matchPattern: "api.hetzner.cloud"
 
     # Kubernetes API access
     - toServices:
