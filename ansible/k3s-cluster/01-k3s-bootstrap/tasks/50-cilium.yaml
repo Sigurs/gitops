@@ -1,6 +1,6 @@
 - name: Check if Cilium chart is already installed
   kubernetes.core.helm_info:
-    name: cilium
+    name: infra-cilium
     release_namespace: infra-cilium
     binary_path: /snap/bin/helm
   register: helm_chart_info

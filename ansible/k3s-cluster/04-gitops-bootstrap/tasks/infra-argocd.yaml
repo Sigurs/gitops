@@ -1,6 +1,6 @@
 - name: Check if argocd chart is already installed
   kubernetes.core.helm_info:
-    name: argocd
+    name: infra-argocd
     release_namespace: infra-hcloud
     binary_path: /snap/bin/helm
   register: helm_chart_info
@@ -59,8 +59,10 @@
         labels:
           argocd.argoproj.io/secret-type: repository
       stringData:
-        type: "{{ item.type | b64encode }}"
-        url: "{{ item.url | b64encode }}"
-        sshPrivateKey: "{{ item.sshPrivateKey | b64encode }}"
+        name: "{{ item.name }}"
+        project: "{{ item.project }}"
+        type: "{{ item.type }}"
+        url: "{{ item.url }}"
+        sshPrivateKey: "{{ item.sshPrivateKey }}"
   loop: "{{ gitops.repositories }}"
   no_log: true

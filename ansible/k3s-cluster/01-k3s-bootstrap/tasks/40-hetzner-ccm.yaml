@@ -1,6 +1,6 @@
 - name: Check if hcloud-ccm chart is already installed
   kubernetes.core.helm_info:
-    name: hcloud-ccm
+    name: infra-hcloud-ccm
     release_namespace: infra-hcloud
     binary_path: /snap/bin/helm
   register: helm_chart_info
