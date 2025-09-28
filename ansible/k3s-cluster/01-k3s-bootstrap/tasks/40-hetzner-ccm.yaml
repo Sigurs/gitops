@@ -47,7 +47,7 @@
 
 - name: Deploy hcloud-ccm
   kubernetes.core.helm:
-    name: hcloud-ccm
+    name: infra-hcloud-ccm
     chart_ref: hcloud/hcloud-cloud-controller-manager
     chart_version: v1.26.0
     release_namespace: infra-hcloud

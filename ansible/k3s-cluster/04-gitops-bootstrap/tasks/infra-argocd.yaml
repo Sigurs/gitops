@@ -22,8 +22,9 @@
 
 - name: deploy argocd
   kubernetes.core.helm:
-    name: argocd
+    name: infra-argocd
     chart_ref: argo/argo-cd
+    chart_version: v8.5.7
     release_namespace: infra-argocd
     create_namespace: true
     values_files:

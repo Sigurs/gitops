@@ -22,7 +22,7 @@
 
 - name: Deploy cilium
   kubernetes.core.helm:
-    name: cilium
+    name: infra-cilium
     chart_ref: cilium/cilium
     chart_version: v1.18.2
     release_namespace: infra-cilium
