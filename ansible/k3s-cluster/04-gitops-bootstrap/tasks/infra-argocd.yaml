@@ -46,14 +46,3 @@
   vars:
     manifest: "/tmp/gitops-public/{{ k8s.cluster_name_short }}/argocd-apps/argocd-apps-public.yaml"
   when: helm_chart_info.status is not defined
-
-- name: Wait for all pods in namespace to be ready
-  kubernetes.core.k8s_info:
-    api_version: v1
-    kind: Pod
-    namespace: infra-argocd
-    wait: true
-    wait_condition:
-      type: Ready
-      status: "True"
-    wait_timeout: 600
