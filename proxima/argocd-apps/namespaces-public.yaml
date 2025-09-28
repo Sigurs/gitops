@@ -14,5 +14,4 @@ spec:
     namespace: default
   syncPolicy:
     automated:
-      selfHeal: true
-      prune: true
+      enabled: true

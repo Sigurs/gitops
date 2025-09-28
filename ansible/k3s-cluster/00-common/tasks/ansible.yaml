@@ -1,5 +1,6 @@
 - name: install packages needed for ansible
   ansible.builtin.package:
     name:
-      - python3-yaml # kubernetes.core
+      - python3-yaml
+      - python3-kubernetes
     state: latest

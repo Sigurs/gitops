@@ -11,6 +11,8 @@
     - k3s_servers[0]
   roles:
     - 01-k3s-bootstrap
+  environment:
+    KUBECONFIG: /etc/rancher/k3s/k3s.yaml
 
 - name: apply k3s-agent
   become: yes
@@ -18,10 +20,12 @@
     - k3s_agents
   roles:
     - 03-k3s-agent
+  environment:
+    KUBECONFIG: /etc/rancher/k3s/k3s.yaml
 
-- name: apply gitops-bootstrap
-  become: yes
-  hosts:
-    - k3s_servers[0]
-  roles:
-    - 04-gitops-bootstrap
+#- name: apply gitops-bootstrap
+#  become: yes
+#  hosts:
+#    - k3s_servers[0]
+#  roles:
+#    - 04-gitops-bootstrap

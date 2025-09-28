@@ -1,0 +1,38 @@
+- name: Check if Cilium chart is already installed
+  kubernetes.core.helm_info:
+    name: cilium
+    release_namespace: infra-cilium
+    binary_path: /snap/bin/helm
+  register: helm_chart_info
+  failed_when: false  # Don't fail if chart is not found
+
+- name: Add cilium repository
+  kubernetes.core.helm_repository:
+    name: cilium
+    repo_url: https://helm.cilium.io
+    binary_path: /snap/bin/helm
+  when: helm_chart_info.status is not defined
+
+- name: Checkout gitops-public repo
+  ansible.builtin.git:
+    repo: '{{ gitops.public_repo }}'
+    dest: /tmp/gitops-public
+    update: yes
+  when: helm_chart_info.status is not defined
+
+- name: Deploy cilium
+  kubernetes.core.helm:
+    name: cilium
+    chart_ref: cilium/cilium
+    chart_version: v1.18.2
+    release_namespace: infra-cilium
+    create_namespace: true
+    update_repo_cache: true
+    values:
+      operator:
+        replicas: 1
+      routing-mode: native
+      ipv4NativeRoutingCIDR: "{{ k8s.cluster_cidr }}"
+  when: helm_chart_info.status is not defined
+
+

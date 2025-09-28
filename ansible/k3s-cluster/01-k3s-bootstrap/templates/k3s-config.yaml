@@ -4,9 +4,9 @@ cluster-init: true
 node-ip: {{ private_ip }}
 advertise-address: {{ private_ip }}
 node-external-ip: {{ ansible_host }}
-cluster-domain: {{ all_k3s.cluster_domain }}
-cluster-cidr: {{ all_k3s.cluster_cidr }}
-service-cidr: {{ all_k3s.service_cidr }}
+cluster-domain: {{ k8s.cluster_domain }}
+cluster-cidr: {{ k8s.cluster_cidr }}
+service-cidr: {{ k8s.service_cidr }}
 
 {% if k3s.node_labels is defined -%}
 node-label:
@@ -16,8 +16,15 @@ node-label:
 {% endif %}
 
 disable:
-  - traefik
+  - traefik # Let's deploy our own so it's decoupled from k3s updates.
   - local-storage
+
+# hcloud-ccm replaces the built-in cloud controller
+disable-cloud-controller: true
+
+# Some components need to be disabled so we can replace them with Cilium
+flannel-backend: "none"
+disable-network-policy: true
 
 # Taint control plane
 node-taint:
@@ -39,5 +46,6 @@ kubelet-arg:
   - "feature-gates=UserNamespacesSupport=true,UserNamespacesPodSecurityStandards=true"
   - 'streaming-connection-idle-timeout=5m'
   - "tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"
+  - "cloud-provider=external" # Needed for hcloud-ccm
 kube-proxy-arg:
   - "feature-gates=UserNamespacesSupport=true,UserNamespacesPodSecurityStandards=true"

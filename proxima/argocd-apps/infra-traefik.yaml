@@ -19,5 +19,4 @@ spec:
     namespace: infra-traefik
   syncPolicy:
     automated:
-      selfHeal: true
-      prune: true
+      enabled: true

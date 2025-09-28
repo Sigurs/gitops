@@ -38,12 +38,12 @@
     mode: '0600'
   notify: enable and restart k3s
 
-- name: /var/lib/rancher/k3s/server/manifests/netpol-kube-system.yaml
-  ansible.builtin.template:
-    src: k3s-netpol-kube-system.yaml
-    dest: /var/lib/rancher/k3s/server/manifests/netpol-kube-system.yaml
-    mode: '0600'
-  notify: enable and restart k3s
+#- name: /var/lib/rancher/k3s/server/manifests/netpol-kube-system.yaml
+#  ansible.builtin.template:
+#    src: k3s-netpol-kube-system.yaml
+#    dest: /var/lib/rancher/k3s/server/manifests/netpol-kube-system.yaml
+#    mode: '0600'
+#  notify: enable and restart k3s
 
 # - name: /var/lib/rancher/k3s/server/manifests/storageclass-local-path-retain.yaml
 #   ansible.builtin.template:
@@ -63,3 +63,6 @@
   when: not k3s_installed.stat.exists
   ansible.builtin.command: /tmp/k3s-installer.sh
   notify: enable and restart k3s
+
+- name: Force all notified handlers to run at this point, not waiting for normal sync points
+  ansible.builtin.meta: flush_handlers

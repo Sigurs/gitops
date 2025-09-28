@@ -14,5 +14,4 @@ spec:
     namespace: infra-argocd
   syncPolicy:
     automated:
-      selfHeal: true
-      prune: true
+      enabled: true

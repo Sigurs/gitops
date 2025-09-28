@@ -1,3 +1,5 @@
-- include_tasks: firewall.yaml
-- include_tasks: k3s.yaml
-- include_tasks: helm.yaml
+#- include_tasks: firewall.yaml
+- include_tasks: 20-helm.yaml
+- include_tasks: 30-k3s.yaml
+- include_tasks: 40-hetzner-ccm.yaml
+- include_tasks: 50-cilium.yaml

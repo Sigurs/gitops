@@ -1,0 +1,88 @@
+- name: firewall / remove ufw
+  ansible.builtin.package:
+    name:
+      - ufw
+    state: absent
+
+- name: firewall / install firewalld
+  ansible.builtin.package:
+    name:
+      - firewalld
+    state: latest
+    update_cache: yes
+  notify: enable and restart firewalld
+
+# k3s wants pod and service dirs in the trusted zone, so let's do that.
+
+- name: firewall / allow k8s/pods
+  ansible.posix.firewalld:
+    zone: trusted
+    source: "{{ k8s.cluster_cidr }}"
+    state: enabled
+    permanent: true
+  notify: enable and restart firewalld
+
+- name: firewall / allow k8s/services
+  ansible.posix.firewalld:
+    zone: trusted
+    source: "{{ k8s.service_cidr }}"
+    state: enabled
+    permanent: true
+  notify: enable and restart firewalld
+
+- name: firewall / add CNI interfaces to trusted zone
+  ansible.posix.firewalld:
+    zone: trusted
+    interface: "{{ item }}"
+    permanent: true
+    state: enabled
+  loop:
+    - cni0
+    - flannel.1
+  ignore_errors: yes  # Interfaces may not exist during initial setup
+  notify: enable and restart firewalld
+
+- name: firewall / get network interface facts
+  setup:
+    gather_subset:
+      - network
+
+- name: firewall / find internal interface by IP address
+  set_fact:
+    private_interface: "{{ item }}"
+  loop: "{{ ansible_interfaces }}"
+  when: 
+    - hostvars[inventory_hostname]['ansible_' + item] is defined
+    - hostvars[inventory_hostname]['ansible_' + item].get('ipv4', {}).get('address') == private_ip
+
+- name: firewall / fail if private_interface not found
+  fail:
+    msg: "No interface found private_interface {{ private_ip }}"
+  when: private_interface is not defined
+
+
+- name: firewall / private / create
+  ansible.posix.firewalld:
+    zone: private
+    permanent: true
+    state: present
+  notify: enable and restart firewalld
+
+- name: firewall / private / add private interface to zone
+  ansible.posix.firewalld:
+    zone: private
+    interface: "{{ private_interface }}"
+    permanent: true
+    state: enabled
+  notify: enable and restart firewalld
+
+- name: firewall / private / allow common
+  ansible.posix.firewalld:
+    zone: private
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+  loop:
+    - "10250/tcp"       # kubelet metrics
+    - "8472/udp"        # Flannel VXLAN
+  notify: enable and restart firewalld

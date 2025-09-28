@@ -1,8 +1,7 @@
-- name: enable and restart firewalld
+- name: UFW Restart
   ansible.builtin.systemd:
-    name: firewalld
+    name: ufw
     state: restarted
-    enabled: yes
     daemon_reload: yes
 
 - name: enable and restart unattended-upgrades

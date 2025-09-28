@@ -13,4 +13,5 @@ spec:
   sourceRepos:
   - https://github.com/Sigurs/gitops.git
   - https://traefik.github.io/charts
+  - https://charts.hetzner.cloud
   

@@ -1,0 +1,59 @@
+- name: Check if hcloud-ccm chart is already installed
+  kubernetes.core.helm_info:
+    name: hcloud-ccm
+    release_namespace: infra-hcloud
+    binary_path: /snap/bin/helm
+  register: helm_chart_info
+  failed_when: false  # Don't fail if chart is not found
+
+- name: Add hcloud repository
+  kubernetes.core.helm_repository:
+    name: hcloud
+    repo_url: https://charts.hetzner.cloud
+    binary_path: /snap/bin/helm
+  when: helm_chart_info.status is not defined
+
+- name: Checkout gitops-public repo
+  ansible.builtin.git:
+    repo: '{{ gitops.public_repo }}'
+    dest: /tmp/gitops-public
+    update: yes
+  when: helm_chart_info.status is not defined
+
+- name: Create infra-hcloud namespace
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: infra-hcloud
+  when: helm_chart_info.status is not defined
+
+- name: Create hcloud secret
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: hcloud
+        namespace: infra-hcloud
+      data:
+        token: "{{ hcloud.cluster_token | b64encode }}"
+        network: "{{ hcloud.cluster_network | b64encode }}"
+  when: helm_chart_info.status is not defined
+
+
+- name: Deploy hcloud-ccm
+  kubernetes.core.helm:
+    name: hcloud-ccm
+    chart_ref: hcloud/hcloud-cloud-controller-manager
+    chart_version: v1.26.0
+    release_namespace: infra-hcloud
+    create_namespace: true
+    values_files:
+      - "/tmp/gitops-public/{{ k8s.cluster_name_short }}/infra/hcloud/hcloud-ccm-values.yaml"
+    update_repo_cache: true
+  when: helm_chart_info.status is not defined
+

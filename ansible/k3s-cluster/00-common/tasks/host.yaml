@@ -2,7 +2,7 @@
   ansible.builtin.blockinfile:
     path: /etc/hosts
     block: |
-      {{ hostvars[item]['private_ip'] }} {{ all_k3s.cluster_domain }}
+      {{ hostvars[item]['private_ip'] }} {{ k8s.cluster_domain }}
     marker: "# {mark} ANSIBLE MANAGED BLOCK cluster_domain"
     prepend_newline: true
   loop: "{{ groups['k3s_servers'] }}"

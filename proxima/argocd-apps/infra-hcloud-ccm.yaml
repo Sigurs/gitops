@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-hcloud-ccm
+spec:
+  project: proxima-infra
+  sources:
+    - chart: hcloud/hcloud-cloud-controller-manager
+      repoURL: https://charts.hetzner.cloud
+      targetRevision: v1.26.0
+      helm:
+        valueFiles:
+          - $gitops-public/proxima/infra/hcloud/hcloud-ccm-values.yaml
+    - repoURL: 'https://github.com/Sigurs/gitops.git'
+      targetRevision: HEAD
+      ref: gitops-public
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: infra-hcloud  
+  # syncPolicy:
+  #   automated:
+  #     enabled: true

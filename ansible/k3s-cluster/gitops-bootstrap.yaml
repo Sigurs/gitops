@@ -4,3 +4,5 @@
     - k3s_servers[0]
   roles:
     - 04-gitops-bootstrap
+  environment:
+    KUBECONFIG: /etc/rancher/k3s/k3s.yaml
