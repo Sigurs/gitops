@@ -1,4 +1,4 @@
-- name: add cluster_domain /etc/hosts
+- name: Add cluster_domain /etc/hosts
   ansible.builtin.blockinfile:
     path: /etc/hosts
     block: |
@@ -7,7 +7,7 @@
     prepend_newline: true
   loop: "{{ groups['k3s_servers'] }}"
 
-- name: add k3s_servers /etc/hosts
+- name: Add k3s_servers /etc/hosts
   ansible.builtin.blockinfile:
     path: /etc/hosts
     block: |
@@ -16,7 +16,7 @@
     prepend_newline: true
   loop: "{{ groups['k3s_servers'] }}"
 
-- name: add k3s_agents /etc/hosts
+- name: Add k3s_agents /etc/hosts
   ansible.builtin.blockinfile:
     path: /etc/hosts
     block: |
@@ -25,10 +25,10 @@
     prepend_newline: true
   loop: "{{ groups['k3s_agents'] }}"
 
-- name: set hostname
+- name: Set hostname
   hostname:
    name: '{{ inventory_hostname }}'
   notify: reboot
 
-- name: flush handlers
+- name: Flush handlers
   ansible.builtin.meta: flush_handlers

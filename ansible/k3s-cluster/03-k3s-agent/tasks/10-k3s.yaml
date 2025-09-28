@@ -1,50 +1,61 @@
-- name: apt install uidmap
-  ansible.builtin.package:
-    name:
-      - uidmap
-    state: latest
-
-- name: check for installation
+- name: Check for installation
   stat:
     path: /usr/local/bin/k3s
   register: k3s_installed
   changed_when: false
 
-- name: create /etc/rancher/k3s
+- name: Create /etc/rancher/k3s
   file: 
     path: /etc/rancher/k3s
     recurse: true
     state: directory
     mode: '0600'
 
-- name: /etc/rancher/k3s/config.yaml
+- name: Place /etc/rancher/k3s/config.yaml
   ansible.builtin.template:
     src: k3s-config.yaml
     dest: /etc/rancher/k3s/config.yaml
     mode: '0600'
   notify: enable and restart k3s-agent
 
-- name: download installer
+- name: Download k3s installer
   when: not k3s_installed.stat.exists
   get_url:
     url: https://get.k3s.io
     dest: '/tmp/k3s-installer.sh'
     mode: '0770'
 
-- name: get k3s node token
+- name: Get k3s node token
   when: not k3s_installed.stat.exists
   ansible.builtin.slurp:
     src: /var/lib/rancher/k3s/server/node-token
   register: node_token
   delegate_to: "{{ groups['k3s_servers'][0] }}"
-#  delegate_facts: true
   run_once: true
 
-- name: install k3s agent
+- name: Install k3s agent
   when: not k3s_installed.stat.exists
   ansible.builtin.command: /tmp/k3s-installer.sh
   environment:
     K3S_TOKEN: "{{ node_token.content | b64decode | trim }}"
-    # Using cluster domain only works if DNS is set up, not with /etc/hosts for some reason as it resolves to public.
     K3S_URL: "https://{{ k8s.cluster_domain }}:6443"
   notify: enable and restart k3s-agent
+
+- name: Wait for cilium to be ready before proceeding
+  kubernetes.core.k8s_info:
+    api_version: v1
+    kind: Pod
+    namespace: infra-cilium
+    field_selectors:
+      - "spec.nodeName={{ inventory_hostname }}"
+    wait: true
+    wait_condition:
+      type: Ready
+      status: "True"
+    wait_timeout: 600
+  delegate_to: "{{ groups['k3s_servers'][0] }}"
+  when: not k3s_installed.stat.exists
+
+- name: Reboot for Cilium
+  ansible.builtin.reboot:
+  when: not k3s_installed.stat.exists

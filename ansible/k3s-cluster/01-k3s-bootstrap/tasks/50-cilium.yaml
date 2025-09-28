@@ -34,3 +34,53 @@
       routing-mode: native
       ipv4NativeRoutingCIDR: "{{ k8s.cluster_cidr }}"
   when: helm_chart_info.status is not defined
+
+- name: Wait for all pods in cilium namespace to be ready
+  kubernetes.core.k8s_info:
+    api_version: v1
+    kind: Pod
+    namespace: infra-cilium
+    wait: true
+    wait_condition:
+      type: Ready
+      status: "True"
+    wait_timeout: 600
+  when: helm_chart_info.status is not defined
+
+# Cilium sometimes needs a node restart to properly function, so let's do that.
+- name: Reboot for Cilium
+  ansible.builtin.reboot:
+  when: helm_chart_info.status is not defined
+
+- name: Wait for kubectl to connect to API
+  shell: kubectl version
+  register: kubectl_version
+  until: kubectl_version.rc == 0
+  retries: 60
+  delay: 5
+  ignore_errors: true
+  when: helm_chart_info.status is not defined
+
+- name: Wait for all pods in cilium namespace to be ready
+  kubernetes.core.k8s_info:
+    api_version: v1
+    kind: Pod
+    namespace: infra-cilium
+    wait: true
+    wait_condition:
+      type: Ready
+      status: "True"
+    wait_timeout: 600
+  when: helm_chart_info.status is not defined
+
+- name: Wait for all pods in kube-system namespace to be ready
+  kubernetes.core.k8s_info:
+    api_version: v1
+    kind: Pod
+    namespace: kube-system
+    wait: true
+    wait_condition:
+      type: Ready
+      status: "True"
+    wait_timeout: 600
+  when: helm_chart_info.status is not defined
