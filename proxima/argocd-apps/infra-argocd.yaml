@@ -5,15 +5,15 @@ metadata:
 spec:
   project: proxima-infra
   sources:
-    - chart: argo-cd
-      repoURL: https://argoproj.github.io/argo-helm
-      targetRevision: 8.5.7
-      helm:
-        valueFiles:
-          - $gitops-public/proxima/infra/argocd/values.yaml
-    - repoURL: 'https://github.com/Sigurs/gitops.git'
-      targetRevision: HEAD
-      ref: gitops-public
+    # - chart: argo-cd
+    #   repoURL: https://argoproj.github.io/argo-helm
+    #   targetRevision: 8.5.7
+    #   helm:
+    #     valueFiles:
+    #       - $gitops-public/proxima/infra/argocd/values.yaml
+    # - repoURL: 'https://github.com/Sigurs/gitops.git'
+    #   targetRevision: HEAD
+    #   ref: gitops-public
     - repoURL: https://github.com/Sigurs/gitops.git
       targetRevision: HEAD
       path: proxima/infra/argocd
