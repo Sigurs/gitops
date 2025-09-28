@@ -14,9 +14,9 @@ spec:
     - repoURL: 'https://github.com/Sigurs/gitops.git'
       targetRevision: HEAD
       ref: gitops-public
-    # - repoURL: https://github.com/Sigurs/gitops.git
-    #   targetRevision: HEAD
-    #   path: proxima/infra/hcloud
+    - repoURL: https://github.com/Sigurs/gitops.git
+      targetRevision: HEAD
+      path: proxima/infra/argocd
   destination:
     server: https://kubernetes.default.svc
     namespace: infra-argocd  
