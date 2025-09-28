@@ -12,6 +12,8 @@ spec:
     server: 'https://kubernetes.default.svc'
   sourceRepos:
   - https://github.com/Sigurs/gitops.git
+  - git@github.com:Sigurs/gitops-private.git
   - https://traefik.github.io/charts
   - https://charts.hetzner.cloud
+  - https://helm.cilium.io
   
