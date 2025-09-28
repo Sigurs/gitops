@@ -7,5 +7,7 @@
       complete -F __start_kubectl k
       alias oc=kubectl
       complete -F __start_kubectl oc
+
+      export KUBECONFIG=/etc/rancher/k3s/k3s.yaml 
     marker: "# {mark} ANSIBLE MANAGED BLOCK kubectl"
     prepend_newline: true
