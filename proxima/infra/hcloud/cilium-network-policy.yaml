@@ -31,7 +31,7 @@ spec:
               protocol: TCP
 
     # Hetzner instance metadata service (local to node)
-    - toCIDRs:
+    - toCIDR:
         - 169.254.169.254/32
       toPorts:
         - ports:
