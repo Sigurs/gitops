@@ -57,15 +57,15 @@
     update_repo_cache: true
   when: helm_chart_info.status is not defined
 
-- name: Wait for all pods in namespace to be ready
-  kubernetes.core.k8s_info:
-    api_version: v1
-    kind: Pod
-    namespace: infra-hcloud
-    wait: true
-    wait_condition:
-      type: Ready
-      status: "True"
-    wait_timeout: 600
-  delegate_to: "{{ groups['k3s_servers'][0] }}"
-  when: helm_chart_info.status is not defined
+# - name: Wait for all pods in namespace to be ready
+#   kubernetes.core.k8s_info:
+#     api_version: v1
+#     kind: Pod
+#     namespace: infra-hcloud
+#     wait: true
+#     wait_condition:
+#       type: Ready
+#       status: "True"
+#     wait_timeout: 600
+#   delegate_to: "{{ groups['k3s_servers'][0] }}"
+#   when: helm_chart_info.status is not defined

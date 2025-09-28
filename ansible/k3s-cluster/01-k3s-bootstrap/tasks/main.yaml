@@ -2,3 +2,4 @@
 - include_tasks: 30-k3s.yaml
 - include_tasks: 40-hetzner-ccm.yaml
 - include_tasks: 50-cilium.yaml
+- include_tasks: 90-bash.yaml

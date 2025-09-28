@@ -29,7 +29,7 @@ spec:
         - ports:
             - port: "443"
               protocol: TCP
-              
+
     # Hetzner API access
     - toFQDNs:
-        - matchPattern: "api.hetzner.de"
+        - matchPattern: "api.hetzner.cloud"
