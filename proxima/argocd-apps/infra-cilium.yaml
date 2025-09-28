@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-cilium
+spec:
+  project: proxima-infra
+  sources:
+    - chart: cilium
+      repoURL: https://helm.cilium.io
+      targetRevision: v1.18.2
+      helm:
+        valueFiles:
+          - $gitops-private/proxima/infra/cilium/values.yaml
+    - repoURL: git@github.com:Sigurs/gitops-private.git
+      targetRevision: HEAD
+      ref: gitops-private
+    # - repoURL: git@github.com:Sigurs/gitops-private.git
+    #   targetRevision: HEAD
+    #   path: proxima/infra/cilium
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: infra-cilium  
+  # syncPolicy:
+  #   automated:
+  #     enabled: true
