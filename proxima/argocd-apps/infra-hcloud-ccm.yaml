@@ -5,7 +5,7 @@ metadata:
 spec:
   project: proxima-infra
   sources:
-    - chart: hcloud/hcloud-cloud-controller-manager
+    - chart: hcloud-cloud-controller-manager
       repoURL: https://charts.hetzner.cloud
       targetRevision: v1.26.0
       helm:

@@ -5,7 +5,7 @@ metadata:
 spec:
   project: proxima-infra
   sources:
-    - chart: hcloud/hcloud-csi
+    - chart: hcloud-csi
       repoURL: https://charts.hetzner.cloud
       targetRevision: v2.18.0
   destination:
