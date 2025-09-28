@@ -4,16 +4,37 @@ Combined for ease of use.
 
 The long-term goal is to combine numerous independent docker-compose and kubernetes setups into 2-3 clusters for ease of management.
 
-# Drawing (work in progress)
-![](assets/drawing.png)
+## General Information
+This is the public gitops repo, but a private one also exists.  
+Both are used to deploy software to these clusters, so not everything is visible here.  
+This also has an effect on deployment patterns.  
+
+With regards to security, the clusters default to enforcing UserNamespaces and restricted PodSecurityAdmission profiles.  
+Firewalls and NetworkPolicies are mainly default deny for incoming and outgoing traffic.  
+Where Cilium is used, Cilium's CiliumClusterwideNetworkPolicies are used for host firewall rules.
+
 
 # Clusters
+
+## Proxima
+Cluster located mainly in Hetzner Cloud.  
+Replaces the old hcloud-cluster01.  
+
+## Cluster info
+Kubernetes: k3s  
+Networking:
+- CNI used is Cilium that is configured to use native routing. Traffic routed through Hetzner Cloud Networks.
+- Instead of utilizing Hetzner's (paid) load balancers, by default Cloudflared is used for incoming traffic.
+
 
 ## Cluster: hcloud-cluster01
 Cluster in Hetzner cloud. Publically accessible.<br>
 Bit of a fast setup and not ideal.
 
 ## Cluster: home-k8s
+### Drawing (work in progress)
+![](assets/drawing.png)
+
 Cluster located at home. No public access.<br>
 HA is not the goal here due to different hardware.<br>
 Utilizes Ansible.

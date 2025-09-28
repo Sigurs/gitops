@@ -46,3 +46,20 @@
   vars:
     manifest: "/tmp/gitops-public/{{ k8s.cluster_name_short }}/argocd-apps/argocd-apps-public.yaml"
   when: helm_chart_info.status is not defined
+
+- name: Add ArgoCD repository secrets
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: "{{ item.name }}-repo"
+        namespace: infra-argocd
+        labels:
+          argocd.argoproj.io/secret-type: repository
+      stringData:
+        type: "{{ item.type | b64encode }}"
+        url: "{{ item.url | b64encode }}"
+        sshPrivateKey: "{{ item.sshPrivateKey | b64encode }}"
+  loop: "{{ gitops.repositories }}"
+  no_log: true
