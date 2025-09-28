@@ -7,7 +7,7 @@ spec:
   sources:
     - chart: hcloud/hcloud-csi
       repoURL: https://charts.hetzner.cloud
-      targetRevision: v2.18.0
+      targetRevision: 2.18.0
   destination:
     server: https://kubernetes.default.svc
     namespace: infra-hcloud  
