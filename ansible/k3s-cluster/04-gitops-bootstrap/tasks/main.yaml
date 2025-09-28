@@ -1,2 +1,1 @@
-- include_tasks: helm.yaml
 - include_tasks: infra-argocd.yaml

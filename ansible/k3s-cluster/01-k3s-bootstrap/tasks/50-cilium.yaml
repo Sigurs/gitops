@@ -34,5 +34,3 @@
       routing-mode: native
       ipv4NativeRoutingCIDR: "{{ k8s.cluster_cidr }}"
   when: helm_chart_info.status is not defined
-
-
