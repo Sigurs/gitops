@@ -22,13 +22,18 @@ spec:
       containers:
       - name: cloudflared
         image: cloudflare/cloudflared:2025.9.1
+        env:
+          - name: TUNNEL_METRICS
+            value: "0.0.0.0:2000"
+          - name: NO_AUTOUPDATE
+            value: "true"
+          - name: TUNNEL_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: infra-cloudflared
+                key: TUNNEL_TOKEN
         args:
         - tunnel
-        # Points cloudflared to the config file, which configures what
-        # cloudflared will actually do. This file is created by a ConfigMap
-        # below.
-        - --config
-        - /etc/cloudflared/config/config.yaml
         - run
         livenessProbe:
           httpGet:
@@ -39,35 +44,8 @@ spec:
           failureThreshold: 1
           initialDelaySeconds: 10
           periodSeconds: 10
-        volumeMounts:
-        - name: config
-          mountPath: /etc/cloudflared/config
-          readOnly: true
-        # Each tunnel has an associated "credentials file" which authorizes machines
-        # to run the tunnel. cloudflared will read this file from its local filesystem,
-        # and it'll be stored in a k8s secret.
-        - name: creds
-          mountPath: /etc/cloudflared/creds
-          readOnly: true
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
               - ALL
-      volumes:
-      - name: creds
-        secret:
-          # By default, the credentials file will be created under ~/.cloudflared/<tunnel ID>.json
-          # when you run `cloudflared tunnel create`. You can move it into a secret by using:
-          # ```sh
-          # kubectl create secret generic tunnel-credentials \
-          # --from-file=credentials.json=/Users/yourusername/.cloudflared/<tunnel ID>.json
-          # ```
-          secretName: infra-cloudflared
-      # Create a config.yaml file from the ConfigMap below.
-      - name: config
-        configMap:
-          name: infra-cloudflared
-          items:
-          - key: config.yaml
-            path: config.yaml
