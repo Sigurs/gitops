@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-cloudflared
+spec:
+  project: proxima-infra
+  source:
+    repoURL: https://github.com/Sigurs/gitops.git
+    targetRevision: HEAD
+    path: proxima/infra/cloudflared
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: infra-cloudflared
+#  syncPolicy:
+#    automated:
+#      enabled: true
