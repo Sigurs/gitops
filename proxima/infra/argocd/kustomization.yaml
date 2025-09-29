@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - project-proxima-infra.yaml
+  - cilium-network-policy.yaml

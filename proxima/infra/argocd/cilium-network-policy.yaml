@@ -1,0 +1,45 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: infra-argocd
+spec:
+  endpointSelector: {}
+  ingress:
+    - {}
+  egress:
+    # DNS access, restrict queries.
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "github.com"
+              - matchPattern: "argoproj.github.io"
+              - matchPattern: "traefik.github.io"
+              - matchPattern: "charts.hetzner.cloud"
+              - matchPattern: "helm.cilium.io"
+
+    # Kubernetes API access
+    - toServices:
+        - k8sService:
+            serviceName: kubernetes
+            namespace: default
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+
+    # Restrict access to specific FQDNs
+    - toFQDNs:
+      - matchPattern: "github.com"
+      - matchPattern: "argoproj.github.io"
+      - matchPattern: "traefik.github.io"
+      - matchPattern: "charts.hetzner.cloud"
+      - matchPattern: "helm.cilium.io"
+
+  
