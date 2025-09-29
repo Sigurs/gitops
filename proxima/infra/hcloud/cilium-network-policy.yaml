@@ -5,8 +5,13 @@ metadata:
 spec:
   endpointSelector: {}
   ingress:
-    - {}
+    # Allow within Namespace
+    - fromEndpoints:
+      - {}
   egress:
+    # Allow within Namespace
+    - fromEndpoints:
+      - {}
     # DNS access, restrict queries.
     - toEndpoints:
         - matchLabels:
