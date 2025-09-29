@@ -26,6 +26,7 @@ spec:
               - matchPattern: "*.proxima.sigurs.io"
               - matchPattern: "*.svc.proxima.sigurs.io"
               - matchPattern: "*.infra-cloudflared.svc.proxima.sigurs.io"
+              - matchPattern: "*.argotunnel.com"
 
     # Kubernetes API access
     - toServices:
@@ -36,3 +37,7 @@ spec:
         - ports:
             - port: "443"
               protocol: TCP
+
+    # Argo tunnel
+    - toFQDNs:
+        - matchPattern: "*.argotunnel.com"
