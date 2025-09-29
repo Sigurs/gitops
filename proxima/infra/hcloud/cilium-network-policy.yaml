@@ -10,7 +10,7 @@ spec:
       - {}
   egress:
     # Allow within Namespace
-    - fromEndpoints:
+    - toEndpoints:
       - {}
     # DNS access, restrict queries.
     - toEndpoints:
