@@ -21,13 +21,6 @@ spec:
         - ports:
             - port: "53"
               protocol: UDP
-          rules:
-            dns:
-              - matchPattern: "*.proxima.sigurs.io"
-              - matchPattern: "*.svc.proxima.sigurs.io"
-              - matchPattern: "*.infra-cloudflared.svc.proxima.sigurs.io"
-              - matchPattern: "region1.v2.argotunnel.com"
-              - matchPattern: "*.argotunnel.com"
 
     # Kubernetes API access
     - toServices:
