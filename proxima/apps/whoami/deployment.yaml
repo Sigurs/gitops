@@ -18,7 +18,6 @@ spec:
         runAsGroup: 65532
         runAsNonRoot: true
         runAsUser: 65532
-        allowPrivilegeEscalation: false
         seccompProfile:
           type: RuntimeDefault
       containers:
