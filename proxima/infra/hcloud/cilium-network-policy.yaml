@@ -23,6 +23,8 @@ spec:
               protocol: UDP
           rules:
             dns:
+              - matchPattern: "*.cluster.local"
+              - matchPattern: "*.svc.cluster.local"
               - matchPattern: "api.hetzner.cloud"
 
     # Kubernetes API access
