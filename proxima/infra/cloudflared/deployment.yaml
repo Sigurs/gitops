@@ -13,6 +13,7 @@ spec:
         app: infra-cloudflared
     spec:
       automountServiceAccountToken: false
+      hostUsers: false
       securityContext:
         runAsGroup: 65532
         runAsNonRoot: true

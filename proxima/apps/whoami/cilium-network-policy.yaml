@@ -1,0 +1,16 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: apps-whoami
+spec:
+  endpointSelector: {}
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app: infra-cloudflared
+            io.kubernetes.pod.namespace: infra-cloudflared
+      toPorts:
+        - ports:
+            - port: "80"
+  egress:
+    - {}

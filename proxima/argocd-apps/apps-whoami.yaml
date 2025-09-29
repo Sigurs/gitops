@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps-whoami
+spec:
+  project: proxima-apps
+  source:
+    repoURL: https://github.com/Sigurs/gitops.git
+    targetRevision: HEAD
+    path: proxima/apps/whoami
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps-whoami
+#  syncPolicy:
+#    automated:
+#      enabled: true
