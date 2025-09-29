@@ -25,7 +25,7 @@ spec:
             dns:
               - matchPattern: "*.proxima.sigurs.io"
               - matchPattern: "*.svc.proxima.sigurs.io"
-              - matchPattern: "*.infra-cilium.svc.proxima.sigurs.io"
+              - matchPattern: "*.infra-hcloud.svc.proxima.sigurs.io"
               - matchPattern: "api.hetzner.cloud"
 
     # Kubernetes API access
