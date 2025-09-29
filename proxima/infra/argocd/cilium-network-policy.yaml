@@ -2,6 +2,8 @@ apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
   name: infra-argocd
+  annotations:
+    policy.cilium.io/audit-mode: "true"
 spec:
   endpointSelector: {}
   ingress:
