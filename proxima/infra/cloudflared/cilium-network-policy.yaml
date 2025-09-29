@@ -26,6 +26,7 @@ spec:
               - matchPattern: "*.proxima.sigurs.io"
               - matchPattern: "*.svc.proxima.sigurs.io"
               - matchPattern: "*.infra-cloudflared.svc.proxima.sigurs.io"
+              - matchPattern: "region1.v2.argotunnel.com"
               - matchPattern: "*.argotunnel.com"
 
     # Kubernetes API access
@@ -40,4 +41,5 @@ spec:
 
     # Argo tunnel
     - toFQDNs:
+        - matchPattern: "region1.v2.argotunnel.com"
         - matchPattern: "*.argotunnel.com"
