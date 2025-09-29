@@ -32,6 +32,16 @@ spec:
             - port: "443"
               protocol: TCP
 
+    # Traefik
+    - toServices:
+        - k8sService:
+            serviceName: infra-traefik
+            namespace: infra-traefik
+      toPorts:
+        - ports:
+            - port: "80"
+              protocol: TCP
+
 #    # Argo tunnel
 #    - toFQDNs:
 #      - matchPattern: "region1.v2.argotunnel.com"
