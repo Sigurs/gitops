@@ -7,7 +7,7 @@ spec:
   sources:
     - chart: argo-cd
       repoURL: https://argoproj.github.io/argo-helm
-      targetRevision: v8.5.7
+      targetRevision: v8.5.8
       helm:
         valueFiles:
           - $gitops-public/proxima/infra/argocd/values.yaml
