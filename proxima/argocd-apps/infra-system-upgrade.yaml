@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: infra-system-upgrade
 spec:
-  project: home-k8s.admin
+  project: proxima-infra
   source:
     repoURL: https://github.com/Sigurs/gitops.git
     targetRevision: HEAD
