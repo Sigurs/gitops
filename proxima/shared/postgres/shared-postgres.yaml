@@ -10,6 +10,5 @@ spec:
   managed:
     roles:
       - name: shared-keycloak
-        ensure: present
         login: true
 
