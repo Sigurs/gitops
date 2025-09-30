@@ -4,6 +4,9 @@ Combined for ease of use.
 
 The long-term goal is to combine numerous independent docker-compose and kubernetes setups into 2-3 clusters for ease of management.
 
+# Ansible
+Some Keep It Simple Stupid
+
 ## General Information
 This is the public gitops repo, but a private one also exists.  
 Both are used to deploy software to these clusters, so not everything is visible here.  

@@ -19,7 +19,7 @@ spec:
       path: proxima/infra/argocd
   destination:
     server: https://kubernetes.default.svc
-    namespace: infra-argocd  
-  # syncPolicy:
-  #   automated:
-  #     enabled: true
+    namespace: infra-argocd
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true

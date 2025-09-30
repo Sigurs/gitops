@@ -11,6 +11,6 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: infra-cloudflared
-#  syncPolicy:
-#    automated:
-#      enabled: true
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true

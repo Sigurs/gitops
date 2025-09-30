@@ -19,7 +19,7 @@ spec:
     #   path: proxima/infra/cilium
   destination:
     server: https://kubernetes.default.svc
-    namespace: infra-cilium  
-  # syncPolicy:
-  #   automated:
-  #     enabled: true
+    namespace: infra-cilium 
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true

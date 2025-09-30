@@ -7,7 +7,7 @@ plugins:
     kind: PodSecurityConfiguration
     defaults:
       enforce: "restricted"
-      # Latest points to v1.26, which does not work with UserNamespaces.
+      # At the time of writing, "latest" *-versions point to v1.26, which do not support UserNamespaces.
       enforce-version: "v1.32"
       audit: "restricted"
       # Latest points to v1.26, which does not work with UserNamespaces.
@@ -18,4 +18,4 @@ plugins:
     exemptions:
       usernames: []
       runtimeClasses: []
-      namespaces: [kube-system, cis-operator-system, system-upgrade-controller, csi-driver-nfs, csi-driver-smb, istio-system, infra-hcloud, infra-cilium]
+      namespaces: [kube-system, infra-system-upgrade, infra-hcloud, infra-cilium]

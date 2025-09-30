@@ -10,7 +10,7 @@ spec:
       targetRevision: v2.18.0
   destination:
     server: https://kubernetes.default.svc
-    namespace: infra-hcloud  
-  # syncPolicy:
-  #   automated:
-  #     enabled: true
+    namespace: infra-hcloud
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true

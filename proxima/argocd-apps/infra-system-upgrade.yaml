@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-system-upgrade
+spec:
+  project: home-k8s.admin
+  source:
+    repoURL: https://github.com/Sigurs/gitops.git
+    targetRevision: HEAD
+    path: proxima/infra/system-upgrade
+  # CRD has a field that won't sync and results in Out Of Sync. Ignore that field.
+  ignoreDifferences:
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: plans.upgrade.cattle.io
+      jsonPointers:
+        - /spec/preserveUnknownFields
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: infra-system-upgrade
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
