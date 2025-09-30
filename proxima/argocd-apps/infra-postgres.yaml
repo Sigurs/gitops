@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-postgres
+spec:
+  project: proxima-infra
+  sources:
+    - chart: cnpg
+      repoURL: https://cloudnative-pg.github.io/charts
+      targetRevision: v0.26.0
+      helm:
+        valuesObject:
+          config:
+            # We have no need to run the operator cluster-wide, so restrict to a single namespace.
+            clusterWide: false
+    - repoURL: https://github.com/Sigurs/gitops.git
+      targetRevision: HEAD
+      path: proxima/infra/postgres
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: infra-postgres
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true

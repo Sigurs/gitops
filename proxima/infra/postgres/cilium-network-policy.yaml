@@ -1,0 +1,38 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: infra-postgres
+spec:
+  endpointSelector: {}
+  ingress:
+    # Allow within Namespace
+    - fromEndpoints:
+      - {}
+  egress:
+    # Allow within Namespace
+    - toEndpoints:
+      - {}
+    # DNS access, restrict queries.
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*.proxima.sigurs.io"
+              - matchPattern: "*.svc.proxima.sigurs.io"
+              - matchPattern: "*.infra-postgres.svc.proxima.sigurs.io"
+
+    # Kubernetes API access
+    - toServices:
+        - k8sService:
+            serviceName: kubernetes
+            namespace: default
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP

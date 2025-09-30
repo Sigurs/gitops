@@ -32,6 +32,7 @@ spec:
               - matchPattern: "traefik.github.io"
               - matchPattern: "charts.hetzner.cloud"
               - matchPattern: "helm.cilium.io"
+              - matchPattern: "cloudnative-pg.github.io"
 
     # Kubernetes API access
     - toServices:
@@ -51,5 +52,6 @@ spec:
       - matchPattern: "traefik.github.io"
       - matchPattern: "charts.hetzner.cloud"
       - matchPattern: "helm.cilium.io"
+      - matchPattern: "cloudnative-pg.github.io"
 
   
