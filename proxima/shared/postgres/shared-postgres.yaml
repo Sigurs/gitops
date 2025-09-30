@@ -11,4 +11,6 @@ spec:
     roles:
       - name: shared-keycloak
         login: true
-
+        inherit: true
+        ensure: present
+        connectionLimit: "-1"
