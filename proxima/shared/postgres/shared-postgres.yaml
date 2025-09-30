@@ -6,3 +6,10 @@ spec:
   instances: 1
   storage:
     size: 1Gi
+
+  managed:
+    roles:
+      - name: shared-keycloak
+        ensure: present
+        login: true
+
