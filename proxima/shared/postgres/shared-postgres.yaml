@@ -14,3 +14,5 @@ spec:
         inherit: true
         ensure: present
         connectionLimit: -1
+        passwordSecret:
+          name: role-shared-keycloak
