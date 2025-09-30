@@ -5,7 +5,7 @@ metadata:
 spec:
   project: proxima-infra
   sources:
-    - chart: cnpg
+    - chart: cloudnative-pg
       repoURL: https://cloudnative-pg.github.io/charts
       targetRevision: v0.26.0
       helm:
