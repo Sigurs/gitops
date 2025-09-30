@@ -1,7 +1,7 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: infra-postgres
+  name: shared-postgresql
 spec:
   endpointSelector: {}
   ingress:
@@ -25,7 +25,7 @@ spec:
             dns:
               - matchPattern: "*.proxima.sigurs.io"
               - matchPattern: "*.svc.proxima.sigurs.io"
-              - matchPattern: "*.infra-postgres.svc.proxima.sigurs.io"
+              - matchPattern: "*.shared-postgresql.svc.proxima.sigurs.io"
 
     # Kubernetes API access
     - toServices:

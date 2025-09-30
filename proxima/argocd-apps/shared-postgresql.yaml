@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-postgres
+  name: shared-postgresql
 spec:
   project: proxima-infra
   sources:
@@ -15,10 +15,10 @@ spec:
             clusterWide: false
     - repoURL: https://github.com/Sigurs/gitops.git
       targetRevision: HEAD
-      path: proxima/infra/postgres
+      path: proxima/shared/postgresql
   destination:
     server: https://kubernetes.default.svc
-    namespace: infra-postgres
+    namespace: shared-postgresql
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
