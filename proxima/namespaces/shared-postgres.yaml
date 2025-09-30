@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: shared-postgresql
+  name: shared-postgres
   labels:
-    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/name: postgres
     app.kubernetes.io/component: database
     app.kubernetes.io/part-of: shared-services
