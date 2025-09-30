@@ -27,6 +27,7 @@ spec:
               - matchPattern: "*.svc.proxima.sigurs.io"
               - matchPattern: "*.infra-argocd.svc.proxima.sigurs.io"
               - matchPattern: "github.com"
+              - matchPattern: "release-assets.githubusercontent.com"
               - matchPattern: "argoproj.github.io"
               - matchPattern: "traefik.github.io"
               - matchPattern: "charts.hetzner.cloud"
@@ -45,6 +46,7 @@ spec:
     # Restrict access to specific FQDNs
     - toFQDNs:
       - matchPattern: "github.com"
+      - matchPattern: "release-assets.githubusercontent.com"
       - matchPattern: "argoproj.github.io"
       - matchPattern: "traefik.github.io"
       - matchPattern: "charts.hetzner.cloud"
