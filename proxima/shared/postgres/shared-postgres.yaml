@@ -13,4 +13,4 @@ spec:
         login: true
         inherit: true
         ensure: present
-        connectionLimit: "-1"
+        connectionLimit: -1
