@@ -3,8 +3,16 @@ kind: CiliumNetworkPolicy
 metadata:
   name: shared-keycloak
 spec:
-  endpointSelector: {}
-  ingress: {}
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: shared-keycloak
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: shared-keycloak-proxy
+      toPorts:
+        - ports:
+            - port: "8080"
   egress:
     # Postgres
     - toServices:

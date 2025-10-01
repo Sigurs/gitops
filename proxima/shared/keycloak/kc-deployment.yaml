@@ -1,6 +1,4 @@
 apiVersion: apps/v1
-# Use a stateful setup to ensure that for a rolling update Pods are restarted with a rolling strategy one-by-one.
-# This prevents losing in-memory information stored redundantly in two Pods.
 kind: StatefulSet
 metadata:
   name: shared-keycloak
@@ -9,7 +7,7 @@ metadata:
 spec:
   serviceName: shared-keycloak-discovery
   # Run with one replica to save resources, or with two replicas to allow for rolling updates for configuration changes
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: shared-keycloak
@@ -109,13 +107,13 @@ spec:
               port: 9000
             periodSeconds: 10
             failureThreshold: 3              
-          resources:
-            limits:
-              cpu: 2000m
-              memory: 2000Mi
-            requests:
-              cpu: 500m
-              memory: 1700Mi
+          # resources:
+          #   limits:
+          #     cpu: 2000m
+          #     memory: 2000Mi
+          #   requests:
+          #     cpu: 500m
+          #     memory: 1700Mi
           volumeMounts:
             - mountPath: /tmp
               name: keycloak-tmp
