@@ -1,0 +1,17 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: shared-keycloak
+spec:
+  endpointSelector: {}
+  ingress: {}
+  egress:
+    # Traefik
+    - toServices:
+        - k8sService:
+            serviceName: shared-postgres-rw
+            namespace: shared-postgres
+      toPorts:
+        - ports:
+            - port: "5432"
+              protocol: TCP
