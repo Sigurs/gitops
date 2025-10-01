@@ -20,10 +20,10 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: infra-cilium 
-  # syncPolicy:
-  #   syncOptions:
-  #     - ServerSideApply=true
-  #     - RespectIgnoreDifferences=true
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+      - RespectIgnoreDifferences=true
   # Some automatically generated secrets, need to ignore the difference.
   ignoreDifferences:
     # - kind: Secret
