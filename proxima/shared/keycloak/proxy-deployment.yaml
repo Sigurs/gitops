@@ -32,3 +32,11 @@ spec:
           capabilities:
             drop:
               - ALL
+        volumeMounts:
+        - name: configmap-volume
+          mountPath: /etc/nginx.conf.d
+          subPath: default.conf
+      volumes:
+      - name: configmap-volume
+        configMap:
+          name: shared-keyclok-proxy

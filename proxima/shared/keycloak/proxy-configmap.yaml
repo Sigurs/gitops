@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shared-keycloak-proxy
+data:
+  default.conf: |
+    server {
+        listen       8080;
+        server_name  localhost;
+
+        #access_log  /var/log/nginx/host.access.log  main;
+
+        location / {
+            proxy_pass http://shared-keycloak.shared-keycloak.svc:8080
+        }
+
+        location ^~ /admin/ {
+            deny all;
+            return 403;
+        }
+    }
