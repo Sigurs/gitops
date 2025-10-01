@@ -53,8 +53,8 @@ spec:
               value: "xforwarded"
             - name: KC_HTTP_ENABLED
               value: "true"
-            # In this explorative setup, no strict hostname is set.
-            # For production environments, set a hostname for a secure setup.
+            - name: KC_HOSTNAME
+              value: auth.sigurs.io
             - name: KC_HOSTNAME_STRICT
               value: "true"
             - name: KC_HEALTH_ENABLED
