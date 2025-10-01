@@ -23,3 +23,17 @@ spec:
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
+  # Some automatically generated secrets, need to ignore the difference.
+  ignoreDifferences:
+    - group: ""
+      kind: Secret
+      name: cilium-ca
+      namespace: infra-cilium
+    - group: ""
+      kind: Secret
+      name: hubble-relay-client-certs
+      namespace: infra-cilium
+    - group: ""
+      kind: Secret
+      name: hubble-server-certs
+      namespace: infra-cilium
