@@ -23,3 +23,10 @@ spec:
         - ports:
             - port: "5432"
               protocol: TCP
+    # Other KC pods
+    - toEndpoints:
+      - matchLabels:
+          app.kubernetes.io/name: shared-keycloak
+      toPorts:
+        - ports:
+            - port: "8080"
