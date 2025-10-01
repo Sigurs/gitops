@@ -12,8 +12,8 @@ data:
             proxy_pass http://shared-keycloak.shared-keycloak.svc:8080;
         }
 
-        #location ^~ /admin/ {
-        #    deny all;
-        #    return 403;
-        #}
+        location ^~ /admin/ {
+            deny all;
+            return 403;
+        }
     }
