@@ -27,8 +27,3 @@ spec:
     - toEndpoints:
       - matchLabels:
           app.kubernetes.io/name: shared-keycloak
-      toPorts:
-        - ports:
-            - port: "8080"
-            - port: "7800"
-            - port: "57800"
