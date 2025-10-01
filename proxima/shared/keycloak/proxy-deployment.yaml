@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shared-keycloak-proxy
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: shared-keycloak-proxy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: shared-keycloak-proxy
+    spec:
+      automountServiceAccountToken: false
+      hostUsers: true
+      securityContext:
+        runAsGroup: 65532
+        runAsNonRoot: true
+        runAsUser: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: container
+        image: nginxinc/nginx-unprivileged:alpine3.22-perl
+        ports:
+          - containerPort: 8080
+            name: http
+        securityContext:
+          readOnlyRootFilesystem: false
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL

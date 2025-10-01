@@ -7,7 +7,7 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            app: infra-cloudflared
+            app.kubernetes.io/name: infra-cloudflared
             io.kubernetes.pod.namespace: infra-cloudflared
       toPorts:
         - ports:

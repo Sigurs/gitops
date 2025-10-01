@@ -6,7 +6,7 @@ spec:
   endpointSelector: {}
   ingress: {}
   egress:
-    # Traefik
+    # Postgres
     - toServices:
         - k8sService:
             serviceName: shared-postgres-rw

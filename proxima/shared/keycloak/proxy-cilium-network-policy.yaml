@@ -1,0 +1,26 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: shared-keycloak-proxy
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: shared-keycloak-proxy
+  ingress:
+    # From cloudflared
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: infra-cloudflared
+            io.kubernetes.pod.namespace: infra-cloudflared
+      toPorts:
+        - ports:
+            - port: "8080"
+  egress:
+    # To keycloak
+    - toServices:
+        - k8sService:
+            serviceName: shared-keycloak
+            namespace: shared-keycloak
+      toPorts:
+        - ports:
+            - port: "8080"

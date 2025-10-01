@@ -33,13 +33,23 @@ spec:
               protocol: TCP
 
     # Traefik
+    # - toServices:
+    #     - k8sService:
+    #         serviceName: infra-traefik-cloudflared
+    #         namespace: infra-traefik-cloudflared
+    #   toPorts:
+    #     - ports:
+    #         - port: "80"
+    #           protocol: TCP
+  
+    # Keycloak
     - toServices:
         - k8sService:
-            serviceName: infra-traefik
-            namespace: infra-traefik
+            serviceName: infra-keycloak-proxy
+            namespace: infra-keycloak-proxy
       toPorts:
         - ports:
-            - port: "80"
+            - port: "8080"
               protocol: TCP
 
     # Whoami
