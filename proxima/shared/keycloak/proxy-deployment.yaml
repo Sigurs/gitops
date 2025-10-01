@@ -34,7 +34,7 @@ spec:
               - ALL
         volumeMounts:
         - name: configmap-volume
-          mountPath: /etc/nginx.conf.d
+          mountPath: /etc/nginx/conf.d
           subPath: default.conf
       volumes:
       - name: configmap-volume
