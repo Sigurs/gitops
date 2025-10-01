@@ -23,6 +23,7 @@ spec:
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
+      - RespectIgnoreDifferences=true
   # Some automatically generated secrets, need to ignore the difference.
   ignoreDifferences:
     - kind: Secret
