@@ -38,12 +38,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: shared-keycloak
-                  key: KC_BOOTSTRAP_ADMIN_USERNAME
+                  key: KC_BOOTSTRAP_USERNAME
             - name: KC_BOOTSTRAP_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: shared-keycloak
-                  key: KC_BOOTSTRAP_ADMIN_PASSWORD
+                  key: KC_BOOTSTRAP_PASSWORD
             # In a production environment, add a TLS certificate to Keycloak to either end-to-end encrypt the traffic between
             # the client or Keycloak, or to encrypt the traffic between your proxy and Keycloak.
             # Respect the proxy headers forwarded by the reverse proxy
