@@ -26,5 +26,14 @@ spec:
   # Some automatically generated secrets, need to ignore the difference.
   ignoreDifferences:
     - kind: Secret
-      jqPathExpressions:
-        - 'select(.metadata.name | test("cilium-ca|hubble-relay-client-certs|hubble-server-certs"))'
+      name: cilium-ca
+      namespace: infra-cilium
+    - kind: Secret
+      name: hubble-relay-client-certs
+      namespace: infra-cilium
+    - kind: Secret
+      name: hubble-server-certs
+      namespace: infra-cilium
+    # - kind: Secret
+    #   jqPathExpressions:
+    #     - 'select(.metadata.name | test("cilium-ca|hubble-relay-client-certs|hubble-server-certs"))'
