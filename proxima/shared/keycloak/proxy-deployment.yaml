@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: shared-keycloak-proxy
 spec:
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: shared-keycloak-proxy

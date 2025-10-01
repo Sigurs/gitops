@@ -5,6 +5,7 @@ metadata:
   labels:
     app: shared-keycloak
 spec:
+  revisionHistoryLimit: 1
   serviceName: shared-keycloak-discovery
   # Run with one replica to save resources, or with two replicas to allow for rolling updates for configuration changes
   replicas: 1
