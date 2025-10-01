@@ -27,7 +27,7 @@ spec:
           - containerPort: 8080
             name: http
         securityContext:
-          readOnlyRootFilesystem: false
+          readOnlyRootFilesystem: true
           allowPrivilegeEscalation: false
           capabilities:
             drop:
