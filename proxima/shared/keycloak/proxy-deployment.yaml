@@ -43,4 +43,3 @@ spec:
           name: shared-keycloak-proxy
       - name: tmp
         emptyDir: {}
-          name: keycloak-data
