@@ -27,7 +27,7 @@ spec:
       - name: regcred
       containers:
       - name: container
-        image: ghcr.io/sigurs/simple-file-upload/simple-file-upload:202510052110
+        image: ghcr.io/sigurs/simple-file-upload/simple-file-upload:202510052141
         env:
           - name: APP_DATA_DIR
             value: /appdata
@@ -45,6 +45,8 @@ spec:
               secretKeyRef:
                 name: app-files
                 key: ORIGIN
+          - name: IP_HEADER
+            value: X-Forwarded-For
         ports:
           - containerPort: 5000
             name: http
