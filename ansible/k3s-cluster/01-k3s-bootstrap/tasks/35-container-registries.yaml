@@ -22,11 +22,11 @@
         .dockerconfigjson: "{{ dockerconfig | to_json | b64encode }}"
   vars:
     dockerconfig:
-      auths:
-        "{{ item.registry_server }}":
-          username: "{{ item.username }}"
-          password: "{{ item.password }}"
-          email: "{{ item.email | default('') }}"
-          auth: "{{ (item.username + ':' + item.password) | b64encode }}"
+      auths: "{{ {item.registry_server: registry_auth} }}"
+    registry_auth:
+      username: "{{ item.username }}"
+      password: "{{ item.password }}"
+      email: "{{ item.email | default('') }}"
+      auth: "{{ (item.username + ':' + item.password) | b64encode }}"
   loop: "{{ registries }}"
   no_log: true  # Prevents passwords from appearing in logs
