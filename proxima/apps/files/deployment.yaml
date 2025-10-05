@@ -38,7 +38,7 @@ spec:
                 name: app-files
                 key: RP_ID
           - name: RP_NAME
-            value: "Sigurs' File Upload"
+            value: "Sigurs File Upload"
           - name: ORIGIN
             # Let's not have the address in a public gitops repo.
             valueFrom:
