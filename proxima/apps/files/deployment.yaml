@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: app-files
 spec:
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: app-files
@@ -26,7 +27,7 @@ spec:
       - name: regcred
       containers:
       - name: container
-        image: ghcr.io/sigurs/simple-file-upload/simple-file-upload:202510052100
+        image: docker pull ghcr.io/sigurs/simple-file-upload/simple-file-upload:202510052110
         env:
           - name: APP_DATA_DIR
             value: /appdata
