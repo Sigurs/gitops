@@ -27,7 +27,7 @@ spec:
       - name: regcred
       containers:
       - name: container
-        image: docker pull ghcr.io/sigurs/simple-file-upload/simple-file-upload:202510052110
+        image: ghcr.io/sigurs/simple-file-upload/simple-file-upload:202510052110
         env:
           - name: APP_DATA_DIR
             value: /appdata
