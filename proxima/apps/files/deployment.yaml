@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-files
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app-files
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-files
+    spec:
+      automountServiceAccountToken: false
+      hostUsers: false
+      securityContext:
+        runAsGroup: 65532
+        runAsNonRoot: true
+        runAsUser: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: container
+        image: ghcr.io/sigurs/simple-file-upload/simple-file-upload:202509282209
+        env:
+          - name: APP_DATA_DIR
+            value: /appdata
+          - name: RP_ID
+            # Let's not have the address in a public gitops repo.
+            valueFrom:
+              secretKeyRef:
+                name: app-files
+                key: RP_ID
+          - name: RP_NAME
+            value: "Sigurs' File Upload"
+          - name: ORIGIN
+            # Let's not have the address in a public gitops repo.
+            valueFrom:
+              secretKeyRef:
+                name: app-files
+                key: ORIGIN
+        ports:
+          - containerPort: 5000
+            name: http
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+        volumeMounts:
+          - name: tmp
+            mountPath: /tmp
+          - name: appdata
+            mountPath: /appdata
+      volumes:
+      - name: tmp
+        emptyDir:
+          sizeLimit: 2Gi
+      - name: appdata
+        persistentVolumeClaim:
+          claimName: app-files-appdata

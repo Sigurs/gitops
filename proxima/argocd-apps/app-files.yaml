@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps-files
+spec:
+  project: proxima-apps
+  source:
+    repoURL: https://github.com/Sigurs/gitops.git
+    targetRevision: HEAD
+    path: proxima/apps/files
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps-files
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
