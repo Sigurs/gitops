@@ -1,7 +1,7 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: apps-whoami
+  name: apps-files
 spec:
   endpointSelector: {}
   ingress:
