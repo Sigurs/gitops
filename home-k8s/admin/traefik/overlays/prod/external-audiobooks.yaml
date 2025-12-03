@@ -1,0 +1,53 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: external-audiobooks-tls
+spec:
+  commonName: audiobooks.sigurs.io
+  secretName: external-audiobooks-tls
+  dnsNames: 
+    - audiobooks.sigurs.io
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: external-audiobooks
+subsets:
+  - addresses:
+      - ip: 172.20.4.10
+    ports:
+      - port: 13378
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-audiobooks
+spec:
+  clusterIP: None
+  ports:
+    - port: 13378
+      targetPort: 13378
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: external-audiobooks
+spec:
+  tls:
+    - hosts:
+        - audiobooks.sigurs.io
+      secretName: external-audiobooks-tls
+  rules:
+    - host: audiobooks.sigurs.io
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: external-audiobooks
+              port:
+                number: 13378
