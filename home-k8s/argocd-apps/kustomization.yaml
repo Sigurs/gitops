@@ -5,8 +5,6 @@ resources:
   - admin/argocd.yaml
   - namespaces.yaml
   - admin/cert-manager.yaml
-  - admin/csi-driver-nfs.yaml
-  - admin/csi-driver-smb.yaml
   - admin/istio-ingress.yaml
   - admin/istio-system.yaml
   - admin/knative.yaml
