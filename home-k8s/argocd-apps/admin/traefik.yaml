@@ -7,7 +7,7 @@ spec:
   sources:
     - chart: traefik
       repoURL: https://traefik.github.io/charts
-      targetRevision: v37.1.2
+      targetRevision: v37.4.0
       helm:
         valuesObject:
           securityContext:
