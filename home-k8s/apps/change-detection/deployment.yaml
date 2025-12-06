@@ -7,6 +7,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: change-detection
   replicas: 1
+  revisionHistoryLimit: 2
   template:
     metadata:
       labels:
@@ -16,8 +17,6 @@ spec:
       hostUsers: false
       containers:
         - name: chromium
-          # Use v1 until v2 ARM64 appears.
-#          image: registry.sigurs.io/ghcr.io/browserless/chromium:v2.30.1
           image: registry.sigurs.io/ghcr.io/browserless/chromium:latest@sha256:bfa7ec660e79a95abc4fe927a2235f756cc74ce970b5e44af730c5ec83938ba4
           securityContext:
             allowPrivilegeEscalation: false
