@@ -1,8 +1,0 @@
-- include_tasks: 00-update.yaml
-- include_tasks: ansible.yaml
-- include_tasks: sysctl.yaml
-- include_tasks: host.yaml
-- include_tasks: unattended-upgrades.yaml
-- include_tasks: user.yaml
-- include_tasks: bash.yaml
-- include_tasks: kubernetes.yaml

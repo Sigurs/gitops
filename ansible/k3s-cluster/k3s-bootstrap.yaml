@@ -1,8 +1,0 @@
-- name: apply k3s-bootstrap
-  become: yes
-  hosts:
-    - k3s_servers[0]
-  roles:
-    - 01-k3s-bootstrap
-  environment:
-    KUBECONFIG: /etc/rancher/k3s/k3s.yaml

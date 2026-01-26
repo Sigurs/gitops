@@ -1,6 +1,0 @@
-- name: Bash customizations
-  copy:
-    dest: /etc/profile.d/999-custom.sh
-    mode: "0755"
-    content: |
-      export PROMPT_COMMAND='export PS1="\[\e[33m\]proxima: \[\e[0m\]\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "'

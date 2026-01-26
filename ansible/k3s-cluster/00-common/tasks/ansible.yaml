@@ -1,6 +1,0 @@
-- name: Install requirements for Ansible
-  ansible.builtin.package:
-    name:
-      - python3-yaml
-      - python3-kubernetes
-    state: latest
