@@ -1,11 +1,4 @@
 # Sigurs' GitOps Repository
-The main purpose is GitOps, but also contains Ansible IaaC for cluster setup.<br>
-Combined for ease of use.
-
-The long-term goal is to combine numerous independent docker-compose and kubernetes setups into 2-3 clusters for ease of management.
-
-# Ansible
-Some Keep It Simple Stupid
 
 ## General Information
 This is the public gitops repo, but a private one also exists.  
@@ -73,30 +66,6 @@ Let's Encrypt ClusterIssuer yamls need to be manually filed and ran.
 
 #### Service: system-upgrade
 Utilize k3s' system-upgrade-controller to keep nodes up to date.
-
-## Usage
-### Ansible
-
-#### Setup ansible
-```bash
-# Create virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Install ansible
-python -m pip install ansible
-ansible-galaxy collection install community.general kubernetes.core
-```
-
-#### Run
-
-```bash
-# Activate virtual environment
-source .venv/bin/activate
-
-# Run ansible
-ansible-playbook ansible/k3s-cluster/main.yaml -i home-k8s/ansible-inventory.yaml
-```
 
 # Unraid
 At home the main storage solution is based on Unraid. <br>

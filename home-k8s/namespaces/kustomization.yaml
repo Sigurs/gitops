@@ -4,9 +4,6 @@ kind: Kustomization
 resources:
   - admin/argocd.yaml
   - admin/cert-manager.yaml
-#  - admin/istio-ingress.yaml
-#  - admin/istio-system.yaml
-#  - admin/knative-serving.yaml
   - admin/system-upgrade-controller.yaml
   - admin/traefik.yaml
 
