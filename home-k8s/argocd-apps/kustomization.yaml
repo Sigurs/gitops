@@ -5,9 +5,6 @@ resources:
   - admin/argocd.yaml
   - namespaces.yaml
   - admin/cert-manager.yaml
-  - admin/istio-ingress.yaml
-  - admin/istio-system.yaml
-  - admin/knative.yaml
   - admin/system-upgrade.yaml
   - admin/traefik.yaml
 
