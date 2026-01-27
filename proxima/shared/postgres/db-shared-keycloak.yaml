@@ -1,9 +1,0 @@
-apiVersion: postgresql.cnpg.io/v1
-kind: Database
-metadata:
-  name: shared-keycloak
-spec:
-  cluster:
-    name: shared-postgres
-  name: shared-keycloak
-  owner: shared-keycloak
