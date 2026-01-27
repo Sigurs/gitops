@@ -58,6 +58,7 @@ spec:
     - toCIDR:
         - 10.46.0.1/32
       toPorts:
+        - ports:
             - port: "443"
               protocol: TCP
             - port: "6443"
