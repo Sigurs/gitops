@@ -22,6 +22,7 @@ spec:
       containers:
         - name: trilium
           image: triliumnext/trilium:v0.101.3@sha256:8937001c549185a6e989d46f800556f68d630ac474008c3931ea1bb0eec75199
+          # At the time the rootless image is not available, so we need to skip the startpoint that uses su.
           command: ["node", "./main.cjs"]
           securityContext:
             runAsUser: 1000
@@ -39,6 +40,8 @@ spec:
               value: "1000"
             - name: TRILIUM_DATA_DIR
               value: /home/node/trilium-data
+            - name: TRILIUM_PORT
+              value: "8080"
           ports:
             - containerPort: 8080
               name: http
