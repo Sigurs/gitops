@@ -36,7 +36,7 @@ spec:
               - matchPattern: "cloudnative-pg.io"
 
     # Kubernetes API access
-    # k3s runs directly on host so we need to add it in bunch of different ways just to be sure no updated breaks anything.
+    # k3s runs directly on host so we need to add it in bunch of different ways just to be sure no update breaks anything.
     - toEntities:
         - kube-apiserver
       toPorts:
