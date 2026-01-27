@@ -22,6 +22,7 @@ spec:
       containers:
         - name: trilium
           image: triliumnext/trilium:v0.101.3@sha256:8937001c549185a6e989d46f800556f68d630ac474008c3931ea1bb0eec75199
+          command: ["node", "./main.cjs"]
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
