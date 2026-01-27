@@ -43,6 +43,8 @@ spec:
         - ports:
             - port: "443"
               protocol: TCP
+            - port: "6443"
+              protocol: TCP
     - toServices:
         - k8sService:
             serviceName: kubernetes
@@ -51,17 +53,22 @@ spec:
         - ports:
             - port: "443"
               protocol: TCP
+            - port: "6443"
+              protocol: TCP
     - toCIDR:
         - 10.46.0.1/32
       toPorts:
-        - ports:
             - port: "443"
+              protocol: TCP
+            - port: "6443"
               protocol: TCP
     ## As apiserver is ran on host, this is the most likely to be effective.
     - toCIDR:
         - 10.44.0.0/24
       toPorts:
         - ports:
+            - port: "443"
+              protocol: TCP
             - port: "6443"
               protocol: TCP
 
