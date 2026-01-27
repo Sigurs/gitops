@@ -36,6 +36,7 @@ spec:
               - matchPattern: "cloudnative-pg.io"
 
     # Kubernetes API access
+    # k3s runs directly on host so we need to add it in bunch of different ways just to be sure no updated breaks anything.
     - toEntities:
         - kube-apiserver
       toPorts:
@@ -55,6 +56,13 @@ spec:
       toPorts:
         - ports:
             - port: "443"
+              protocol: TCP
+    ## As apiserver is ran on host, this is the most likely to be effective.
+    - toCIDR:
+        - 10.44.0.0/24
+      toPorts:
+        - ports:
+            - port: "6443"
               protocol: TCP
 
     # Restrict access to specific FQDNs
