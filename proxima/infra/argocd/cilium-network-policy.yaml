@@ -50,6 +50,12 @@ spec:
         - ports:
             - port: "443"
               protocol: TCP
+    - toCIDR:
+        - 10.46.0.1/32
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
 
     # Restrict access to specific FQDNs
     - toFQDNs:
