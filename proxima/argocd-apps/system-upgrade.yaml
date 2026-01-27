@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-system-upgrade
+  name: system-upgrade
 spec:
   project: proxima-infra
   source:
