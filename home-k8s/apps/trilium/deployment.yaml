@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trilium
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: trilium
+  replicas: 1
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: trilium
+    spec:
+      automountServiceAccountToken: false
+      hostUsers: false
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: Always
+        runAsNonRoot: true
+      containers:
+        - name: trilium
+          image: triliumnext/trilium:v0.101.3@sha256:8937001c549185a6e989d46f800556f68d630ac474008c3931ea1bb0eec75199
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+          env:
+            - name: TRILIUM_UID
+              value: "1000"
+            - name: TRILIUM_GID
+              value: "1000"
+            - name: TRILIUM_DATA_DIR
+              value: /home/node/trilium-data
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: trilium
+              mountPath: /home/node/trilium-data
+      volumes:
+        - name: trilium
+          persistentVolumeClaim:
+            claimName: trilium
+      # We want this deployment on a specific node
+      nodeSelector:
+        kubernetes.io/hostname: home-k8s01.sigurs.io
