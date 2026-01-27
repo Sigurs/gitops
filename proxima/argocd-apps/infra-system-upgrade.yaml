@@ -17,7 +17,7 @@ spec:
         - /spec/preserveUnknownFields
   destination:
     server: https://kubernetes.default.svc
-    namespace: infra-system-upgrade
+    namespace: system-upgrade
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
