@@ -1,7 +1,7 @@
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
-  name: system-upgrade-agent-plan
+  name: agent-plan
   annotations:
     # Make sure controller is deployed before plans
     argocd.argoproj.io/sync-wave: "1"
