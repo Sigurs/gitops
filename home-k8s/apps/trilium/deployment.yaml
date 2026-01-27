@@ -32,9 +32,9 @@ spec:
               drop:
                 - ALL
           env:
-            - name: TRILIUM_UID
+            - name: USER_UID
               value: "1000"
-            - name: TRILIUM_GID
+            - name: USER_UID
               value: "1000"
             - name: TRILIUM_DATA_DIR
               value: /home/node/trilium-data
