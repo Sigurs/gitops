@@ -36,6 +36,12 @@ spec:
               - matchPattern: "cloudnative-pg.io"
 
     # Kubernetes API access
+    - toEntities:
+        - kube-apiserver
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
     - toServices:
         - k8sService:
             serviceName: kubernetes
