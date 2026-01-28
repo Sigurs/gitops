@@ -57,7 +57,10 @@ spec:
         - k8sService:
             serviceName: apps-whoami
             namespace: apps-whoami
-
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: apps-whoami
+            app.kubernetes.io/name: apps-whoami
 
 #    # Argo tunnel
 #    - toFQDNs:
