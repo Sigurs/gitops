@@ -11,3 +11,8 @@
 # # For demo, delete CRDs if uninstalled.
 # crds:
 #   keep: false
+
+ipam:
+  operator:
+    clusterPoolIPv4PodCIDRList:
+      - "10.45.0.0/16"
