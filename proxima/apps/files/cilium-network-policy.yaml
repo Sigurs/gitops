@@ -11,6 +11,6 @@ spec:
             io.kubernetes.pod.namespace: infra-cloudflared
       toPorts:
         - ports:
-            - port: "80"
+            - port: "5000"
   egress:
     - {}
