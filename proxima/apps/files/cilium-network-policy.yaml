@@ -9,8 +9,5 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: infra-cloudflared
             io.kubernetes.pod.namespace: infra-cloudflared
-      toPorts:
-        - ports:
-            - port: "80"
   egress:
     - {}
