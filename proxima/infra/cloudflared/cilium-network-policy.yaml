@@ -53,15 +53,17 @@ spec:
               protocol: TCP
 
     # Whoami
-    - toServices:
-        - k8sService:
-            serviceName: apps-whoami
-            namespace: apps-whoami
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: apps-whoami
             app.kubernetes.io/name: apps-whoami
 
+    # files
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: app-files
+            app.kubernetes.io/name: app-files
+            
 #    # Argo tunnel
 #    - toFQDNs:
 #      - matchPattern: "region1.v2.argotunnel.com"
