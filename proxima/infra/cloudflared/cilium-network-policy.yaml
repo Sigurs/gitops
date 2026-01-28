@@ -57,10 +57,7 @@ spec:
         - k8sService:
             serviceName: apps-whoami
             namespace: apps-whoami
-      toPorts:
-        - ports:
-            - port: "80"
-              protocol: TCP
+
 
 #    # Argo tunnel
 #    - toFQDNs:
