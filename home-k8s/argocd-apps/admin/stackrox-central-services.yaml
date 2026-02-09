@@ -49,6 +49,8 @@ spec:
           scannerV4: 
             disabled: false
             db:
+              # Wants to go SSL by default
+              postgresqlSslMode: "disable"
               resources:
                 requests:
                   memory: 128Mi
