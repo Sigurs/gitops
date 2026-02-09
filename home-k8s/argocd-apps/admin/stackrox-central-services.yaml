@@ -10,6 +10,9 @@ spec:
     targetRevision: 400.9.2
     helm:
       valuesObject:
+        # Disabled already deprecated PodSecurityPolicies
+        psp:
+          enabled: false
         central:
           persistence:
             none:  true
