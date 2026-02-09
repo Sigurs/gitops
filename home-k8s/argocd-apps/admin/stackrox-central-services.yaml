@@ -17,6 +17,9 @@ spec:
         system:
           enablePodSecurityPolicies: false
         central:
+          # Generate admin password
+          adminPassword:
+            generate: true
           persistence:
             none:  true
           resources:
