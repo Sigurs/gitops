@@ -42,6 +42,14 @@ spec:
               limits:
                 memory: 4Gi
                 cpu: 1
+          scanner-v4-db:
+            resources:
+              requests:
+                memory: 128Mi
+                cpu: 10m
+              limits:
+                memory: 4Gi
+                cpu: 1
   destination:
     server: https://kubernetes.default.svc
     namespace: stackrox
