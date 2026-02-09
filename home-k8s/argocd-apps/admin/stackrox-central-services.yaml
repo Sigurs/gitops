@@ -61,6 +61,7 @@ spec:
                 memory: 4Gi
                 cpu: 1
           indexer:
+            replicas: 1
             # Auto-generate and trust the certs
             serviceTLS:
               generate: true 
@@ -72,6 +73,7 @@ spec:
                 memory: 4Gi
                 cpu: 1
           matcher:
+            replicas: 1
             # Auto-generate and trust the certs
             serviceTLS:
               generate: true 
