@@ -46,41 +46,42 @@ spec:
             limits:
               memory: 4Gi
               cpu: 1
-          scannerV4: 
-            disabled: false
-            db:
-              # Auto-generate and trust the certs
-              serviceTLS:
-                generate: true 
-              resources:
-                requests:
-                  memory: 128Mi
-                  cpu: 10m
-                limits:
-                  memory: 4Gi
-                  cpu: 1
-            indexer:
-              # Auto-generate and trust the certs
-              serviceTLS:
-                generate: true 
-              resources:
-                requests:
-                  memory: 128Mi
-                  cpu: 10m
-                limits:
-                  memory: 4Gi
-                  cpu: 1
-            matcher:
-              # Auto-generate and trust the certs
-              serviceTLS:
-                generate: true 
-              resources:
-                requests:
-                  memory: 128Mi
-                  cpu: 10m
-                limits:
-                  memory: 4Gi
-                  cpu: 1
+
+        scannerV4: 
+          disabled: false
+          db:
+            # Auto-generate and trust the certs
+            serviceTLS:
+              generate: true 
+            resources:
+              requests:
+                memory: 128Mi
+                cpu: 10m
+              limits:
+                memory: 4Gi
+                cpu: 1
+          indexer:
+            # Auto-generate and trust the certs
+            serviceTLS:
+              generate: true 
+            resources:
+              requests:
+                memory: 128Mi
+                cpu: 10m
+              limits:
+                memory: 4Gi
+                cpu: 1
+          matcher:
+            # Auto-generate and trust the certs
+            serviceTLS:
+              generate: true 
+            resources:
+              requests:
+                memory: 128Mi
+                cpu: 10m
+              limits:
+                memory: 4Gi
+                cpu: 1
   destination:
     server: https://kubernetes.default.svc
     namespace: stackrox
