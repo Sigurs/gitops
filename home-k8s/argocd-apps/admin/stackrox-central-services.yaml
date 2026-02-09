@@ -11,8 +11,8 @@ spec:
     helm:
       valuesObject:
         # Disabled already deprecated PodSecurityPolicies
-        psp:
-          enabled: false
+        system:
+          enablePodSecurityPolicies: false
         central:
           persistence:
             none:  true
