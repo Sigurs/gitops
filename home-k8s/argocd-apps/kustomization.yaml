@@ -5,6 +5,8 @@ resources:
   - admin/argocd.yaml
   - namespaces.yaml
   - admin/cert-manager.yaml
+  - admin/stackrox-central-services.yaml
+  - admin/stackrox-secured-cluster-services.yaml
   - admin/system-upgrade.yaml
   - admin/traefik.yaml
 

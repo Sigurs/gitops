@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stackrox-central-services
+spec:
+  project: home-k8s.admin
+  source:
+    chart: stackrox-central-services
+    repoURL: https://raw.githubusercontent.com/stackrox/helm-charts/main/opensource/
+    targetRevision: 4.9.3
+    helm:
+      valuesObject:
+        central:
+          persistence:
+            none:  true
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 10m
+            limits:
+              memory: 4Gi
+              cpu: 1
+        db:
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 10m
+            limits:
+              memory: 4Gi
+              cpu: 1
+        scanner:
+          autoscaling:
+            disabled: true
+          replicas: 1
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 10m
+            limits:
+              memory: 4Gi
+              cpu: 1
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: stackrox
