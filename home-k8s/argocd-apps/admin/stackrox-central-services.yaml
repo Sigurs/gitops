@@ -10,6 +10,9 @@ spec:
     targetRevision: 400.9.2
     helm:
       valuesObject:
+        # Generate CA
+        ca:
+          generate: true 
         # Disabled already deprecated PodSecurityPolicies
         system:
           enablePodSecurityPolicies: false
