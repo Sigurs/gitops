@@ -7,7 +7,7 @@ spec:
   source:
     chart: stackrox-central-services
     repoURL: https://raw.githubusercontent.com/stackrox/helm-charts/main/opensource/
-    targetRevision: 4.9.3
+    targetRevision: 4.9.2
     helm:
       valuesObject:
         central:
