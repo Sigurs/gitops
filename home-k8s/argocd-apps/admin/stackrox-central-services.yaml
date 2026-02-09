@@ -21,16 +21,16 @@ spec:
               memory: 128Mi
               cpu: 10m
             limits:
-              memory: 4Gi
-              cpu: 1
+              memory: null
+              cpu: null
         db:
           resources:
             requests:
               memory: 128Mi
               cpu: 10m
             limits:
-              memory: 4Gi
-              cpu: 1
+              memory: null
+              cpu: null
         scanner:
           autoscaling:
             disabled: true
@@ -40,8 +40,8 @@ spec:
               memory: 128Mi
               cpu: 10m
             limits:
-              memory: 4Gi
-              cpu: 1
+              memory: null
+              cpu: null
   destination:
     server: https://kubernetes.default.svc
     namespace: stackrox
