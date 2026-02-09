@@ -34,44 +34,44 @@ spec:
               limits:
                 memory: 4Gi
                 cpu: 1
-          scanner:
-            disable: true
-            autoscaling:
-              disabled: true
-            replicas: 1
-            resources:
-              requests:
-                memory: 128Mi
-                cpu: 10m
-              limits:
-                memory: 4Gi
-                cpu: 1
-            scannerV4: 
-              disabled: false
-              db:
-                resources:
-                  requests:
-                    memory: 128Mi
-                    cpu: 10m
-                  limits:
-                    memory: 4Gi
-                    cpu: 1
-              indexer:
-                resources:
-                  requests:
-                    memory: 128Mi
-                    cpu: 10m
-                  limits:
-                    memory: 4Gi
-                    cpu: 1
-              matcher:
-                resources:
-                  requests:
-                    memory: 128Mi
-                    cpu: 10m
-                  limits:
-                    memory: 4Gi
-                    cpu: 1
+        scanner:
+          disable: true
+          autoscaling:
+            disabled: true
+          replicas: 1
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 10m
+            limits:
+              memory: 4Gi
+              cpu: 1
+          scannerV4: 
+            disabled: false
+            db:
+              resources:
+                requests:
+                  memory: 128Mi
+                  cpu: 10m
+                limits:
+                  memory: 4Gi
+                  cpu: 1
+            indexer:
+              resources:
+                requests:
+                  memory: 128Mi
+                  cpu: 10m
+                limits:
+                  memory: 4Gi
+                  cpu: 1
+            matcher:
+              resources:
+                requests:
+                  memory: 128Mi
+                  cpu: 10m
+                limits:
+                  memory: 4Gi
+                  cpu: 1
   destination:
     server: https://kubernetes.default.svc
     namespace: stackrox
