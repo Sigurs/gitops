@@ -3,8 +3,12 @@ kind: Ingress
 metadata:
   name: open-webui
 spec:
+  tls:
+    - hosts:
+        - chat.sigurs.io
+      secretName: open-webui-tls
   rules:
-    - host: chat.home-k8s.sigurs.io
+    - host: chat.sigurs.io
       http:
         paths:
         - path: /
@@ -14,3 +18,4 @@ spec:
               name: open-webui
               port:
                 name: http
+

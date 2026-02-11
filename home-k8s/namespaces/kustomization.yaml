@@ -11,6 +11,7 @@ resources:
   - apps/change-detection.yaml
   - apps/cyberchef.yaml
   - apps/n8n.yaml
+  - apps/open-webui.yaml
   - apps/prod-adguard.yaml
   - apps/prod-hass.yaml
   - apps/trilium.yaml
