@@ -65,6 +65,8 @@ spec:
                 cpu: 1
           indexer:
             replicas: 1
+            autoscaling:
+              disable: true
             # Auto-generate and trust the certs
             serviceTLS:
               generate: true 
@@ -77,6 +79,8 @@ spec:
                 cpu: 1
           matcher:
             replicas: 1
+            autoscaling:
+              disable: true
             # Auto-generate and trust the certs
             serviceTLS:
               generate: true 
