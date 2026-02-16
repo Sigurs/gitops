@@ -1,9 +1,27 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: stackrox-central-tls
+  namespace: stackrox
+spec:
+  commonName: stackrox.home-k8s.sigurs.io
+  secretName: stackrox-central-tls
+  dnsNames: 
+    - stackrox.home-k8s.sigurs.io
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: stackrox-central
   namespace: stackrox
 spec:
+  tls:
+    - hosts:
+        - stackrox.home-k8s.sigurs.io
+      secretName: stackrox-central-tls
   rules:
     - host: stackrox.home-k8s.sigurs.io
       http:
