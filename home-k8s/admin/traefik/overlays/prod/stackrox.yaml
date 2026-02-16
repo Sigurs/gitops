@@ -13,35 +13,28 @@ spec:
     name: letsencrypt
 ---
 apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: central-ingress
+  namespace: stackrox
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`stackrox.home-k8s.sigurs.io`)
+      kind: Rule
+      services:
+        - name: central
+          port: 443
+          scheme: https
+          serversTransport: central-transport
+  tls:
+    secretName: stackrox-central-tls  # your TLS cert
+---
+apiVersion: traefik.io/v1alpha1
 kind: ServersTransport
 metadata:
   name: central-transport
   namespace: stackrox
 spec:
-  insecureSkipVerify: true
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: stackrox-central
-  namespace: stackrox
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/service.serverstransport: stackrox-central-transport@kubernetescrd
-spec:
-  tls:
-    - hosts:
-        - stackrox.home-k8s.sigurs.io
-      secretName: stackrox-central-tls
-  rules:
-    - host: stackrox.home-k8s.sigurs.io
-      http:
-        paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: central
-              port:
-                number: 443
+  insecureSkipVerify: true  # skip verification of Central's internal cert
