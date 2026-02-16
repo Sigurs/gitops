@@ -12,11 +12,23 @@ spec:
     kind: ClusterIssuer
     name: letsencrypt
 ---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: central-transport
+  namespace: stackrox
+spec:
+  insecureSkipVerify: true
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: stackrox-central
   namespace: stackrox
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/service.serverstransport: stackrox-central-transport@kubernetescrd
 spec:
   tls:
     - hosts:
