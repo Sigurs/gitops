@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: stackrox-central
+  namespace: stackrox
+spec:
+  rules:
+    - host: stackrox.home-k8s.sigurs.io
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: central
+              port:
+                number: 443
