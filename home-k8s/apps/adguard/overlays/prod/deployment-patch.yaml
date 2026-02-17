@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: adguard
-          image: registry.sigurs.io/docker.io/adguard/adguardhome:v0.107.70
+          image: adguard/adguardhome:v0.107.71@sha256:a9a7a398f0f8f58f7df11a89158afc557b064a360f4b93ed719a3a58a57517ce
       # We want this deployment on a specific node
       nodeSelector:
         kubernetes.io/hostname: home-k8s01.sigurs.io
