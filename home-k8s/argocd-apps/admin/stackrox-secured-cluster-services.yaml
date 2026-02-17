@@ -7,7 +7,6 @@ spec:
   source:
     chart: stackrox-secured-cluster-services
     repoURL: https://raw.githubusercontent.com/stackrox/helm-charts/main/opensource/
-    targetRevision: latest
     helm:
       valuesObject:
         clusterName: home-k8s

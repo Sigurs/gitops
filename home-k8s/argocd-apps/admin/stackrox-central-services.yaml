@@ -7,7 +7,6 @@ spec:
   source:
     chart: stackrox-central-services
     repoURL: https://raw.githubusercontent.com/stackrox/helm-charts/main/opensource/
-    targetRevision: latest
     helm:
       valuesObject:
         # Generate CA
