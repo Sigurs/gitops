@@ -17,6 +17,11 @@ spec:
             web:
               redirectTo:
                 port: websecure
+          # Redirects broken in chart version https://github.com/traefik/traefik-helm-chart/issues/1602
+          additionalArguments:
+            - "--entryPoints.web.http.redirections.to=websecure"
+            - "--entryPoints.web.http.redirections.scheme=https"
+            - "--entryPoints.web.http.redirections.permanent=true"
     - repoURL: https://github.com/Sigurs/gitops.git
       targetRevision: HEAD
       path: home-k8s/admin/traefik/overlays/prod
