@@ -26,6 +26,39 @@ spec:
               drop:
                 - ALL
           env:
+            # Enable offline mode
+            - name: OFFLINE_MODE
+              value: "true"
+            - name: HF_HUB_OFFLINE
+              value: "1"
+
+            # Security
+            - name: WEBUI_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: open-webui
+                  key: WEBUI_SECRET_KEY
+            - name: CORS_ALLOW_ORIGIN
+              value: "https://chat.sigurs.io"
+            
+            # Database
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: open-webui
+                  key: DATABASE_URL
+
+            # Vector DB
+            - name: VECTOR_DB
+              value: pgvector
+            - name: PGVECTOR_CREATE_EXTENSION
+              value: "false"
+            - name: PGVECTOR_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: open-webui
+                  key: PGVECTOR_DB_URL
+
             - name: TZ
               value: Europe/Helsinki
           ports:
