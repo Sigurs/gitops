@@ -68,18 +68,6 @@ spec:
             - name: open-webui
               mountPath: /app/backend/data
               subPath: app/backend/data
-        - name: apache-tika
-          image: apache/tika:3.2.3.0-full@sha256:4bdb20f20b3d08d46f8da3e95fdf7a71d74b4e6e0728b99a870a6f19633803d5
-          securityContext:
-            allowPrivilegeEscalation: false
-            seccompProfile:
-              type: RuntimeDefault
-            capabilities:
-              drop:
-                - ALL
-          ports:
-            - containerPort: 9998
-              name: tika
       volumes:
         - name: open-webui
           persistentVolumeClaim:
