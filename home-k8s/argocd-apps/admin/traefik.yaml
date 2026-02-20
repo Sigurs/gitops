@@ -13,6 +13,10 @@ spec:
           securityContext:
             seccompProfile:
               type: RuntimeDefault
+          ports:
+            web:
+              redirectTo:
+                port: websecure
     - repoURL: https://github.com/Sigurs/gitops.git
       targetRevision: HEAD
       path: home-k8s/admin/traefik/overlays/prod
