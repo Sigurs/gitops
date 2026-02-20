@@ -17,7 +17,7 @@ spec:
       hostUsers: false
       containers:
         - name: container
-          image: registry.sigurs.io/ghcr.io/open-webui/open-webui:v0.8.2@sha256:0f8e3746aecbad6a31faacd93b0443eb8e5f5db14a03f9c4f68ba08c003683bd
+          image: ghcr.io/open-webui/open-webui:v0.8.3@sha256:0558a1b498dbfbf469d9a94866e2892275c7d1ef4d96894cf0b31d657d44bc55
           securityContext:
             allowPrivilegeEscalation: false
             seccompProfile:
