@@ -13,11 +13,6 @@ spec:
           securityContext:
             seccompProfile:
               type: RuntimeDefault
-          ports:
-            web:
-              redirectTo:
-                port: websecure
-          # Redirects broken in chart version https://github.com/traefik/traefik-helm-chart/issues/1602
           additionalArguments:
             - "--entryPoints.web.http.redirections.to=websecure"
             - "--entryPoints.web.http.redirections.scheme=https"
