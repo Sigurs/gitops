@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: searxng
+spec:
+  tls:
+    - hosts:
+        - search.sigurs.io
+      secretName: searxng-tls
+  rules:
+    - host: search.sigurs.io
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: searxng
+              port:
+                name: http
+
