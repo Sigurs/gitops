@@ -1,0 +1,53 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: external-caprica-tls
+spec:
+  commonName: caprica.sigurs.io
+  secretName: external-caprica-tls
+  dnsNames: 
+    - caprica.sigurs.io
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: external-caprica
+subsets:
+  - addresses:
+      - ip: 172.20.4.31
+    ports:
+      - port: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-caprica
+spec:
+  clusterIP: None
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: external-caprica
+spec:
+  tls:
+    - hosts:
+        - caprica.sigurs.io
+      secretName: external-caprica-tls
+  rules:
+    - host: caprica.sigurs.io
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: external-caprica
+              port:
+                number: 8080
