@@ -9,6 +9,7 @@ resources:
   - admin/system-upgrade.yaml
   - admin/traefik.yaml
 
+  - apps/caprica-dev.yaml
   - apps/change-detection.yaml
   - apps/cyberchef.yaml
   - apps/n8n.yaml
