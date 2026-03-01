@@ -12,6 +12,7 @@ resources:
   - apps/caprica-dev.yaml
   - apps/change-detection.yaml
   - apps/cyberchef.yaml
+  - apps/haproxy.yaml
   - apps/n8n.yaml
   - apps/open-webui.yaml
   - apps/prod-adguard.yaml

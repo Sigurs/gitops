@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: haproxy
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: aprox
+  replicas: 1
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: aprox
+    spec:
+      automountServiceAccountToken: false
+      hostUsers: false
+      containers:
+        - name: haproxy
+          image: haproxy:3.3-alpine@sha256:978aeb6e2c91e25b681a7bc0cb698010ecbbfe63c75c9ce9c4a85ade57d7b0ee
+          securityContext:
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - containerPort: 11434
+              name: ollama
+          volumeMounts:
+            - name: config
+              mountPath: /usr/local/etc/haproxy/haproxy.cfg
+              subPath: haproxy.cfg
+      volumes:
+      - name: config
+        configMap:
+          name: haproxy
