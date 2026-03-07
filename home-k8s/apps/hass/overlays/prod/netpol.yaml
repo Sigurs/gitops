@@ -23,3 +23,10 @@ spec:
         # host: home-srv02
         - ipBlock:
             cidr: 172.20.4.116/32
+    - to:
+        - ipBlock:
+            cidr: 172.20.4.10/32
+      ports:
+        # wyoming-faster-whisper
+        - protocol: TCP
+          port: 10300
