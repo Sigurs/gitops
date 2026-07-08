@@ -4,11 +4,9 @@ kind: Kustomization
 resources:
   - ../../base
   - external-audiobooks.yaml
-  - external-caprica.yaml
   - external-jellyfin.yaml
   - external-paperless.yaml
   - external-harbor.yaml
-  - stackrox.yaml
   
 patches:
   - path: wildcard-tls-patch.yaml
