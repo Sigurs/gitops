@@ -4,16 +4,13 @@ kind: Kustomization
 resources:
   - admin/argocd.yaml
   - admin/cert-manager.yaml
-  - admin/stackrox.yaml
   - admin/system-upgrade-controller.yaml
   - admin/traefik.yaml
 
   - apps/change-detection.yaml
   - apps/cyberchef.yaml
   - apps/haproxy.yaml
-  - apps/n8n.yaml
   - apps/open-webui.yaml
-  - apps/prod-adguard.yaml
   - apps/prod-hass.yaml
   - apps/searxng.yaml
   - apps/trilium.yaml
