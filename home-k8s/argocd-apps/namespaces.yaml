@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: namespaces
   annotations:
-    argocd.argoproj.io/sync-wave: "-9"
+    argocd.argoproj.io/sync-wave: "-11"
 spec:
   project: home-k8s.admin
   source:

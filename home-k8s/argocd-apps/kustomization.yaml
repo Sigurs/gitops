@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - admin/private-namespaces.yaml
+  - admin/private-argocd-apps.yaml
 
   - admin/argocd.yaml
   - namespaces.yaml

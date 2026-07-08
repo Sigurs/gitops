@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: private-argocd-apps
+  annotations:
+    argocd.argoproj.io/sync-wave: "-8"
+spec:
+  project: argocd.private
+  source:
+    repoURL: ssh://git@github.com/Sigurs/gitops-private.git
+    targetRevision: HEAD
+    path: home-k8s/argocd-apps
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
