@@ -17,3 +17,5 @@ spec:
       kind: '*'
     - group: ''
       kind: PersistentVolumeClaim
+    - group: ''
+      kind: Pod
