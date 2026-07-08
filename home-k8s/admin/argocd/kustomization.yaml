@@ -6,6 +6,7 @@ resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/v3.2.1/manifests/install.yaml
   - ingress.yaml
   - project-argocd.private.yaml
+  - project-apps.private.yaml
 #  - tls.yaml
 
 patches:
