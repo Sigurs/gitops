@@ -12,7 +12,7 @@ spec:
   clusterResourceWhitelist: []
   namespaceResourceWhitelist:
     - group: apps
-      kind: Deployment
+      kind: '*'
     - group: networking.k8s.io
       kind: '*'
     - group: ''
