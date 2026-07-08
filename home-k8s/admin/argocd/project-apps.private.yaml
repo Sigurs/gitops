@@ -8,9 +8,7 @@ spec:
   sourceNamespaces: []
   destinations: 
   - server: https://kubernetes.default.svc
-    namespace: '*'
-  - server: https://kubernetes.default.svc
-    namespace: '!argocd'
+    namespace: 'apps-*'
   clusterResourceWhitelist: []
   namespaceResourceWhitelist:
     - group: apps
