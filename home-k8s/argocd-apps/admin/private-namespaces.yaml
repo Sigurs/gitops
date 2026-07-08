@@ -7,7 +7,7 @@ metadata:
 spec:
   project: argocd.private
   source:
-    repoURL: ssh://git@github.com:Sigurs/gitops-private.git
+    repoURL: ssh://git@github.com/Sigurs/gitops-private.git
     targetRevision: HEAD
     path: home-k8s/namespaces
   destination:

@@ -4,7 +4,7 @@ metadata:
   name: argocd.private
 spec:
   sourceRepos:
-    - ssh://git@github.com:Sigurs/gitops-private.git
+    - ssh://git@github.com/Sigurs/gitops-private.git
   sourceNamespaces: []
   destinations: 
     - server: https://kubernetes.default.svc
