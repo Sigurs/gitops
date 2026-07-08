@@ -12,6 +12,7 @@ spec:
     path: home-k8s/argocd-apps
   destination:
     server: https://kubernetes.default.svc
+    namespace: argocd
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
