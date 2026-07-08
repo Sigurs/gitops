@@ -7,8 +7,10 @@ spec:
     - ssh://git@github.com/Sigurs/gitops-private.git
   sourceNamespaces: []
   destinations: 
-    - server: https://kubernetes.default.svc
-      namespace: ''
+  - server: https://kubernetes.default.svc
+    namespace: '*'
+  - server: https://kubernetes.default.svc
+    namespace: '!argocd'
   clusterResourceWhitelist: []
   namespaceResourceWhitelist:
     - group: apps
