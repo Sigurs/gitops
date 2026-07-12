@@ -21,7 +21,7 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             type: Localhost
-            localhostProfile: profiles/playwright-seccomp.json
+          localhostProfile: profiles/playwright-seccomp.json
             capabilities:
               drop:
                 - ALL
