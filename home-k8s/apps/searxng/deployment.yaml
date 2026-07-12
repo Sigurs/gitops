@@ -17,7 +17,7 @@ spec:
       hostUsers: false
       containers:
         - name: container
-          image: ghcr.io/searxng/searxng:2026.2.20-93ac6ceb3@sha256:1d42b843667db5b004e5d2b7aef3fc4ed921555da9e89acbb6c8d3a6f0d807c6
+          image: ghcr.io/searxng/searxng:2026.7.9-b512eaa27@sha256:081e65c1495baeb8f193e4bcb03f78dde2dcbbd3c1d67293bce645596a7834db
           securityContext:
             allowPrivilegeEscalation: false
             seccompProfile:

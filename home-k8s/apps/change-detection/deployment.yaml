@@ -33,7 +33,7 @@ spec:
             - name: TZ
               value: Europe/Helsinki
         - name: change-detection
-          image: registry.sigurs.io/docker.io/dgtlmoon/changedetection.io:0.51.4
+          image: dgtlmoon/changedetection.io:0.55.7
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000
