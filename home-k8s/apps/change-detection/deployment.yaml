@@ -17,7 +17,7 @@ spec:
       hostUsers: false
       containers:
         - name: chromium
-          image: registry.sigurs.io/ghcr.io/browserless/chromium:latest@sha256:bfa7ec660e79a95abc4fe927a2235f756cc74ce970b5e44af730c5ec83938ba4
+          image: ghcr.io/browserless/chromium:latest
           securityContext:
             allowPrivilegeEscalation: false
             seccompProfile:

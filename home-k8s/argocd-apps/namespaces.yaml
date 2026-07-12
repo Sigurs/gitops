@@ -12,3 +12,6 @@ spec:
     path: home-k8s/namespaces
   destination:
     server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
