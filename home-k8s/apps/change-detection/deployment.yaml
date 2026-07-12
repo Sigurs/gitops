@@ -37,7 +37,7 @@ spec:
               value: Europe/Helsinki
             - name: PLAYWRIGHT_DRIVER_URL
               # v1 url — chromium now runs in the apps-chromium namespace
-              value: ws://chromium.apps-chromium.svc.cluster.local:3000/?stealth=1&--headless=true&--window-size%3D1920%2C1080
+              value: ws://chromium.apps-chromium.svc.3000/?stealth=1&--headless=true&--window-size%3D1920%2C1080
           volumeMounts:
             - name: change-detection
               mountPath: /datastore
