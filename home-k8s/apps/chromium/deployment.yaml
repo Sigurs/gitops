@@ -17,7 +17,7 @@ spec:
       hostUsers: false
       containers:
         - name: chromium
-          image: mcr.microsoft.com/playwright:latest
+          image: mcr.microsoft.com/playwright:latest-arm64
           securityContext:
             seccompProfile:
               type: Localhost
