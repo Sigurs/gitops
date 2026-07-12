@@ -19,9 +19,10 @@ spec:
         - name: chromium
           image: ghcr.io/browserless/chromium:latest
           securityContext:
+            seccompProfile:
+              type: Localhost
+              localhostProfile: profiles/playwright-seccomp.json
             allowPrivilegeEscalation: false
-            type: Localhost
-          localhostProfile: profiles/playwright-seccomp.json
             capabilities:
               drop:
                 - ALL
