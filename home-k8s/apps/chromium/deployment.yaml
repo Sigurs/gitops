@@ -33,6 +33,19 @@ spec:
           env:
             - name: TZ
               value: Europe/Helsinki
+          livenessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          volumeMounts:
+            - name: dshm
+              mountPath: /dev/shm
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: "1Gi"
       # Pinned to the node that carries the localhost seccomp profile
       nodeSelector:
         kubernetes.io/hostname: home-k8s01.sigurs.io
