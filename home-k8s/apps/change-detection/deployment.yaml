@@ -16,23 +16,6 @@ spec:
       automountServiceAccountToken: false
       hostUsers: false
       containers:
-        - name: chromium
-          image: ghcr.io/browserless/chromium:latest
-          securityContext:
-            seccompProfile:
-              type: Localhost
-              localhostProfile: profiles/playwright-seccomp.json
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-          ports:
-            - containerPort: 3000
-              name: chromium-api
-              protocol: TCP
-          env:
-            - name: TZ
-              value: Europe/Helsinki
         - name: change-detection
           image: dgtlmoon/changedetection.io:0.55.7
           securityContext:
@@ -53,9 +36,8 @@ spec:
             - name: TZ
               value: Europe/Helsinki
             - name: PLAYWRIGHT_DRIVER_URL
-              # v1 url
-              value: ws://localhost:3000/?stealth=1&--headless=true&--window-size%3D1920%2C1080
-#              value: ws://localhost:3000/chromium?launch={"defaultViewport":{"height":720,"width":1280},"headless":false,"stealth":true}&blockAds=true
+              # v1 url — chromium now runs in the apps-chromium namespace
+              value: ws://chromium.apps-chromium.svc.cluster.local:3000/?stealth=1&--headless=true&--window-size%3D1920%2C1080
           volumeMounts:
             - name: change-detection
               mountPath: /datastore

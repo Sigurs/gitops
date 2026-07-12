@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: chromium
+spec:
+  selector:
+    app.kubernetes.io/name: chromium
+  ports:
+  - name: chromium-api
+    protocol: TCP
+    port: 3000
+    targetPort: chromium-api

@@ -19,7 +19,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-from-ingress
+  name: allow-from-apps
 spec:
   podSelector: {}
   policyTypes:
@@ -28,27 +28,17 @@ spec:
     - from:
       - namespaceSelector:
           matchLabels:
-            kubernetes.io/metadata.name: traefik
+            kubernetes.io/metadata.name: change-detection
         podSelector:
           matchLabels:
-            app.kubernetes.io/name: traefik
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: allow-to-chromium
-spec:
-  podSelector: {}
-  policyTypes:
-    - Egress
-  egress:
-    - to:
-        - namespaceSelector:
-            matchLabels:
-              kubernetes.io/metadata.name: apps-chromium
-          podSelector:
-            matchLabels:
-              app.kubernetes.io/name: chromium
+            app.kubernetes.io/name: change-detection
+      ports:
+        - port: 3000
+          protocol: TCP
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            home-k8s.sigurs.io/private-namespace: amphitrite
       ports:
         - port: 3000
           protocol: TCP

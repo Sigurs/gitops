@@ -12,6 +12,7 @@ resources:
   - admin/traefik.yaml
 
   - apps/change-detection.yaml
+  - apps/chromium.yaml
   - apps/cyberchef.yaml
   - apps/haproxy.yaml
   - apps/open-webui.yaml
