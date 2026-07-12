@@ -17,12 +17,15 @@ spec:
       hostUsers: false
       containers:
         - name: chromium
-          image: mcr.microsoft.com/playwright::latest
+          image: mcr.microsoft.com/playwright:latest
           securityContext:
             seccompProfile:
               type: Localhost
               localhostProfile: profiles/playwright-seccomp.json
             allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
             runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
