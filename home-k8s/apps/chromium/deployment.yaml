@@ -29,6 +29,7 @@ spec:
             capabilities:
               drop:
                 - ALL
+          args: ['npx', '-y', 'playwright', 'run-server', '--port', '3000', '--host', '0.0.0.0']
           ports:
             - containerPort: 3000
               name: chromium-api
