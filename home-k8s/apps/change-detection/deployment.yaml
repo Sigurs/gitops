@@ -20,8 +20,8 @@ spec:
           image: ghcr.io/browserless/chromium:latest
           securityContext:
             allowPrivilegeEscalation: false
-            seccompProfile:
-              type: RuntimeDefault
+            type: Localhost
+            localhostProfile: profiles/playwright-seccomp.json
             capabilities:
               drop:
                 - ALL
@@ -53,7 +53,7 @@ spec:
               value: Europe/Helsinki
             - name: PLAYWRIGHT_DRIVER_URL
               # v1 url
-              value: ws://localhost:3000/?stealth=1&--disable-web-security=true&--no-sandbox=true&--headless=true&--window-size%3D1920%2C1080
+              value: ws://localhost:3000/?stealth=1&--headless=true&--window-size%3D1920%2C1080
 #              value: ws://localhost:3000/chromium?launch={"defaultViewport":{"height":720,"width":1280},"headless":false,"stealth":true}&blockAds=true
           volumeMounts:
             - name: change-detection
