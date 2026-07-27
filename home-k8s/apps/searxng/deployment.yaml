@@ -21,7 +21,7 @@ spec:
         runAsNonRoot: true
       containers:
         - name: container
-          image: ghcr.io/searxng/searxng:2026.7.9-b512eaa27@sha256:081e65c1495baeb8f193e4bcb03f78dde2dcbbd3c1d67293bce645596a7834db
+          image: searxng/searxng:2026.7.26-b060c780d@sha256:sha256:33225510d0b03282a5f793c9daf915039300cdad0ff8469e8d352a1dc8f5736e
           securityContext:
             runAsUser: 977
             runAsGroup: 977
