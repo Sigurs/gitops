@@ -81,6 +81,6 @@ spec:
     - from:
       - namespaceSelector:
           matchLabels:
-            home-k8s.sigurs.io/private-namespace: amphitrite
+            home-k8s.sigurs.io/private-namespace: amphitrite-shells
       ports:
         - port: 8080
