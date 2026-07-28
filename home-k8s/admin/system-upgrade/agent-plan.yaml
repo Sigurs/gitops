@@ -12,14 +12,9 @@ spec:
     matchExpressions:
     - key: node-role.kubernetes.io/control-plane
       operator: DoesNotExist
-  prepare:
-    args:
-    - prepare
-    - server-plan
-    image: rancher/k3s-upgrade
   serviceAccountName: system-upgrade
   upgrade:
-    image: rancher/k3s-upgrade
+    image: rancher/k3s-upgrade:latest@sha256:b66e14dc6d027de882c722243d66e4dec4875943a768d9d9ee535deabeb81017  # k3s-upgrade:v1.35.7-rc1-k3s1
 #  version: v1.24.6+k3s1
   # Enable automatic upgrades
   channel: https://update.k3s.io/v1-release/channels/stable
