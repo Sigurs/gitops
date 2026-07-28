@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: hass
-          image: ghcr.io/home-assistant/home-assistant:stable
+          image: ghcr.io/home-assistant/home-assistant:stable@sha256:23c8b70ffc3dda3e387fe61416f3269dc304d8ada028866b3c77b289e7177163  # home-assistant:2026.7.4
       # We want this deployment on a specific node
       nodeSelector:
         kubernetes.io/hostname: home-k8s01.sigurs.io
