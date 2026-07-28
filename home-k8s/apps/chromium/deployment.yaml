@@ -17,7 +17,7 @@ spec:
       hostUsers: false
       containers:
         - name: chromium
-          image: ghcr.io/browserless/chromium:latest@sha256:b0b31df17a8cb11c5e8bb7e22d8d32b5c28f0ee0251063950632e70e0d106e31  # chromium:24.04
+          image: ghcr.io/browserless/chromium:latest@sha256:d971f5a91c07f3d42131919b10462358566b69dce6b4bcabb265b832297b96c0  # chromium:24.04
           securityContext:
             seccompProfile:
               type: Localhost

@@ -21,7 +21,7 @@ spec:
         runAsNonRoot: true
       containers:
         - name: container
-          image: searxng/searxng:latest@sha256:db8b06c868a8f0e97e93eec361d860db4298e0e2b1e54326fb1103b0a294d213
+          image: searxng/searxng:latest@sha256:80622959f0f3512e6623d6bdbcea9f13c8d22c8d9715c498d0ae2be1c8535930
           securityContext:
             runAsUser: 977
             runAsGroup: 977
