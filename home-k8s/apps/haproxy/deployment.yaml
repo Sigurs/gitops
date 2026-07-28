@@ -17,7 +17,7 @@ spec:
       hostUsers: false
       containers:
         - name: haproxy
-          image: haproxy:3.3-alpine@sha256:782195506ce75120a2e917891088419884924f184cf84fb81a98b6eedb86b067
+          image: haproxy:lts-alpine
           securityContext:
             allowPrivilegeEscalation: false
             seccompProfile:
