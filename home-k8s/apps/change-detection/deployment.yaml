@@ -17,7 +17,7 @@ spec:
       hostUsers: false
       containers:
         - name: change-detection
-          image: dgtlmoon/changedetection.io:0.55  # changedetection.io:0.55.8
+          image: dgtlmoon/changedetection.io:0.55@sha256:9e30dd4457af59666637681d38e5e0b8e13c20306c4735d5cd4327d60bfb992a  # changedetection.io:0.55.8
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000
