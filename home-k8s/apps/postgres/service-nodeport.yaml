@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-nodeport
+spec:
+  type: NodePort
+  # Local keeps the real client IP, which the netpol ipBlock rule matches on.
+  externalTrafficPolicy: Local
+  selector:
+    app.kubernetes.io/name: postgres
+  ports:
+  - name: postgres
+    protocol: TCP
+    port: 5432
+    targetPort: postgres
+    nodePort: 30432

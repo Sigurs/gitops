@@ -12,6 +12,7 @@ resources:
   - apps/cyberchef.yaml
   - apps/haproxy.yaml
   - apps/open-webui.yaml
+  - apps/postgres.yaml
   - apps/prod-hass.yaml
   - apps/searxng.yaml
   - apps/trilium.yaml
