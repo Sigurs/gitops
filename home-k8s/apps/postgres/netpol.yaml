@@ -16,6 +16,24 @@ spec:
   policyTypes:
   - Egress
 ---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-apps-prh
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: postgres
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: apps-prh
+      ports:
+        - port: 5432
+---
 # Reachable from outside the cluster only: everything except the pod and
 # service CIDRs. No in-cluster workload gets in until a rule is added for it.
 apiVersion: networking.k8s.io/v1

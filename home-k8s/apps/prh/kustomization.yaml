@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - netpol.yaml
+  - configmap.yaml
+  - pvc.yaml
+  - deployment-web.yaml
+  - deployment-worker.yaml
+  - service.yaml
+  - ingress.yaml
+
+images:
+  - name: ghcr.io/sigurs/prh
+    newTag: 20260810-2
+    digest: sha256:cab0c254655d8ec773a41b22ccc61d6925fdd02b7bd00a0f5689f68b49d1759a

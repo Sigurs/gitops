@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prh-web
+spec:
+  rules:
+    - host: prh.home-k8s.sigurs.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prh-web
+                port:
+                  name: http
