@@ -9,10 +9,11 @@ spec:
         - name: hass
           image: ghcr.io/home-assistant/home-assistant:stable@sha256:100c389d23ff8c751dbf4e36d7221b6a4003bca51cdfefd839c1b19fe27a00cd  # home-assistant:2026.8.2
           # Give access to esp32
-          limits:
-            akri.sh/esp32: "1"
-          requests:
-            akri.sh/esp32: "1"
+          resources:
+            limits:
+              akri.sh/esp32: "1"
+            requests:
+              akri.sh/esp32: "1"
       # We want this deployment on a specific node
       nodeSelector:
         kubernetes.io/hostname: home-k8s01.sigurs.io
