@@ -21,6 +21,6 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: akri
-  syncPolicy:
-    syncOptions:
-      - ServerSideApply=true
+#  syncPolicy:
+#    syncOptions:
+#      - ServerSideApply=true
