@@ -8,7 +8,7 @@ spec:
     name: udev
     discoveryDetails: |+
       udevRules:
-        - 'KERNEL=="ttyUSB*", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60"'
+        - 'SUBSYSTEM=="tty", KERNEL=="ttyUSB*", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60"'
       permissions: rwm
       groupRecursive: false
   capacity: 1
