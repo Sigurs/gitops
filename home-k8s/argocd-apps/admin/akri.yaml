@@ -10,6 +10,8 @@ spec:
       targetRevision: 0.13.8
       helm:
         valuesObject:
+          webhookConfiguration:
+            enabled: false
           udev:
             discovery:
               enabled: true
