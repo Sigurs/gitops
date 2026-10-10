@@ -3,12 +3,8 @@ kind: Ingress
 metadata:
   name: chromium
 spec:
-  tls:
-    - hosts:
-        - chromium.sigurs.io
-      secretName: chromium-tls
   rules:
-    - host: chromium.sigurs.io
+    - host: chromium.home-k8s.sigurs.io
       http:
         paths:
         - path: /

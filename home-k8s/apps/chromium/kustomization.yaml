@@ -5,5 +5,4 @@ resources:
   - deployment.yaml
   - service.yaml
   - netpol.yaml
-  - tls.yaml
   - ingress.yaml
