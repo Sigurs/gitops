@@ -23,7 +23,7 @@ spec:
         - name: trilium
           image: triliumnext/trilium:stable@sha256:be93e82699b12950ac4e2e7b565ce092fe215b8dd6ddfc47921e37b49e6a0e8b  # trilium:v0.106.0
           # At the time the rootless image is not available, so we need to skip the startpoint that uses su.
-          command: ["node", "./main.cjs"]
+          command: ["node", "./main.mjs"]
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
