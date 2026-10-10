@@ -21,7 +21,7 @@ spec:
         runAsNonRoot: true
       containers:
         - name: trilium
-          image: triliumnext/trilium:stable@sha256:d5b37abc261b8ed93d01deb91938bbbfe7cf409b0dc8e00d1461fc1a7b280f5f  # trilium:v0.104.1
+          image: triliumnext/trilium:stable@sha256:be93e82699b12950ac4e2e7b565ce092fe215b8dd6ddfc47921e37b49e6a0e8b  # trilium:v0.106.0
           # At the time the rootless image is not available, so we need to skip the startpoint that uses su.
           command: ["node", "./main.cjs"]
           securityContext:

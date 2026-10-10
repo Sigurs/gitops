@@ -7,7 +7,7 @@ spec:
   sources:
     - chart: akri
       repoURL: https://project-akri.github.io/akri/
-      targetRevision: 0.13.8
+      targetRevision: 0.14.0
       helm:
         valuesObject:
           webhookConfiguration:

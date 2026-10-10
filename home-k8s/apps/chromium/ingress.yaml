@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chromium
+spec:
+  tls:
+    - hosts:
+        - chromium.sigurs.io
+      secretName: chromium-tls
+  rules:
+    - host: chromium.sigurs.io
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: chromium
+              port:
+                name: chromium-api

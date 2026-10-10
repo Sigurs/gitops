@@ -17,7 +17,7 @@ spec:
       hostUsers: false
       containers:
         - name: change-detection
-          image: dgtlmoon/changedetection.io:0.55@sha256:9e30dd4457af59666637681d38e5e0b8e13c20306c4735d5cd4327d60bfb992a  # changedetection.io:0.55.8
+          image: dgtlmoon/changedetection.io:0.60@sha256:34df3680db1cbffc45ac1e9c1514bc0507dd0c5b5fde47d1992fe6f14a7b40e4  # changedetection.io:0.60.8
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000
@@ -35,9 +35,14 @@ spec:
           env:
             - name: TZ
               value: Europe/Helsinki
+            - name: CHROMIUM_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: chromium-token
+                  key: token
             - name: PLAYWRIGHT_DRIVER_URL
               # v1 url — chromium now runs in the apps-chromium namespace
-              value: ws://chromium.apps-chromium.svc:3000/?stealth=1&--headless=true&--window-size%3D1920%2C1080
+              value: ws://chromium.apps-chromium.svc:3000/?token=$(CHROMIUM_TOKEN)&stealth=1&--headless=true&--window-size%3D1920%2C1080
           volumeMounts:
             - name: change-detection
               mountPath: /datastore

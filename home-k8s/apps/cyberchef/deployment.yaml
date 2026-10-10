@@ -19,7 +19,7 @@ spec:
         runAsNonRoot: true
       containers:
         - name: cyberchef
-          image: ghcr.io/sigurs/container-rebuilds/cyberchef:v11.2.0@sha256:479bf297bb87b2469eac9f329c5d4c3ed826e6757e156498b01114db2611e98d
+          image: ghcr.io/sigurs/container-rebuilds/cyberchef:v11.5.0@sha256:611a0fa4f25bbb7654de5437b6742ea26c01c99ca31849cf3bc41d396b7006ff
           securityContext:
             runAsUser: 101
             runAsGroup: 101

@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: hass
-          image: ghcr.io/home-assistant/home-assistant:stable@sha256:100c389d23ff8c751dbf4e36d7221b6a4003bca51cdfefd839c1b19fe27a00cd  # home-assistant:2026.8.2
+          image: ghcr.io/home-assistant/home-assistant:stable@sha256:1b64d38f38d922bf9d59336451fd6453e1d614f934456af4ee3d2a51061be3a4  # home-assistant:2026.10.0
           # Give access to esp32
 #          resources:
 #            limits:
